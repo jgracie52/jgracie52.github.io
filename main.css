@@ -48,6 +48,6 @@ p {font-size: 16px;}
 }
 
 /*LinkedIn Styles*/
-.LI-footer .LI-row{
+.LI-badge-container.horizontal.dark .LI-footer{
   padding-right: 60px;
 }
