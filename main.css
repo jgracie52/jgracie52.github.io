@@ -46,3 +46,8 @@ p {font-size: 16px;}
 .navbar-nav  li a:hover {
   color: #1abc9c !important;
 }
+
+/*LinkedIn Styles*/
+.LI-footer .LI-row{
+  padding-right: 60px;
+}
