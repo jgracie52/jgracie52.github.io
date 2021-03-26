@@ -31,6 +31,11 @@ p {font-size: 16px;}
   color: #fff;
 }
 
+c{
+  color: white;
+  font-weight: 700;
+}
+
 strong{
   color: #1abc9c;
 }
