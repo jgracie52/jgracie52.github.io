@@ -3,14 +3,19 @@ body {
   line-height: 1.8;
   color: #f5f6f7;
 }
+
+h3{
+  font-weight: bold;
+}
+
 p {font-size: 16px;}
 .margin {margin-bottom: 45px;}
 .bg-1 {
-  background-color: #1abc9c; /* Green */
+  background-color: #222; /* Green */
   color: #ffffff;
 }
 .bg-2 {
-  background-color: #474e5d; /* Dark Blue */
+  background-color: #1abc9c; /* Dark Blue */
   color: #ffffff;
 }
 .bg-3 {
@@ -18,7 +23,7 @@ p {font-size: 16px;}
   color: #555555;
 }
 .bg-4 {
-  background-color: #2f2f2f; /* Black Gray */
+  background-color: #222; /* Black Gray */
   color: #fff;
 }
 .container-fluid {
