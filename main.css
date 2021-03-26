@@ -15,11 +15,11 @@ h3{
 p {font-size: 16px;}
 .margin {margin-bottom: 45px;}
 .bg-1 {
-  background-color: #222; /* Green */
+  background-color: #222; /* Black */
   color: #ffffff;
 }
 .bg-2 {
-  background-color: #1abc9c; /* Dark Blue */
+  background-color: #1abc9c; /* Green */
   color: #ffffff;
 }
 .bg-3 {
@@ -27,8 +27,12 @@ p {font-size: 16px;}
   color: #555555;
 }
 .bg-4 {
-  background-color: #222; /* Black Gray */
+  background-color: #222; /* Black */
   color: #fff;
+}
+
+strong{
+  color: #1abc9c;
 }
 .container-fluid {
   padding-top: 70px;
