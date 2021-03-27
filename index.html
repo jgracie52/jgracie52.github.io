@@ -9,7 +9,10 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="scripts.js"></script>
   <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
@@ -30,10 +33,15 @@
         <li><a href="#who">WHO</a></li>
         <li><a href="#what">WHAT</a></li>
         <li><a href="#where">WHERE</a></li>
+        <li><a href="#projects">PROJECTS</a></li>
+        <li><a href="#resume">RESUMÉ</a></li>
       </ul>
     </div>
   </div>
 </nav>
+
+<!-- Back To Top Button -->
+<button onclick="topFunction()" id="backToTopBtn" title="Go to top">Back To Top</button>
 
 <!-- First Container -->
 <div class="container-fluid bg-1 text-center" id="who">
@@ -66,6 +74,32 @@
 </div>
 
 <!-- Third Container (Grid) -->
+<div class="container-fluid bg-3 text-center" id="resume">
+  <h3 class="margin">Resumé</h3><br>
+  <a href="resume.pdf" class="btn" download><i class="fa fa-download"></i> Download My Resumé</a>
+</div>
+
+<!-- Fourth Container (Grid) -->
+<div class="container-fluid bg-2 text-center" id="projects">
+  <h3 class="margin">My Projects</h3><br>
+  <div class="container-fluid text-center" style="padding: 0; max-width:800px">
+    <img class="slides w3-animate-right" src="underconstruction_image.jpg" style="display: block; width:100%">
+    <img class="slides w3-animate-right" src="underconstruction_image.jpg" style="width:100%">
+    <img class="slides w3-animate-right" src="underconstruction_image.jpg" style="width:100%">
+  </div>
+
+  <div class="row">
+    <div class="section">
+      <button class="btn" onclick="plusDivs(-1)">❮ Prev</button>
+      <button class="btn" onclick="plusDivs(1)">Next ❯</button>
+    </div>
+    <button class="btn demo" onclick="currentDiv(1)">1</button>
+    <button class="btn demo" onclick="currentDiv(2)">2</button>
+    <button class="btn demo" onclick="currentDiv(3)">3</button>
+  </div>
+</div>
+
+<!-- Fifth Container (Grid) -->
 <div class="container-fluid bg-3 text-center" id="where">
   <h3 class="margin">Where To Find Me?</h3><br>
   <div class="row">
