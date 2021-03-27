@@ -56,6 +56,6 @@ function showDivs(n) {
   x[slideIndex-1].style.display = "block";
   dots[slideIndex-1].className += " btn-hovered";
 
-  timer = setTimeout('showDivs('+(slideIndex += 1)+')', 10000); // Change image every 2 seconds
+  timer = setTimeout('plusDivs('+(1)+')', 10000); // Change image every 2 seconds
 }
 // End Slideshow Functions //
