@@ -31,6 +31,10 @@ p {font-size: 16px;}
   color: #fff;
 }
 
+code{
+  text-align: left;
+}
+
 c{
   color: white;
   font-weight: 700;
@@ -50,6 +54,9 @@ floyd{
 
 .slides{
   display:none;
+  background-color: #149a80;
+  box-shadow: 5px 3px 10px darkgrey;
+  padding:20px;
 }
 
 .btn:hover{

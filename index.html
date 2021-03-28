@@ -13,6 +13,9 @@
   <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/atom-one-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/highlight.min.js" integrity="sha512-d00ajEME7cZhepRqSIVsQVGDJBdZlfHyQLNC6tZXYKTG7iwcF8nhlFuppanz8hYgXr8VvlfKh4gLC25ud3c90A==" crossorigin="anonymous"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
@@ -85,11 +88,49 @@
 
 <!-- Fourth Container (Grid) -->
 <div class="container-fluid bg-2 text-center" id="projects">
-  <h3 class="margin">My Projects</h3><br>
+  <h3 class="margin">My Projects</h3>
+  <h5>Check out my <a style="text-decoration-color:white;" href="https://github.com/jgracie52/PersonalProjects" target="_blank"><c>GitHub<c></a> repo for a list of all of my personal projects!</h5>
   <div class="container-fluid text-center" style="padding: 0; max-width:800px">
-    <img class="slides w3-animate-right" src="underconstruction_image.jpg" style="display: block; width:100%">
-    <img class="slides w3-animate-right" src="underconstruction_image.jpg" style="width:100%">
-    <img class="slides w3-animate-right" src="underconstruction_image.jpg" style="width:100%">
+    <div class="slides w3-animate-right">
+      <a style="text-decoration:none;" href="https://github.com/jgracie52/PersonalProjects/tree/main/Branch%20Predictor" target="_blank">
+        <h5><c>Branch Predictor</c></h5>
+        <pre><code class="language-java hljs">
+import java.util.*;
+import java.io.*;
+import java.math.*;
+
+public class Predictor
+{
+  private static long[] cache;
+  private static int[] GHB;
+  //...
+}
+      </code></pre></a>
+    </div>
+    <div class="slides">
+      <a style="text-decoration:none;" href="https://github.com/jgracie52/PersonalProjects/tree/main/Vigen%C3%A9re%20Cipher" target="_blank">
+        <h5><c>Vigenére Cipher</c></h5>
+        <pre><code class="language-c hljs">
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+int main(int argc, char *argv[])
+{
+  if (argc < 3 || argc > 3)
+  {
+  	fprintf(stderr, "Improper number of args.");
+  	return 1;
+  }
+//...
+}
+      </code></pre></a>
+    </div>
+    <div class="slides w3-animate-right">
+      <a style="text-decoration:none;" href="https://github.com/jgracie52/PersonalProjects/tree/main/Conway&#39;s%20Game%20Of%20Life" target="_blank">
+        <h5><c>Conway's Game of Life</c></h5>
+        <img src="conway.png" style="display: block; width:100%">
+      </a>
+    </div>
   </div>
 
   <div class="row">
