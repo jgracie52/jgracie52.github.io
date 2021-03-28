@@ -36,6 +36,11 @@ c{
   font-weight: 700;
 }
 
+floyd{
+  color: hotpink;
+  font-weight: 700;
+}
+
 .btn{
   background-color: #1abc9c;
   color: white !important;
