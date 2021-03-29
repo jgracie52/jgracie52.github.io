@@ -89,8 +89,9 @@
 <!-- Fourth Container (Grid) -->
 <div class="container-fluid bg-2 text-center" id="projects">
   <h3 class="margin">My Projects</h3>
-  <h5>Check out my <a style="text-decoration-color:white;" href="https://github.com/jgracie52/PersonalProjects" target="_blank"><c>GitHub<c></a> repo for a list of all of my personal projects!</h5>
+  <h5>Check out my <a style="text-decoration-color:white;" href="https://github.com/jgracie52/PersonalProjects" target="_blank"><c>GitHub<c></a> repo for the full list of all of my personal projects!</h5>
   <div class="container-fluid text-center" style="padding: 0; max-width:800px">
+    <!-- Slide 1 -->
     <div class="slides w3-animate-right">
       <a style="text-decoration:none;" href="https://github.com/jgracie52/PersonalProjects/tree/main/Branch%20Predictor" target="_blank">
         <h5><c>Branch Predictor</c></h5>
@@ -107,7 +108,8 @@ public class Predictor
 }
       </code></pre></a>
     </div>
-    <div class="slides">
+    <!-- Slide 2 -->
+    <div class="slides w3-animate-right">
       <a style="text-decoration:none;" href="https://github.com/jgracie52/PersonalProjects/tree/main/Vigen%C3%A9re%20Cipher" target="_blank">
         <h5><c>Vigenére Cipher</c></h5>
         <pre><code class="language-c hljs">
@@ -125,10 +127,30 @@ int main(int argc, char *argv[])
 }
       </code></pre></a>
     </div>
+    <!-- Slide 3 -->
     <div class="slides w3-animate-right">
       <a style="text-decoration:none;" href="https://github.com/jgracie52/PersonalProjects/tree/main/Conway&#39;s%20Game%20Of%20Life" target="_blank">
         <h5><c>Conway's Game of Life</c></h5>
         <img src="conway.png" style="display: block; width:100%">
+      </a>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slides w3-animate-right">
+      <a style="text-decoration:none;" href="https://github.com/jgracie52/PersonalProjects/tree/main/Conway&#39;s%20Game%20Of%20Life" target="_blank">
+        <h5><c>Genetic Algorithms: OneMax</c></h5>
+        <pre><code class="language-java hljs">
+public void calculateFitness(Representation popMember)
+{
+  int fitnessScore = 0;
+  // Add up points for however many 1s are in the geneString
+  for(int i = 0; i < Input.geneStringSize; i++)
+  {
+    //...
+  }
+  //...
+}
+      </code></pre>
       </a>
     </div>
   </div>
@@ -141,6 +163,7 @@ int main(int argc, char *argv[])
     <button class="btn demo" onclick="currentDiv(1)">1</button>
     <button class="btn demo" onclick="currentDiv(2)">2</button>
     <button class="btn demo" onclick="currentDiv(3)">3</button>
+    <button class="btn demo" onclick="currentDiv(4)">4</button>
   </div>
 </div>
 
