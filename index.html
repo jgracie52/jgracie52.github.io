@@ -9,14 +9,14 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script src="scripts.js"></script>
+  <script src="./scripts/scripts.js"></script>
   <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/atom-one-dark.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/highlight.min.js" integrity="sha512-d00ajEME7cZhepRqSIVsQVGDJBdZlfHyQLNC6tZXYKTG7iwcF8nhlFuppanz8hYgXr8VvlfKh4gLC25ud3c90A==" crossorigin="anonymous"></script>
   <script>hljs.initHighlightingOnLoad();</script>
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="./styles/main.css">
 </head>
 <body>
 
@@ -37,6 +37,7 @@
         <li><a href="#what">WHAT</a></li>
         <li><a href="#where">WHERE</a></li>
         <li><a href="#projects">PROJECTS</a></li>
+        <li><a href="#achievements">ACHIEVEMENTS</a></li>
         <li><a href="#resume">RESUMÉ</a></li>
       </ul>
     </div>
@@ -48,32 +49,34 @@
 
 <!-- First Container -->
 <div class="container-fluid bg-1 text-center" id="who">
-  <h3>Who Am I?</h3>
-  <img src="my_face.png" class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="350" height="350">
-  <h3>Hi, I'm Josh</h3>
-  <h5>I'm a computer science student studying at the University Of Central Florida pursuing my bachelor's in CS. I plan on moving on into the Master's program later this year.</h5>
-  <h5>My interests include <strong>machine learning</strong>, <strong>optimization techniques</strong>, and <strong>web/app development</strong>.</h5>
-  <br /><h5>I'm also a huge fan of 60-70s rock music, especially <floyd>Pink Floyd</floyd>. My favorite song of their's is definitely <floyd>Dogs</floyd> from the <floyd>Animals</floyd> album.</h5>
-  <h5>Although <floyd>Time</floyd> from <floyd>Dark Side of the Moon</floyd> is a close second.</h5>
+  <h3 style="color:white;">Who Am I?</h3>
+  <br/>
+  <img src="./contents/selfie.png" class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="350" height="350">
+  <h3 style="color:white;">Hi, I'm Josh</h3>
+  <h5 style="color:white;">I'm a computer science student studying at the University Of Central Florida pursuing my bachelor's in CS. I plan on moving on into the Master's program later this year.</h5>
+  <h5 style="color:white;">My interests include <strong>machine learning</strong>, <strong>optimization techniques</strong>, and <strong>web/app development</strong>.</h5>
+  <br /><h5 style="color:white;">I'm also a huge fan of 60-70s rock music, especially <floyd>Pink Floyd</floyd>. My favorite song of their's is definitely <floyd>Dogs</floyd> from the <floyd>Animals</floyd> album.</h5>
+  <h5 style="color:white;">Although <floyd>Time</floyd> from <floyd>Dark Side of the Moon</floyd> is a close second.</h5>
   <br />
-  <h5>Some of my hobbies include <strong style="color: #8b5d2e">hiking</strong>, <strong style="color: #107C10">gaming (mostly on Xbox)</strong>, and hanging out with my <strong>friends</strong>.</h5>
+  <h5 style="color:white;">Some of my hobbies include <strong style="color: #8b5d2e">hiking</strong>, <strong style="color: #107C10">gaming (mostly on Xbox)</strong>, and hanging out with my <strong>friends</strong>.</h5>
 </div>
 
 <!-- Second Container -->
 <div class="container-fluid bg-2 text-center" id="what">
-  <h3 class="margin">What do I do?</h3>
-  <h4>I'm current interning at <c>Lockheed Martin</c> supporting the <c>Lean Six Sigma (LSS) Office</c></h4>
-  <h4>My job roles include:</h4>
+  <h3 class="margin" style="color:white;">What do I do?</h3>
+  <h4 style="color:white;">I'm current interning at <c>Lockheed Martin</c> supporting the <c>Lean Six Sigma (LSS) Office</c></h4>
+  <h4 style="color:white;">My job roles include:</h4>
+  <br/>
   <div class="row">
     <div class="col-sm-6">
-      <h3>Office Assistant</h3>
-      <p>I support the LSS office by helping <c>maintain training records</c> and <c>distributing training materials</c> and certificates to LSS members.
+      <h3 style="color:white;">Office Assistant</h3>
+      <p style="color:white;">I support the LSS office by helping <c>maintain training records</c> and <c>distributing training materials</c> and certificates to LSS members.
       I also support the office by <c>creating Excel macros</c> that will be used for formatting important LSS documentation.
       I also assisted with <c>designing and upgrading</c> the <c>LSS MFC internal website</c> using <c>Wordpress</c>.</p>
     </div>
     <div class="col-sm-6">
-      <h3>Web Developer</h3>
-      <p>As a web developer I <c>build web applications</c> using <c>ASP.NET</c> for many team accross the company. Some of my projects include a <c>web app to assist with planning</c>,
+      <h3 style="color:white;">Web Developer</h3>
+      <p style="color:white;">As a web developer I <c>build web applications</c> using <c>ASP.NET</c> for many team accross the company. Some of my projects include a <c>web app to assist with planning</c>,
       as well as a <c>web app to help with tolerance analysis</c> making use of <c>machine learning</c>.
       Both apps are still under development but will hopefully be live on the intranet later this year.</p>
     </div>
@@ -83,15 +86,22 @@
 <!-- Third Container (Grid) -->
 <div class="container-fluid bg-3 text-center" id="resume">
   <h3 class="margin">Resumé</h3><br>
-  <a href="resume.pdf" class="btn" download><i class="fa fa-download"></i> Download My Resumé</a>
+  <a href="./contents/resume.pdf" class="btn" download><i class="fa fa-download"></i> Download My Resumé</a>
 </div>
 
 <!-- Fourth Container (Grid) -->
 <div class="container-fluid bg-2 text-center" id="projects">
-  <h3 class="margin">My Projects</h3>
-  <h5>Check out my <a style="text-decoration-color:white;" href="https://github.com/jgracie52/PersonalProjects" target="_blank"><c>GitHub<c></a> repo for the full list of all of my personal projects!</h5>
-  <div class="container-fluid text-center" style="padding: 0; max-width:800px">
-    <!-- Slide 1 -->
+  <h3 class="margin"  style="color:white;">My Projects</h3>
+  <h5  style="color:white;">Check out my <a style="text-decoration-color:white;" href="https://github.com/jgracie52/PersonalProjects" target="_blank"><c>GitHub<c></a> repo for the full list of all of my personal projects!</h5>
+  <br/>
+    <div class="container-fluid text-center" style="padding: 0; max-width:800px">
+      <!-- Slide 1 -->
+    <div class="slides w3-animate-right">
+      <a style="text-decoration:none;" href="https://github.com/jlehett/everglades-ai-wargame" target="_blank">
+       <h5><c>Everglades Reinforcement Learning</c></h5>
+       <img src="./contents/Everglades.gif" style="display: block; width:100%"></a>
+    </div>
+    <!-- Slide 2 -->
     <div class="slides w3-animate-right">
       <a style="text-decoration:none;" href="https://github.com/jgracie52/PersonalProjects/tree/main/Branch%20Predictor" target="_blank">
         <h5><c>Branch Predictor</c></h5>
@@ -108,7 +118,7 @@ public class Predictor
 }
       </code></pre></a>
     </div>
-    <!-- Slide 2 -->
+    <!-- Slide 3 -->
     <div class="slides w3-animate-right">
       <a style="text-decoration:none;" href="https://github.com/jgracie52/PersonalProjects/tree/main/Vigen%C3%A9re%20Cipher" target="_blank">
         <h5><c>Vigenére Cipher</c></h5>
@@ -127,15 +137,15 @@ int main(int argc, char *argv[])
 }
       </code></pre></a>
     </div>
-    <!-- Slide 3 -->
+    <!-- Slide 4 -->
     <div class="slides w3-animate-right">
       <a style="text-decoration:none;" href="https://github.com/jgracie52/PersonalProjects/tree/main/Conway&#39;s%20Game%20Of%20Life" target="_blank">
         <h5><c>Conway's Game of Life</c></h5>
-        <img src="conway.png" style="display: block; width:100%">
+        <img src="./contents/conway.png" style="display: block; width:100%">
       </a>
     </div>
 
-    <!-- Slide 4 -->
+    <!-- Slide 5 -->
     <div class="slides w3-animate-right">
       <a style="text-decoration:none;" href="https://github.com/jgracie52/PersonalProjects/tree/main/Conway&#39;s%20Game%20Of%20Life" target="_blank">
         <h5><c>Genetic Algorithms: OneMax</c></h5>
@@ -154,32 +164,40 @@ public void calculateFitness(Representation popMember)
       </a>
     </div>
   </div>
-
+  <br/>
   <div class="row">
     <div class="section">
       <button class="btn" onclick="plusDivs(-1)">❮ Prev</button>
       <button class="btn" onclick="plusDivs(1)">Next ❯</button>
     </div>
+    <br/>
     <button class="btn demo" onclick="currentDiv(1)">1</button>
     <button class="btn demo" onclick="currentDiv(2)">2</button>
     <button class="btn demo" onclick="currentDiv(3)">3</button>
     <button class="btn demo" onclick="currentDiv(4)">4</button>
+    <button class="btn demo" onclick="currentDiv(5)">5</button>
   </div>
 </div>
 
-<!-- Fifth Container (Grid) -->
-<div class="container-fluid bg-3 text-center" id="where">
-  <h3 class="margin">Where To Find Me?</h3><br>
+<!-- Fifth Container (Grid)-->
+<div class="container-fluid bg-3 text-center" id="achievements">
+  <h3 class="margin">Achievements</h3><br>
+  <image src="./contents/underconstruction_image.jpg"></image>
+</div>
+
+<!-- Sixth Container (Grid) -->
+<div class="container-fluid bg-2 text-center" id="where">
+  <h3 class="margin" style="color: white">Where To Find Me?</h3><br>
   <div class="row">
     <div class="col-sm-12">
-        <div class="LI-profile-badge"  data-version="v1" data-size="medium" data-locale="en_US" data-type="horizontal" data-theme="dark" data-vanity="joshua-gracie-ba6b83140"><a class="LI-simple-link" href='https://www.linkedin.com/in/joshua-gracie-ba6b83140?trk=profile-badge'>Joshua Gracie</a></div>
+      <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="dark" data-type="VERTICAL" data-vanity="joshua-gracie-ba6b83140" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/joshua-gracie-ba6b83140?trk=profile-badge">Joshua Gracie</a></div>
     </div>
   </div>
 </div>
 
 <!-- Footer -->
 <footer class="container-fluid bg-4 text-center">
-  <p>Thanks for stopping by! Don't forget to check out my <a href="https://www.linkedin.com/in/joshua-gracie-ba6b83140"><strong>LinkedIn</strong></a></p>
+  <p style="color:white;">Thanks for stopping by! Don't forget to check out my <a href="https://www.linkedin.com/in/joshua-gracie-ba6b83140"><strong>LinkedIn</strong></a></p>
 </footer>
 
 </body>
