@@ -108,6 +108,10 @@ strong{
   color: #1abc9c !important;
 }
 
+.navbar-brand:hover{
+  color:#1abc9c !important;
+}
+
 /*LinkedIn Styles*/
 .LI-badge-container.horizontal.dark .LI-footer{
   padding-right: 60px;
