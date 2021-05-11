@@ -58,3 +58,13 @@ function showDivs(n) {
   timer = setTimeout('plusDivs('+(1)+')', 10000); // Change image every 2 seconds
 }
 // End Slideshow Functions //
+
+// Flip Card Function //
+$(document).ready(function() {  
+
+  $('.flip-card').click(function() {
+    $(this).toggleClass('hover');
+  });
+
+});
+// End Flip Card Function //
