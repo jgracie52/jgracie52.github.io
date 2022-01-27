@@ -60,11 +60,12 @@ function showDivs(n) {
 // End Slideshow Functions //
 
 // Flip Card Function //
+scrollElement = null;
 $(document).ready(function() {  
 
   $('.flip-card').click(function() {
     $(this).toggleClass('hover');
   });
-
+  scrollElement = $(".js-scroll");
 });
 // End Flip Card Function //
