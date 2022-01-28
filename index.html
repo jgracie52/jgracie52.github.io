@@ -27,7 +27,13 @@
   <script src="./scripts/scripts.js"></script>
   <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/highlight.min.js" integrity="sha512-d00ajEME7cZhepRqSIVsQVGDJBdZlfHyQLNC6tZXYKTG7iwcF8nhlFuppanz8hYgXr8VvlfKh4gLC25ud3c90A==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+			
   <script>hljs.initHighlightingOnLoad();</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!-- End Scripts -->
 </head>
 <body>
@@ -46,96 +52,103 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#who">WHO</a></li>
-        <li><a href="#what">WHAT</a></li>
-        <li><a href="#where">WHERE</a></li>
+        <li><a href="#what">EXPERIENCE</a></li>
         <li><a href="#projects">PROJECTS</a></li>
         <li><a href="#achievements">ACHIEVEMENTS</a></li>
-        <li><a href="#resume">RESUMÉ</a></li>
+        <li><a href="#achievements">EDUCATION</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
 <!-- Back To Top Button -->
-<button onclick="topFunction()" id="backToTopBtn" title="Go to top">Back To Top</button>
+<button onclick="topFunction()" id="backToTopBtn" title="Go to top"><i class="fa fa-normal fa-arrow-up" style="padding:0"></i></button>
 
 <!-- First Container -->
-<div class="container-fluid bg-1 text-center" id="who">
-  <h3 style="color:white;">Who Am I?</h3>
-  <br/>
-  <div class="flip-card margin">
-    <div class="flip-card-inner">
-      <div class="flip-card-front">
-        <img src="./contents/selfie.png" class="img-responsive img-circle margin" style="display:inline" alt="Self Image" width="350" height="350">
-      </div>
-      <div class="flip-card-back">
-        <br/>
-        <h3 style="color:white;">Contact Info</h3>
-        <br />
-        <p style="color:white">Phone: <a href="tel:954-809-9746"><c>(954) 809 - 9746</c></a></p>
-        <p style="color:white">Email: <a href="mailto:joshua_gracie@aol.com"><c>joshua_gracie@aol.com</c></a></p>
-      </div>
+<div class="container-fluid bg-1 text-center content-container greeting-content" id="who">
+  <div class="content-left">
+    <h1 class="greeting">Hi! I'm Josh</h1>
+    <p class="greeting-text-p">A computer science graduate student at the University of Central Florida. My interests are in machine learning, evolutionary algorithms, and robotics.</p>
+    <div>
+      <a href="#" class="fab fa-linkedin-in fa"></a>
+      <a href="#" class="fab fa-github fa"></a>
+    </div>
+    <div>
+      <a href="./contents/resume.pdf" class="btn" download><i class="fa fa-normal fa-download"></i> Download My Resumé</a>
     </div>
   </div>
-  <h3 style="color:white;">Hi, I'm Josh</h3>
-  <h5 style="color:white;">I'm a computer science graduate student studying at the University Of Central Florida pursuing my Master's in CS.</h5>
-  <h5 style="color:white;">My interests include <strong>machine learning</strong>, <strong>optimization techniques</strong>, and <strong>web/app development</strong>.</h5>
-  <br /><h5 style="color:white;">I'm also a huge fan of 60-70s rock music, especially <floyd>Pink Floyd</floyd>. My favorite song of their's is definitely <floyd>Dogs</floyd> from the <floyd>Animals</floyd> album.</h5>
-  <h5 style="color:white;">Although <floyd>Time</floyd> from <floyd>Dark Side of the Moon</floyd> is a close second.</h5>
-  <br />
-  <h5 style="color:white;">Some of my hobbies include <strong style="color: #8b5d2e">hiking</strong>, <strong style="color: #107C10">gaming (mostly on Xbox)</strong>, and spending time with my <strong>friends</strong>.</h5>
+  <div class="content-right">
+    <img src="contents/undraw_firmware_re_fgdy.svg" class="undraw"></image>
+  </div>
 </div>
 
 <!-- Second Container -->
-<div class="container-fluid bg-2 text-center" id="what">
-  <h3 class="margin" style="color:white;">What do I do?</h3>
-  <h4 style="color:white;">I'm current interning at <c>Lockheed Martin</c> supporting the <c>Lean Six Sigma (LSS) Office</c></h4>
-  <h4 style="color:white;">My job roles include:</h4>
-  <br/>
-  <div class="row">
-    <div class="col-sm-6">
-      <h3 style="color:white;">Office Assistant</h3>
-      <p style="color:white;">I support the LSS office by helping <c>maintain training records</c> and <c>distributing training materials</c> and certificates to LSS members.
-      I also support the office by <c>creating Excel macros</c> that will be used for formatting important LSS documentation.
-      I also assisted with <c>designing and upgrading</c> the <c>LSS MFC internal website</c> using <c>Wordpress</c>.</p>
+<div class="container-fluid bg-1 text-center" id="what">
+  <h1 class="greeting">Experience</h1>
+  <div class="content-container">
+    <div class="content-left js-scroll">
+      <img src="contents/undraw_developer_activity_re_39tg.svg" class="undraw"></image>
     </div>
-    <div class="col-sm-6">
-      <h3 style="color:white;">Web Developer</h3>
-      <p style="color:white;">As a web developer, I <c>build web applications</c> using <c>ASP.NET</c> for several teams accross the company. Some of my projects include a <c>web app to assist with planning</c>,
-      as well as a <c>web app to help with tolerance analysis</c> making use of <c>machine learning</c>.
-      Both apps are still under development but will hopefully be live on the intranet later this year.</p>
+    <div class="content-right js-scroll">
+        <div>
+          <h4 class="greeting greeting-small">Lockheed Martin CWEP</h4>
+          <div class="row">
+            <img src="contents/c.png" style="width:10%;" class="image-icon"></img>
+            <img src="contents/NET_Core_Logo.svg.png" style="width:10%;" class="image-icon"></img>
+            <img src="contents/Blazor.png" style="width:10%;" class="image-icon"></img>
+            <img src="contents/OpenShift-LogoType.svg.png" style="width:10%;" class="image-icon"></img>
+            <img src="contents/streamlit_logo.png" style="width:10%;" class="image-icon"></img>
+            <img src="contents/800px-Python-logo-notext.svg.png" style="width:10%;" class="image-icon"></img>
+            <img src="contents/1200px-Scikit_learn_logo_small.svg.png" style="width:20%;" class="image-icon"></img>
+          </div>
+          <p class="greeting-text-p greeting-text-p-small">I work in the Lean Six Sigma (LSS) department at Missiles and Fire Control (MFC) where I maintain and build web applications and assist teams across the company.</p>
+          <div style="width: 80%; float:right;">
+            <ul class="greeting-text-p" style="list-style: none;">
+              <li class="right-li"><i class="fa-solid fa-code icon-li"></i>  Built a web app to assist with contract planning by managing contract info and sending notifications for upcoming items.</li>
+              <li class="right-li"><i class="fa-solid fa-code icon-li"></i>  Implemented a data dashboard to assist with manufacturing tolerance analysis through use of reporting and machine learning tools.</li>
+            </ul>
+          </div>
+        </div>
     </div>
   </div>
 </div>
 
-<!-- Third Container (Grid) -->
-<div class="container-fluid bg-3 text-center" id="resume">
-  <h3 class="margin">Resumé</h3><br>
-  <a href="./contents/resume.pdf" class="btn" download><i class="fa fa-download"></i> Download My Resumé</a>
-</div>
-
-<!-- Fourth Container (Grid) -->
-<div class="container-fluid bg-2 text-center" id="projects">
-  <h3 class="margin"  style="color:white;">My Projects</h3>
-  <h5  style="color:white;">Check out my <a style="text-decoration-color:white;" href="https://github.com/jgracie52/PersonalProjects" target="_blank"><c>GitHub<c></a> repo for the full list of all of my personal projects!</h5>
-  <br/>
-    <div class="container-fluid text-center" style="padding: 0; max-width:800px">
-      <!-- Slide 1 -->
-    <div class="slides w3-animate-right">
-      <a style="text-decoration:none;" href="https://github.com/jlehett/everglades-ai-wargame" target="_blank">
-       <h5><c>Everglades Reinforcement Learning</c></h5>
-       <img src="./contents/Everglades.gif" style="display: block; width:100%"></a>
-    </div>
-    <!-- Slide 2 -->
-    <div class="slides w3-animate-right">
-      <a style="text-decoration:none;" href="https://github.com/jgracie52/PersonalProjects/tree/main/Canny%20Edge%20Detector" target="_blank">
-        <h5><c>Canny Edge Detector</c></h5>
-        <img src="./contents/42049_edges.jpg" style="display: block; width: 80%;margin:auto;"></a>
-    </div>
-    <!-- Slide 3 -->
-    <div class="slides w3-animate-right">
-      <a style="text-decoration:none;" href="https://github.com/jgracie52/PersonalProjects/tree/main/Vigen%C3%A9re%20Cipher" target="_blank">
-        <h5><c>Vigenére Cipher</c></h5>
+<!-- Thrid Container (Grid) -->
+<div class="container-fluid bg-1 text-center" id="projects" style="flex-direction: column;">
+  <h3 class="margin greeting"  style="color:white;">Projects</h3>
+  <h5 class="greeting-text-p greeting-text-p-small content-up js-scroll gh-link">Check out my <a style="text-decoration-color:white;" href="https://github.com/jgracie52/PersonalProjects" target="_blank"><c>GitHub<c></a> repo for the full list of all of my personal projects!</h5>
+  <div style="display:flex; align-items: center; justify-content: center;" class="content-up js-scroll">
+    <div class="row" style="width:70%;">
+    <div id="image-slider" class="slick-carousel">     
+      <div>
+        <h5 class="greeting-text-p" style="color:white;">Everlades AI Battle Bots</h5>
+        <img src="contents/Everglades.gif">
+      </div>
+      <div>
+        <h5 class="greeting-text-p" style="color:white;">Canny Edge Detector</h5>
+        <img src="contents/42049_edges.jpg">
+      </div>
+      <div>
+        <h5 class="greeting-text-p" style="color:white;">Genetic Algorithms: OneMax</h5>
+        <pre><code class="language-java hljs">
+public void calculateFitness(Representation popMember)
+{
+  int fitnessScore = 0;
+  // Add up points for however many 1s are in the geneString
+  for(int i = 0; i < Input.geneStringSize; i++)
+  {
+    //...
+  }
+  //...
+}
+      </code></pre>
+      </div>
+      <div>
+        <h5 class="greeting-text-p" style="color:white;">Conway's Game of Life</h5>
+        <img src="contents/conway.png">
+      </div>
+      <div>
+        <h5 class="greeting-text-p" style="color:white;">Vigenére Cipher</h5>
         <pre><code class="language-c hljs">
 #include &lt;stdlib.h&gt;
 #include &lt;string.h&gt;
@@ -149,78 +162,69 @@ int main(int argc, char *argv[])
   }
 //...
 }
-      </code></pre></a>
-    </div>
-    <!-- Slide 4 -->
-    <div class="slides w3-animate-right">
-      <a style="text-decoration:none;" href="https://github.com/jgracie52/PersonalProjects/tree/main/Conway&#39;s%20Game%20Of%20Life" target="_blank">
-        <h5><c>Conway's Game of Life</c></h5>
-        <img src="./contents/conway.png" style="display: block; width:100%">
-      </a>
-    </div>
-
-    <!-- Slide 5 -->
-    <div class="slides w3-animate-right">
-      <a style="text-decoration:none;" href="https://github.com/jgracie52/PersonalProjects/tree/main/Conway&#39;s%20Game%20Of%20Life" target="_blank">
-        <h5><c>Genetic Algorithms: OneMax</c></h5>
-        <pre><code class="language-java hljs">
-public void calculateFitness(Representation popMember)
-{
-  int fitnessScore = 0;
-  // Add up points for however many 1s are in the geneString
-  for(int i = 0; i < Input.geneStringSize; i++)
-  {
-    //...
-  }
-  //...
-}
       </code></pre>
-      </a>
+      </div>
     </div>
   </div>
-  <br/>
-  <div class="row">
-    <div class="section">
-      <button class="btn" onclick="plusDivs(-1)">❮ Prev</button>
-      <button class="btn demo" onclick="currentDiv(1)">1</button>
-      <button class="btn demo" onclick="currentDiv(2)">2</button>
-      <button class="btn demo" onclick="currentDiv(3)">3</button>
-      <button class="btn demo" onclick="currentDiv(4)">4</button>
-      <button class="btn demo" onclick="currentDiv(5)">5</button>
-      <button class="btn" onclick="plusDivs(1)">Next ❯</button>
-    </div>
-    <br/>
   </div>
 </div>
 
 <!-- Fifth Container (Grid)-->
-<div class="container-fluid bg-3 text-center" id="achievements">
-  <h3 class="margin">Achievements</h3><br>
-  <div class="achievement-block">
-    <div>
-      <img src="./contents/medal_icon.png" height="150px" width="150px">
+<div class="container-fluid bg-1 text-center" id="achievements">
+  <div class="content-container">
+    <div class="content-left js-scroll">
+      <div>
+        <h1 class="greeting">Achievements</h1>
+        <div style="float:left;">
+          <ul class="greeting-text-p" style="list-style: none;">
+            <li><i class="fas fa-medal icon-li"></i>  Winner of the Spring 2021 UCF Senior Design Showcase in <a href="https://www.cecs.ucf.edu/SeniorDesignShowcase/best-in-senior-design/" style="color: goldenrod;" target="_blank">Computer Science</a> for my <a href="https://github.com/jlehett/everglades-ai-wargame" target="_blank" style="color: goldenrod;">Everglades Reinforcement Learning</a> project.</li>
+            <li><i class="fas fa-medal icon-li"></i>  Cum Laude Honors in the Major for Computer Science (GPA: 3.814).</li>
+            <li><i class="fas fa-medal icon-li"></i>  Accepted to the UCF CECS accelerated BS to MS program.</li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div>
-      <h4 style="color: white; font-weight: bold;">Showcase Winner</h4>
-      <br/>
-      <p style="color:white;">Winner of the Spring 2021 UCF Senior Design Showcase for <a href="https://www.cecs.ucf.edu/SeniorDesignShowcase/best-in-senior-design/" style="color: goldenrod;" target="_blank">Computer Science</a></p>
-      <p style="color:white;">Link to project: <a href="https://github.com/jlehett/everglades-ai-wargame" target="_blank" style="color: goldenrod;">Everglades Reinforcement Learning</a></p>
+    <div class="content-right js-scroll">
+      <img src="contents/undraw_certificate_re_yadi.svg" class="undraw"></image>
     </div>
-  </div>  
+  </div>
 </div>
 
-<!-- Sixth Container (Grid) -->
-<div class="container-fluid bg-2 text-center" id="where">
-  <h3 class="margin" style="color: white">Where To Find Me?</h3><br>
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="dark" data-type="VERTICAL" data-vanity="joshua-gracie-ba6b83140" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/joshua-gracie-ba6b83140?trk=profile-badge">Joshua Gracie</a></div>
+<!-- Sixth Container (Grid)-->
+<div class="container-fluid bg-1 text-center" id="achievements">
+  <div class="content-container">
+    <div class="content-left js-scroll">
+      <img src="contents/undraw_education_f8ru.svg" class="undraw"></image>
+    </div>
+    <div class="content-right js-scroll">
+      <div>
+        <h1 class="greeting">Education</h1>
+        <div>
+          <p class="greeting-text-p">University of Central Florida (UCF), Orlando, Fl</p>
+          <p class="greeting-text-p">Masters of Science in Computer Science</p>
+          <div style="float:right; width: 80%">
+            <ul class="greeting-text-p" style="list-style: none; display: flex; flex-direction: column;">
+              <li class="right-li"><i class="fas fa-book icon-li"></i>  Expected graduation: May 2022</li>
+              <li class="right-li"><i class="fas fa-book icon-li"></i>  GPA: 3.875</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <p class="greeting-text-p">University of Central Florida (UCF), Orlando, Fl</p>
+          <p class="greeting-text-p">Bachelor of Science in Computer Science</p>
+          <div style="float:right; width: 80%">
+            <ul class="greeting-text-p" style="list-style: none;">
+              <li class="right-li"><i class="fas fa-book icon-li"></i>  GPA: 3.814</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- Footer -->
-<footer class="container-fluid bg-4 text-center">
+<footer class="container-fluid bg-1 text-center">
   <p style="color:white;">Thanks for stopping by! Don't forget to check out my <a href="https://www.linkedin.com/in/joshua-gracie-ba6b83140"><strong>LinkedIn</strong></a></p>
 </footer>
 

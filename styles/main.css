@@ -1,11 +1,16 @@
+@import url('http://fonts.cdnfonts.com/css/google-sans');
+@import url('http://fonts.cdnfonts.com/css/agustina');
+
 html{
   scroll-behavior: smooth;
+  background-color: #222 !important;
 }
 
 body {
   font: 20px Montserrat, sans-serif;
   line-height: 1.8;
-  color: #f5f6f7;
+  color: white;
+  background-color: #222;
 }
 
 h3{
@@ -45,12 +50,36 @@ floyd{
   font-weight: 700;
 }
 
+.slick-initialized .slick-slide{
+  display:flex !important;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #333;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .btn{
-  background-color: #1abc9c;
+  background-color: #149a80;
+  border: solid 1px #149a80;
   color: white !important;
-  padding: 20px;
-  font-size: 20px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  font-weight: 500;
+  line-height: 1.1;
+  width: max-content;
+  padding: 13px 22px;
+  margin-right: 0px;
+  /* text-transform: uppercase; */
+  border-radius: 6px;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Product Sans Medium', sans-serif;
+  display: block;
+  margin-top: 20px;
+  font-size: 18px;
+  cursor: pointer;
+  letter-spacing: 2px;
+  transition: all ease-in-out 500ms;
 }
 
 .slides{
@@ -77,11 +106,51 @@ floyd{
 }
 
 .btn:hover{
-  background-color: #149a80;
+  background-color: #222;
+  color:#149a80 !important;
 }
 
-.btn-hovered{
-  background-color: #149a80;
+.icon{
+  width: 20%;
+}
+
+ul{
+  font-family: 'Product Sans Black', sans-serif;
+  font-size: 20pt;
+}
+
+li{
+  font-size: 20px !important;
+}
+
+.icon-li{
+  color: yellow;
+}
+
+.image-icon{
+  padding: 5px;
+}
+
+.js-scroll{
+  display: none;
+}
+
+.js-scroll.scrolled{
+  display: flex;
+}
+
+.js-scroll.scrolled.gh-link{
+  display: block;
+}
+
+.slick-dots li button:before{
+  color:#149a80 !important;
+  font-size: 10px !important;
+}
+
+.slick-dots li.slick-active button:before{
+  color:#149a80 !important;
+  opacity: 1 !important;
 }
 
 #backToTopBtn {
@@ -95,8 +164,8 @@ floyd{
   background-color: #1abc9c; /* Set a background color */
   color: white; /* Text color */
   cursor: pointer; /* Add a mouse pointer on hover */
-  padding: 15px; /* Some padding */
-  border-radius: 10px; /* Rounded corners */
+  padding: 20px; /* Some padding */
+  border-radius: 50%; /* Rounded corners */
   font-size: 18px; /* Increase font size */
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
@@ -108,13 +177,74 @@ floyd{
 strong{
   color: #1abc9c;
 }
+
 .container-fluid {
   padding-top: 70px;
   padding-bottom: 70px;
 }
+
+.content-container{
+  display:grid;
+  grid-template-columns: 50% 50%;
+}
+
+.content-left{
+  grid-column-start: 1;
+  display:flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+  margin-left: 25px;
+}
+
+.greeting{
+  margin-top: 80px;
+  font-size: 70px;
+  line-height: 1.1;
+  font-family: 'Product Sans Black', sans-serif;
+  color:white;
+}
+
+.greeting-small{
+  font-size: 40px !important;
+}
+
+.greeting-text-p{
+  font-size: 40px;
+  line-height: 40px;
+  margin-right: 40px;
+  font-family: 'Product Sans Medium', sans-serif;
+  color: rgb(127, 141, 170);
+}
+
+.greeting-text-p-small{
+  font-size: 30px !important;
+}
+
+.right-li{
+  float: right;
+}
+
+.greeting-nickname{
+  font-size: 30px;
+  line-height: 0px;
+  font-family: "Google Sans Bold Italic";
+}
+
+.content-right{
+  grid-column-start: 2;
+  margin-right: 25px;
+  display:flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  text-align: right;
+}
+
 .navbar {
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 35px;
+  padding-bottom: 25px;
   border: 0;
   border-radius: 0;
   margin-bottom: 0;
@@ -122,13 +252,36 @@ strong{
   letter-spacing: 5px;
 }
 .navbar-nav  li a:hover {
-  color: #1abc9c !important;
+  background-color:#08f6feb7 !important;
+  -moz-box-shadow:    inset 0 0 15px #08F7FE;
+   -webkit-box-shadow: inset 0 0 15px #08F7FE;
+   box-shadow:         inset 0 0 15px #08F7FE;
+   color: white !important;
 }
 
 .navbar-brand:hover{
   color:#1abc9c !important;
 }
+.navbar{
+  background-color: #222;
+}
 
+.navbar-default .navbar-brand{
+  color: white;
+  font-family:'Agustina', sans-serif;
+  font-weight:bold;
+  font-size: 30pt;
+  transition: all 500ms ease-in-out
+}
+.navbar-default .navbar-nav>li>a{
+  color: white;
+  font-size: 15px !important;
+  margin-left: 5px;
+  border-radius: 5%;
+  margin-right: 5px;
+  padding: 15px;
+  transition: all 500ms ease-in-out;
+}
 /*LinkedIn Styles*/
 .LI-badge-container.horizontal.dark .LI-footer{
   padding-right: 60px;
@@ -202,6 +355,55 @@ strong{
   margin: auto;
   padding: 50px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #333;
+}
+
+::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #333;
+}
+
+::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #1abc9c;
+}
+
+.fa {
+  padding: 15px;
+  font-size: 20px !important;
+  text-align: center;
+  text-decoration: none !important;
+  margin: 5px 2px;
+  border-radius: 25%;
+  transition:all ease-in-out 500ms;
+}
+
+.fa:hover {
+    background-color: #149a80;
+}
+
+.fa-normal{
+  display: inline !important;
+  background: none !important;
+}
+
+.fa-linkedin-in {
+  background: #007bb5;
+  color: white !important;
+}
+
+.fa-github {
+  background: black;
+  color: white !important;
 }
 
 @media only screen and (max-width: 600px){

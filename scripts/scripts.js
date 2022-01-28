@@ -61,11 +61,84 @@ function showDivs(n) {
 
 // Flip Card Function //
 scrollElement = null;
+duration = 2000;
 $(document).ready(function() {  
 
   $('.flip-card').click(function() {
     $(this).toggleClass('hover');
   });
   scrollElement = $(".js-scroll");
+  window.addEventListener('scroll', () => {
+    handleScrollAnimation();
+  });
+
+  $('.slick-carousel').slick({
+    dots: true,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 1,
+    adaptiveHeight: true
+  });
+
+  anime({
+    targets: '.greeting-content .content-left',
+    translateY: [250,0],
+    duration: duration
+  });
+  anime({
+    targets: '.greeting-content .content-right',
+    translateY: [250,0],
+    duration: duration
+  });
+  anime({
+    targets: '.navbar',
+    translateY: [-100,0],
+    duration: duration
+  })
 });
 // End Flip Card Function //
+
+const scrollOffset = -250;
+
+const elementInView = (el, offset = 0) => {
+  const elementTop = el.getBoundingClientRect().top;
+
+  return (
+    elementTop <= 
+    ((window.innerHeight || document.documentElement.clientHeight) - offset)
+  );
+};
+
+const displayScrollElement = (el) => {
+  if(!el.classList.contains('scrolled'))
+  {
+    el.classList.add('scrolled');
+    if(el.classList.contains('content-right')){
+      anime({
+        targets: el,
+        translateX: [250,0],
+        duration: duration
+      });
+    }else if(el.classList.contains('content-up')){
+      anime({
+        targets: el,
+        translateY: [250,0],
+        duration: duration
+      });
+    }else{
+      anime({
+        targets: el,
+        translateX: [-250,0],
+        duration: duration
+      });
+    }
+  }
+}
+
+const handleScrollAnimation = () => {
+  scrollElement.each(function(){
+    if (elementInView(this, scrollOffset)) {
+      displayScrollElement(this);
+  }
+  });
+}
