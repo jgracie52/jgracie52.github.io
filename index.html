@@ -65,25 +65,27 @@
 <button onclick="topFunction()" id="backToTopBtn" title="Go to top"><i class="fa fa-normal fa-arrow-up" style="padding:0"></i></button>
 
 <!-- First Container -->
-<div class="container-fluid bg-1 text-center content-container greeting-content" id="who">
-  <div class="content-left">
-    <h1 class="greeting">Hi! I'm Josh</h1>
-    <p class="greeting-text-p">A computer science graduate student at the University of Central Florida. My interests are in machine learning, evolutionary algorithms, and robotics.</p>
-    <div>
-      <a href="#" class="fab fa-linkedin-in fa"></a>
-      <a href="#" class="fab fa-github fa"></a>
+<div class="container-fluid text-center greeting-content" id="who">
+  <div class="content-container">
+    <div class="content-left">
+      <h1 class="greeting">Hi! I'm Josh</h1>
+      <p class="greeting-text-p">A computer science graduate student at the University of Central Florida. My interests are in machine learning, evolutionary algorithms, and robotics.</p>
+      <div>
+        <a href="#" class="fab fa-linkedin-in fa"></a>
+        <a href="#" class="fab fa-github fa"></a>
+      </div>
+      <div>
+        <a href="./contents/resume.pdf" class="btn" download><i class="fa fa-normal fa-download"></i> Download My Resumé</a>
+      </div>
     </div>
-    <div>
-      <a href="./contents/resume.pdf" class="btn" download><i class="fa fa-normal fa-download"></i> Download My Resumé</a>
+    <div class="content-right">
+      <img src="contents/undraw_firmware_re_fgdy.svg" class="undraw"></image>
     </div>
-  </div>
-  <div class="content-right">
-    <img src="contents/undraw_firmware_re_fgdy.svg" class="undraw"></image>
   </div>
 </div>
 
 <!-- Second Container -->
-<div class="container-fluid bg-1 text-center" id="what">
+<div class="container-fluid text-center" id="what">
   <h1 class="greeting">Experience</h1>
   <div class="content-container">
     <div class="content-left js-scroll">
@@ -114,7 +116,7 @@
 </div>
 
 <!-- Thrid Container (Grid) -->
-<div class="container-fluid bg-1 text-center" id="projects" style="flex-direction: column;">
+<div class="container-fluid text-center" id="projects" style="flex-direction: column;">
   <h3 class="margin greeting"  style="color:white;">Projects</h3>
   <h5 class="greeting-text-p greeting-text-p-small content-up js-scroll gh-link">Check out my <a style="text-decoration-color:white;" href="https://github.com/jgracie52/PersonalProjects" target="_blank"><c>GitHub<c></a> repo for the full list of all of my personal projects!</h5>
   <div style="display:flex; align-items: center; justify-content: center;" class="content-up js-scroll">
@@ -122,11 +124,11 @@
     <div id="image-slider" class="slick-carousel">     
       <div>
         <h5 class="greeting-text-p" style="color:white;">Everlades AI Battle Bots</h5>
-        <img src="contents/Everglades.gif">
+        <img src="contents/Everglades.gif" class="undraw">
       </div>
       <div>
         <h5 class="greeting-text-p" style="color:white;">Canny Edge Detector</h5>
-        <img src="contents/42049_edges.jpg">
+        <img src="contents/42049_edges.jpg" class="undraw">
       </div>
       <div>
         <h5 class="greeting-text-p" style="color:white;">Genetic Algorithms: OneMax</h5>
@@ -145,7 +147,7 @@ public void calculateFitness(Representation popMember)
       </div>
       <div>
         <h5 class="greeting-text-p" style="color:white;">Conway's Game of Life</h5>
-        <img src="contents/conway.png">
+        <img src="contents/conway.png" class="undraw">
       </div>
       <div>
         <h5 class="greeting-text-p" style="color:white;">Vigenére Cipher</h5>
@@ -170,10 +172,10 @@ int main(int argc, char *argv[])
 </div>
 
 <!-- Fifth Container (Grid)-->
-<div class="container-fluid bg-1 text-center" id="achievements">
+<div class="container-fluid text-center" id="achievements">
   <div class="content-container">
     <div class="content-left js-scroll">
-      <div>
+      <div style="width: 100%;">
         <h1 class="greeting">Achievements</h1>
         <div style="float:left;">
           <ul class="greeting-text-p" style="list-style: none;">
@@ -191,7 +193,7 @@ int main(int argc, char *argv[])
 </div>
 
 <!-- Sixth Container (Grid)-->
-<div class="container-fluid bg-1 text-center" id="achievements">
+<div class="container-fluid text-center" id="achievements">
   <div class="content-container">
     <div class="content-left js-scroll">
       <img src="contents/undraw_education_f8ru.svg" class="undraw"></image>
@@ -224,7 +226,7 @@ int main(int argc, char *argv[])
 </div>
 
 <!-- Footer -->
-<footer class="container-fluid bg-1 text-center">
+<footer class="container-fluid  text-center">
   <p style="color:white;">Thanks for stopping by! Don't forget to check out my <a href="https://www.linkedin.com/in/joshua-gracie-ba6b83140"><strong>LinkedIn</strong></a></p>
 </footer>
 

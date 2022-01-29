@@ -7,7 +7,7 @@ html{
 }
 
 body {
-  font: 20px Montserrat, sans-serif;
+  font: 100% Montserrat, sans-serif;
   line-height: 1.8;
   color: white;
   background-color: #222;
@@ -19,45 +19,9 @@ h3{
 
 p {font-size: 16px;}
 .margin {margin-bottom: 45px;}
-.bg-1 {
-  background-color: #222; /* Black */
-  color: #ffffff;
-}
-.bg-2 {
-  background-color: #1abc9c; /* Green */
-  color: #ffffff;
-}
-.bg-3 {
-  background-color: #ffffff; /* White */
-  color: #555555;
-}
-.bg-4 {
-  background-color: #222; /* Black */
-  color: #fff;
-}
 
 code{
   text-align: left;
-}
-
-c{
-  color: white;
-  font-weight: 700;
-}
-
-floyd{
-  color: hotpink;
-  font-weight: 700;
-}
-
-.slick-initialized .slick-slide{
-  display:flex !important;
-  padding: 15px;
-  border-radius: 10px;
-  background-color: #333;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .btn{
@@ -185,8 +149,14 @@ strong{
 
 .content-container{
   display:grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
+
+@media  (max-width : 600px)  {
+  .content-container {
+    grid-template-columns: 1fr;
+    }
+  }
 
 .content-left{
   grid-column-start: 1;
@@ -198,20 +168,25 @@ strong{
   margin-left: 25px;
 }
 
+.undraw{
+  width: 100%;
+  height:auto;
+}
+
 .greeting{
   margin-top: 80px;
-  font-size: 70px;
+  font-size: 4.5em;
   line-height: 1.1;
   font-family: 'Product Sans Black', sans-serif;
   color:white;
 }
 
 .greeting-small{
-  font-size: 40px !important;
+  font-size: 2.5em !important;
 }
 
 .greeting-text-p{
-  font-size: 40px;
+  font-size: 1.7em;
   line-height: 40px;
   margin-right: 40px;
   font-family: 'Product Sans Medium', sans-serif;
@@ -219,7 +194,7 @@ strong{
 }
 
 .greeting-text-p-small{
-  font-size: 30px !important;
+  font-size: 1.5em !important;
 }
 
 .right-li{
@@ -233,7 +208,6 @@ strong{
 }
 
 .content-right{
-  grid-column-start: 2;
   margin-right: 25px;
   display:flex;
   flex-direction: column;
