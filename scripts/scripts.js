@@ -22,44 +22,8 @@ function topFunction() {
 }
 // End Back To Top Button //
 
-// Start Slideshow Functions //
-var slideIndex = 1;
-timer = null;
-$(document).ready(function(){
-  showDivs(slideIndex);
-});
 
-function plusDivs(n) {
-  clearTimeout(timer);
-  showDivs(slideIndex += n);
-}
-
-function currentDiv(n) {
-  clearTimeout(timer);
-  showDivs(slideIndex = n);
-}
-
-function showDivs(n) {
-  var i;
-  var x = document.getElementsByClassName("slides");
-  var dots = document.getElementsByClassName("demo");
-
-  if (n > x.length) {slideIndex = 1;}
-  if (n < 1) {slideIndex = x.length}
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" btn-hovered", "");
-  }
-  x[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " btn-hovered";
-
-  timer = setTimeout('plusDivs('+(1)+')', 10000); // Change image every 2 seconds
-}
-// End Slideshow Functions //
-
-// Flip Card Function //
+// Animations //
 scrollElement = null;
 duration = 2000;
 $(document).ready(function() {  
@@ -162,7 +126,7 @@ $(document).ready(function() {
 function code_animation(blocks, array) {
   var timeline = anime.timeline({
     easing: 'easeInOutSine',
-    duration: duration,
+    duration: duration - 1000,
     loop: false
   }); // no loop !!
   blocks.each(function(){
@@ -175,8 +139,9 @@ function code_animation(blocks, array) {
   timeline.complete = function() {code_animation(blocks, array);};
 }
 
-// End Flip Card Function //
+// End Animations //
 
+// Scroll Animations //
 const scrollOffset = -250;
 
 const elementInView = (el, offset = 0) => {
@@ -221,3 +186,4 @@ const handleScrollAnimation = () => {
   }
   });
 }
+// End Scroll Animations //

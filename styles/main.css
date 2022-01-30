@@ -13,13 +13,6 @@ body {
   background-color: #222;
 }
 
-h3{
-  font-weight: bold;
-}
-
-p {font-size: 16px;}
-.margin {margin-bottom: 45px;}
-
 code{
   text-align: left;
 }
@@ -44,29 +37,6 @@ code{
   cursor: pointer;
   letter-spacing: 2px;
   transition: all ease-in-out 500ms;
-}
-
-.slides{
-  display:none;
-  background-color: #149a80;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  padding:20px;
-}
-
-.nav-dot {
-	top: -5px;
-	width: 11px;
-	height: 11px;
-	margin: 0 4px;
-	position: relative;
-	border-radius: 100%;
-	display: inline-block;
-	background-color: rgba(0, 0, 0, 0.6);
-}
-
-.nav-dot:hover {
-	cursor: pointer;
-	background-color: rgba(0, 0, 0, 0.8);
 }
 
 .btn:hover{
@@ -138,10 +108,6 @@ li{
   background-color: #149a80; /* Add a dark-grey background on hover */
 }
 
-strong{
-  color: #1abc9c;
-}
-
 .container-fluid {
   padding-top: 70px;
   padding-bottom: 70px;
@@ -151,12 +117,6 @@ strong{
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
-
-@media  (max-width : 600px)  {
-  .content-container {
-    grid-template-columns: 1fr;
-    }
-  }
 
 .content-left{
   grid-column-start: 1;
@@ -216,6 +176,10 @@ strong{
   text-align: right;
 }
 
+.right-ul{
+  float:right; width: 80%;
+}
+
 .navbar {
   padding-top: 35px;
   padding-bottom: 25px;
@@ -255,80 +219,6 @@ strong{
   margin-right: 5px;
   padding: 15px;
   transition: all 500ms ease-in-out;
-}
-/*LinkedIn Styles*/
-.LI-badge-container.horizontal.dark .LI-footer{
-  padding-right: 60px;
-}
-
-.LI-profile-badge{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.profile-badge{
-  margin:auto;
-}
-
-/* Image Overlay */
-.flip-card {
-  background-color: transparent;
-  width: 300px;
-  height: 300px;
-  perspective: 1000px;
-  display:inline-block;
-  cursor: pointer;
-}
-
-.flip-card-inner {
-  position: relative;
-  border-radius:50%;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-}
-
-.flip-card.hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
-
-.flip-card-front, .flip-card-back {
-  border-radius: 50%;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-
-.flip-card-front {
-  background-color: #bbb;
-  color: black;
-}
-
-.flip-card-back {
-  background-color: #1abc9c;
-  color: white;
-  transform: rotateY(180deg);
-}
-
-.achievement-block{
-  background-color: #222;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
-  width: 50%;
-  height: 50%;
-  margin: auto;
-  padding: 50px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
 ::-webkit-scrollbar-track
@@ -384,4 +274,25 @@ strong{
   .achievement-block{
     flex-direction: column;
   }
+
+  .content-container {
+    grid-template-columns: 1fr;
+    }
+    .greeting{
+      margin-top: 10px;
+    }
+    .fluid-container{
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+    .content-right{
+      margin-top: 30px;
+    }
+    .right-ul{
+      float: left;
+      width: 100%;
+    }
+    .content-right{
+      text-align: left;
+    }
 }
