@@ -94,8 +94,84 @@ $(document).ready(function() {
     targets: '.navbar',
     translateY: [-100,0],
     duration: duration
-  })
+  });
+  anime({
+    targets: '.head',
+    translateY: [-161.86499, -171.86499],
+    translateX: [-230.59003, -230.59003],
+    duration: duration,
+    loop: true,
+    easing: 'easeInOutSine',
+    direction: 'alternate',
+  });
+
+  anime({
+    targets: '.head2',
+    translateY: -10,
+    duration: duration,
+    loop: true,
+    easing: 'easeInOutSine',
+    direction: 'alternate',
+  });
+  anime({
+    targets: '.head3-hair',
+    translateY: [-105.86477, -115.86477],
+    translateX: [-305.93035, -305.93035],
+    duration: duration,
+    loop: true,
+    easing: 'easeInOutSine',
+    direction: 'alternate',
+  });
+  anime({
+    targets: '.edu-cap',
+    translateY: [-180.35704, -190.35704],
+    translateX: [-228, -228],
+    duration: duration,
+    loop: true,
+    easing: 'easeInOutSine',
+    direction: 'alternate',
+  });
+
+  blocks = $(".code-blocks");
+  code_animation(blocks);
+
+  var btn_timeline = anime.timeline({
+    easing: 'easeInOutSine',
+    duration: duration,
+    loop: true
+  });
+  btn_timeline.add({
+    targets: '.flashy-buttons-1',
+    keyframes: [
+      {fill: '#FF5733'}, {fill: '#3f3d56'}]
+  }).add({
+    targets: '.flashy-buttons-2',
+    keyframes: [
+      {fill: '#FF5733'}, {fill: '#3f3d56'}]
+  }, '-=400').add({
+    targets: '.flashy-buttons-3',
+    keyframes: [
+      {fill: '#FF5733'}, {fill: '#3f3d56'}]
+  }, '-=400')
 });
+
+function code_animation(blocks) {
+  array = ["#1abc9c", "#e6e6e6", "#fff"]
+  var timeline = anime.timeline({
+    easing: 'easeInOutSine',
+    duration: duration,
+    loop: false
+  }); // no loop !!
+  blocks.each(function(){
+    timeline
+     .add({
+        targets: this,
+        fill: array[Math.floor(Math.random() * array.length)]
+     }, Math.floor(Math.random() * (300 - 0 + 1) + 0));
+  });
+  timeline.complete = function() {code_animation(blocks);};
+}
+
 // End Flip Card Function //
 
 const scrollOffset = -250;
