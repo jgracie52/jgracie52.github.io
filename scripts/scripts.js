@@ -133,7 +133,11 @@ $(document).ready(function() {
   });
 
   blocks = $(".code-blocks");
-  code_animation(blocks);
+  block_array = ["#1abc9c", "#e6e6e6", "#fff"];
+  robot_blocks = $(".robot-blocks")
+  robot_array = ["#1abc9c", "#ccc"];
+  code_animation(robot_blocks, robot_array);
+  code_animation(blocks, block_array);
 
   var btn_timeline = anime.timeline({
     easing: 'easeInOutSine',
@@ -155,8 +159,7 @@ $(document).ready(function() {
   }, '-=400')
 });
 
-function code_animation(blocks) {
-  array = ["#1abc9c", "#e6e6e6", "#fff"]
+function code_animation(blocks, array) {
   var timeline = anime.timeline({
     easing: 'easeInOutSine',
     duration: duration,
@@ -169,7 +172,7 @@ function code_animation(blocks) {
         fill: array[Math.floor(Math.random() * array.length)]
      }, Math.floor(Math.random() * (300 - 0 + 1) + 0));
   });
-  timeline.complete = function() {code_animation(blocks);};
+  timeline.complete = function() {code_animation(blocks, array);};
 }
 
 // End Flip Card Function //
