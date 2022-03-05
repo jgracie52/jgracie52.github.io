@@ -55,6 +55,11 @@ $(document).ready(function() {
     duration: duration
   });
   anime({
+    targets: '.greeting-content .content-center',
+    translateY: [250,0],
+    duration: duration
+  });
+  anime({
     targets: '.navbar',
     translateY: [-100,0],
     duration: duration

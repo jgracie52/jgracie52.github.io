@@ -128,6 +128,22 @@ li{
   margin-left: 25px;
 }
 
+.skills>.content-left{
+  align-items: flex-end;
+}
+.skills>.content-right{
+  align-items: flex-start;
+}
+
+.content-center{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  margin-left: 25px;
+}
+
 .undraw{
   width: 100%;
   height:auto;
@@ -217,7 +233,7 @@ li{
   margin-left: 5px;
   border-radius: 5%;
   margin-right: 5px;
-  padding: 15px;
+  padding: 10px;
   transition: all 500ms ease-in-out;
 }
 
@@ -265,9 +281,26 @@ li{
   color: white !important;
 }
 
+.fa-envelope{
+  background: #007bb5;
+  color: white !important;
+}
+
 .fa-github {
   background: black;
   color: white !important;
+}
+
+.fa-star{
+  padding:2px;
+}
+
+.fa-star:hover{
+  background:none;
+}
+
+.checked{
+  color:orange;
 }
 
 @media only screen and (max-width: 600px){
@@ -294,5 +327,13 @@ li{
     }
     .content-right{
       text-align: left;
+    }
+    .skills>.content-left{
+      align-items: center;
+    }
+    .skills>.content-right{
+      align-items: center;
+      margin-right:0;
+      margin-left:25px;
     }
 }
