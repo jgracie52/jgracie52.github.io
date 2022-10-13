@@ -9,27 +9,35 @@ import HorizontalCard from "../components/HorizontalCard.astro";
   </div>
 
   <HorizontalCard
+    title="New Flame"
+    img="/NewFlame.png"
+    desc="Created a blogging app using Next.js and Firebase based on the tutorial by Fireship.io. Added in a custom markdown editor to simplify article editing for the user with a similar design to DEV.To"
+    url="https://github.com/jgracie52/NextFire"
+    badge="Web App"
+    date="September 19th 2022"
+  />
+    <div class="divider my-0"></div>
+    <HorizontalCard
     title="Realtime Face Detection/Recognition"
-    img="/EdgeDetector.jpg"
+    img="/FaceRecognizer.gif"
     desc="Built a real-time face detection/recognition command line program using OpenCV. Also implemented a near real-time canny edge detector using the same system"
     url="https://github.com/jgracie52/Real-Time-Face-Recognition-and-Edge-Detection"
     badge="Computer Vision"
     date="December 5th 2021"
-  />
-    <div class="divider my-0"></div>
-    <HorizontalCard
-    title="New Flame"
-    img="/NewFlame.png"
-    desc="Created a blogging app using Next.js and Firebase based on the tutorial by Fireship.io. Added in a custom markdown editor to simply article editing for the user with a similar design to DEV.To"
-    url="https://github.com/jgracie52/NextFire"
-    badge="Web App"
-    date="September 19th 2022"
   />
 
   <div>
     <div class="text-3xl w-full font-bold mb-5 mt-10">Other Projects</div>
   </div>
 
+  <HorizontalCard
+      title="Canny Edge Detector"
+      img="/EdgeDetector.jpg"
+      desc='Created a custom Canny Edge Detector that, given an input image, a value for sigma, and values for high and low thresholds, outputs the edges of the image.'
+      url="https://github.com/jgracie52/PersonalProjects/tree/main/Canny%20Edge%20Detector"
+      badge="Computer Vision"
+      date="October 21st 2021"
+    />
   <HorizontalCard
       title="Everglades AI Battle Bots"
       img="/Everglades.gif"
