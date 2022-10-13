@@ -1,0 +1,11 @@
+---
+const { rating } = Astro.props;
+---
+
+<div class="star-rating inline-flex">
+    <span class={rating >= 1 ? "fa fa-star checked" : "fa fa-star"}></span>
+    <span class={rating >= 2 ? "fa fa-star checked" : "fa fa-star"}></span>
+    <span class={rating >= 3 ? "fa fa-star checked" : "fa fa-star"}></span>
+    <span class={rating >= 4 ? "fa fa-star checked" : "fa fa-star"}></span>
+    <span class={rating >= 5 ? "fa fa-star checked" : "fa fa-star"}></span>
+</div>
