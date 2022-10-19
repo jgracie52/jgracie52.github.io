@@ -1,0 +1,228 @@
+---
+layout: "../../layouts/DemoLayout.astro"
+title: "Conway's Game of Life"
+description: "A recreation of Conway's Game of Life with Javascript."
+pubDate: "Oct 16 2022"
+heroImage: "/Conway.png"
+tags: [ "cellular automata", "live demo" ]
+badge: "Demo"
+---
+import Conway from "../../components/live/Conway.svelte";
+import '../../styles/conway.css';
+
+<Conway client:visible/>
+
+## Description 
+
+Conway's Game of Life (Life) is a cellular automata developed by mathematician John Horton Conway in 1970.
+The game is based on the behavior of cells in biology and only requires and initial state of cells in order to function.
+
+A unique feature of Life is that it is turing complete and is capable of simulating any turing machine by simply(ish) 
+setting up the game board with the correct initial state.
+
+Throughout the years, many unique patterns have been discovered in the game, including still-lifes (groups of cells that do not die or grow), 
+oscillators (groups of cells that oscillate between several set shapes), and space ships (groups of cells that can move and osciallate across the game board).
+
+This implementation of Life was built using Javascript with the Svelte framework. This was chosen due to the relatively simple reactivity capabilities of Svelte
+that made updating the game board much simpler. However, it is more than possible to achieve the same result with vanilla Javascript.
+
+The game board above is completely interactive. You can play or pause the game at any time and click to kill or create cells on the board. You can also clear the board using
+the reset button or shuffle the board with random cells.
+
+## Implementation
+
+### Setting up
+
+Before we create the grid, we need to setup some variables to get the grid to work properly. The below code creates all of the necessary variables including height,
+width, a living/dead ratio for randomizing the grid cells, as well as the grid itself. Feel free to adjust these settings however you prefer.
+
+``` js 
+class ConwayCell {
+    constructor(alive, td){
+        this.alive = alive;
+        this.td = td;
+    }
+}
+
+let gridSize = 32;
+let aliveInitChance = 0.2;
+let delay = 500;
+let gridParent = null;
+let width = 500;
+let cellWidth = 0;
+let conwayGrid = [...Array(gridSize)].map(e => Array(gridSize));
+```
+
+From there we need to calculate a few fields after the HTML is first rendered. We can use the onMount feature of Svelte to create a listener for when
+the DOM is loaded, and then calculate our remaining fields from there.
+
+``` js
+onMount(() => {
+        document.addEventListener("DOMContentLoaded", function() {
+            gridParent = document.getElementById('conway-grid');
+            gridParent.style.height = gridParent.clientWidth;
+            cellWidth = width / gridSize;
+        });
+
+        ...
+    });
+```
+
+### Creating the grid
+
+Once we have our variables set up we need to generate a game board in HTML as well as create an array to reference the cells in the board.
+We can accomplish this using Svelte 'each' statements to create a dynamically sizable HTML table as well as a dynamically filled array for the grid in javascript.
+
+``` html
+<div id="conway-grid">
+    <table class='conway-grid-inner' id='conway-grid-inner' style='height:{width}px; width:{width}px'>
+        <!-- Iterate over rows -->
+        {#each Array(gridSize) as _ , i}
+            <tr>
+            <!-- Iterate over columns -->
+            {#each Array(gridSize) as _, j}
+                <!-- Generate a grid item in the JS array -->
+                {#await genGridItem(i,j) then item}
+                ...
+                {/await}
+            {/each}
+            </tr>
+        {/each}
+    </table>
+</div>
+```
+
+The below function then generates a new cell object to represent the HTML table cell.
+
+``` js
+// Generate a grid item with a random alive/dead state
+function genGridItem(i,j){
+        let alive = Math.random() < aliveInitChance ? true : false;
+        conwayGrid[i][j] = new ConwayCell(alive, `con-${i}-${j}`);
+    }  
+```
+
+The HTML cells are then added using the dynamic array to get the current alive/dead state. Svelte then makes it so that any update to that object in the array
+will result in an update to the cell in the rendered html.
+
+``` html
+<td id='con-{i}-{j}' class='{conwayGrid[i][j].alive ? 'alive' : ''}' style='height:{cellWidth}px; width:{cellWidth}px'>
+</td>
+```
+
+### Writing the simulation
+
+Once we have our grid and variables set up, its time to get to work on writing the actual game logic. Because Life is an iterative game, the first thing we are 
+going to do is setup our core function as asynchronous so that we can call it over and over again using a Javascript timeout. This will allow us to run our game 
+iteratively with a delay timer of our choice.
+
+From there, we will generate an empty grid to represent our actual game grid. The reason we want a copy of our grid is so that we don't update and cells in the actual
+grid until we have figured out what all those updates should be (i.e. we don't want our cells to update according to the change we just made to its neighbor. Rather we
+want to make all of our changes as a single batch.).
+
+``` js
+async function playConway(){
+        // Generate temporary grid
+        let gridCopy = [...Array(gridSize)].map(e => Array(gridSize))
+    
+    ...
+}
+```
+
+Then, we need to loop over the grid and calculate which cells should be alive or dead according to the rules of Life. The rules for living and dead cells are as follows:
+
+- Any live cell with fewer than two live neighbours dies, as if by underpopulation.
+- Any live cell with two or three live neighbours lives on to the next generation.
+- Any live cell with more than three live neighbours dies, as if by overpopulation.
+- Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+
+These rules can be written as:
+
+``` js
+// Loop over the grid
+for(let row = 0; row < gridSize; row++){
+    for(let col = 0; col < gridSize; col++){
+        // Count living and dead neighbors
+        let count = countNeighbors(row,col);
+
+        if(!conwayGrid[row][col].alive){
+            // Dead cell logic
+            if(count == 3)
+                gridCopy[row][col] = true;
+            else
+                gridCopy[row][col] = false;
+        }
+        else{
+            // Live cell logic
+            if(count < 2 || count > 3)
+                gridCopy[row][col] = false; 
+            else
+                gridCopy[row][col] = true;   
+        }                
+    }
+} 
+```
+
+You may notice that we have a helper function 'countNeighbors' in the above block. The reason for this is to simplify calculating which neighbor cells
+are living or dead. Instead of using a bunch of 'if then' statements, we can just calculate the number of living neighbors and use that count in our 
+above logic. The code for calculating living cells is as follows:
+
+``` js
+function countNeighbors(i,j){
+    let count = 0;
+    if(i != 0 && j != 0 && conwayGrid[i-1][j-1].alive)
+        count++;
+    if(i != 0 && conwayGrid[i-1][j].alive)
+        count++;
+    if(i != 0 && j != gridSize - 1 && conwayGrid[i-1][j+1].alive)
+        count++;
+    if(j != 0 && conwayGrid[i][j-1].alive)
+        count++;
+    if(j != 0 && i != gridSize - 1 && conwayGrid[i+1][j-1].alive)
+        count++;
+    if(i != gridSize - 1 && j != gridSize - 1 && conwayGrid[i+1][j+1].alive)
+        count++;
+    if(i != gridSize - 1 && conwayGrid[i+1][j].alive)
+        count++;
+    if(j != gridSize - 1 && conwayGrid[i][j+1].alive)
+        count++;
+
+    return count;
+}
+```
+
+Now we are in the home stretch. All we need to do is fill our actual grid with the newly updated values in our gridCopy and repeat the function. We can use setTimeout 
+to have javascript rerun our function with a specified delay. You may also notice that I have inlcuded 'await tick()'. This function is provided by Svelte and ensures that 
+the HTML content has been updated with our reactive changes (the new alive/dead value) before we continue with the function.
+
+``` js
+// Replace old grid with new grid
+// Prevents updates to alive prop from affecting calculations for other cells
+for(let row = 0; row < gridSize; row++){
+    for(let col = 0; col < gridSize; col++){
+        conwayGrid[row][col].alive = temp[row][col];
+    }
+}
+
+await tick();
+
+setTimeout(function(){
+    playConway();
+}, delay);
+```
+
+Once that is done, all we need to do now is call our main function in onMount():
+
+``` js
+onMount(() => {
+            ...
+
+            playConway();
+    });
+```
+
+And just like that, we've recreated Conway's Game of Life using Javascript (and a bit of help from Svelte). If you want to see the full project in Github, click [here](https://github.com/jgracie52/jgracie52.github.io/tree/main/src/components/live/Conway.svelte).
+
+## Conclusion
+
+That about does it for this blog. Thanks again for stopping by and be sure to check out some of my other projects and blogs. I'll be adding new content regularly, stay tuned.

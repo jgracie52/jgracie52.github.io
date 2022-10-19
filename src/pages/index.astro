@@ -56,7 +56,6 @@ const last_posts = posts.slice(0, 3);
   />
   <a class="link link-primary float-right" href="/projects">See more →</a>
 
-
     <div>
       <div class="text-3xl w-full font-bold mb-5 mt-10">Latest Blogs</div>
     </div>
@@ -68,7 +67,9 @@ const last_posts = posts.slice(0, 3);
           img={post.frontmatter.heroImage}
           desc={post.frontmatter.description}
           url={post.url}
+          tags={post.frontmatter.tags}
           target="_self"
+          badge={post.frontmatter.badge}
         />
         <div class="divider my-0"></div>
       ))
