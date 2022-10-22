@@ -12,6 +12,7 @@
     let aliveInitChance = 0.2;
     let delay = 500;
     let gridParent = null;
+    let innerWidth = 0;
     let width = 500;
     let cellWidth = 0;
     let play = true;
@@ -43,6 +44,8 @@
             gridParent.style.height = gridParent.clientWidth;
             cellWidth = width / gridSize;
         });
+
+        width = innerWidth < 500 ? innerWidth : 500;
 
         playConway();
     });
@@ -142,7 +145,7 @@
 
 </script>
 
-<svelte:window on:mousedown={beginDrag} on:mouseup={endDrag} />
+<svelte:window on:mousedown={beginDrag} on:mouseup={endDrag} bind:outerWidth={innerWidth}/>
 <!-- <div class="text-5xl font-bold inline">Conway's <div class="inline text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-500">Game of Life</div></div> -->
 <div class="toolbar space-x-1">
     <div class="tooltip" data-tip={play ? "Pause": "Play"}>
@@ -170,8 +173,8 @@
         </button>
     </div>
 </div>
-<div id="conway-grid">
-    <table class='conway-grid-inner' id='conway-grid-inner' style='height:{width}px; width:{width}px'>
+<div id="conway-grid"> 
+    <table class='conway-grid-inner' id='conway-grid-inner' style='aspect-ratio:1/1; width:90%'>
     {#each Array(gridSize) as _ , i}
         <tr>
         {#each Array(gridSize) as _, j}
