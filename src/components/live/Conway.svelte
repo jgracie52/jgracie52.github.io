@@ -173,8 +173,8 @@
         </button>
     </div>
 </div>
-<div id="conway-grid"> 
-    <table class='conway-grid-inner' id='conway-grid-inner' style='aspect-ratio:1/1; width:90%'>
+<div id="conway-grid">
+    <table class='conway-grid-inner' id='conway-grid-inner' style='height:{width}px; width:{width}px'>
     {#each Array(gridSize) as _ , i}
         <tr>
         {#each Array(gridSize) as _, j}
