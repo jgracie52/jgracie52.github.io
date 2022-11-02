@@ -9,16 +9,27 @@ import Rating from "../components/cv/Rating.astro";
     <div class="text-3xl font-bold section-header">profile</div>
   </div>
 
-  <div class="mb-10 text-justify">
-    Cybersecurity engineer with 3 years of experience in software development as well as training in cybersecurity through 
-    Security+ and on-the-job training. Experienced with security product assessments, machine learning, genetic algorithms, and full
-    stack web development. Also experienced with in-depth research through advanced study during my Master's Thesis.
+  <div class="mb-10 flex text-justify space-x-1" style="align-items: center; gap:5%">
+    <img src="/CoolSelfie-3.png" style="width: 30%;border-bottom-left-radius: 50%;border-bottom-right-radius: 50%;"></img>
+    <div>
+      <p class="mb-5">
+        Cybersecurity engineer with 3 years of experience in software development as well as training in cybersecurity through 
+        Security+ and on-the-job training. Experienced with security product assessments, machine learning, genetic algorithms, and full
+        stack web development. Also experienced with in-depth research through advanced study during my Master's Thesis.
+      </p>
+      <p>
+        Recently been learning about the Cloud, specifically AWS and Azure and am working towards attaining several cloud certifications. 
+        Also have a background in business and business administration providing increased knowledge and communications skills with 
+        other non-technical professionals.
+      </p>
+    </div>
   </div>
 
   <div class="mb-5 section-header-wrapper">
     <div class="text-3xl font-bold section-header">education</div>
   </div>
 
+  <div class="flex">
   <div class="time-line-container grid gap-4 mb-10">
     <TimeLineElement
       title="Master's in Computer Science"
@@ -33,51 +44,61 @@ import Rating from "../components/cv/Rating.astro";
       subtitle="2017 to 2021 at the University of Central Florida, Orlando, Florida"
     />
   </div>
+  <img src="/UCF.png" style="width:50%; margin:auto;"></img>
+  </div> 
 
   <div class="mb-5 section-header-wrapper">
     <div class="text-3xl section-header font-bold">experience</div>
   </div>
 
-  <div class="time-line-container mb-10">
-    <TimeLineElement
-      title="Cybersecurity Engineering Associate at Lockheed Martin"
-      subtitle="From 2022 at Lockheed Martin, Orlando, Florida"
-      desc="Executed product assessments for outside COTS and FOSS software to be used accross the company and assisted in identifying and mitigating related risks according to CIS security policy."
-    />
-    <TimeLineElement
-      title="CWEP at Lockheed Martin"
-      subtitle="From 2019 to 2022 at Lockheed Martin MFC, Orlando, Florida"
-      desc={`Designed and implemented improvements to the department website, developed macros for financial and personnel data sheets, and spearheaded web apps for teams across the company including: a web application to assist in contract planning using Blazor and Kubernetes, and a machine learning/data dashboard to assist with manufacturing tolerance analysis using Streamlit and Sci-Kit Learn`}
-    />
-    <TimeLineElement
-      title="Summer Intern at Florida Blue"
-      subtitle="From 2017 to 2017 at Florida Blue, Jacksonville, Florida"
-      desc="Served on the IT Support Desk and collaborated with internal employees to solve IT related issues such as password failures, website/browser malfunctions, and computer upkeep. "
-    />
+  <div class="flex">
+    <div class="time-line-container mb-10">
+      <TimeLineElement
+        title="Cybersecurity Engineering Associate at Lockheed Martin"
+        subtitle="From 2022 at Lockheed Martin, Orlando, Florida"
+        desc="Executed product assessments for outside COTS and FOSS software to be used accross the company and assisted in identifying and mitigating related risks according to CIS security policy."
+      />
+      <TimeLineElement
+        title="CWEP at Lockheed Martin"
+        subtitle="From 2019 to 2022 at Lockheed Martin MFC, Orlando, Florida"
+        desc={`Designed and implemented improvements to the department website, developed macros for financial and personnel data sheets, and spearheaded web apps for teams across the company including: a web application to assist in contract planning using Blazor and Kubernetes, and a machine learning/data dashboard to assist with manufacturing tolerance analysis using Streamlit and Sci-Kit Learn`}
+      />
+      <TimeLineElement
+        title="Summer Intern at Florida Blue"
+        subtitle="From 2017 to 2017 at Florida Blue, Jacksonville, Florida"
+        desc="Served on the IT Support Desk and collaborated with internal employees to solve IT related issues such as password failures, website/browser malfunctions, and computer upkeep. "
+      />
+    </div>
+    
   </div>
 
   <div class="mb-5 section-header-wrapper">
-    <div class="text-3xl section-header font-bold">certifications</div>
+    <div class="text-3xl section-header font-bold">certificates</div>
   </div>
 
-  <ul class="list-disc mx-6 mb-10 grid gap-2">
-    <li>
-      <a href="" target="_blank"> Comptia Security+ (In progress)</a>
-    </li>
-  </ul>
+  <div class="flex mb-10" style="gap:3%">
+    <div class="card transition ease-in-out hover:scale-[102%]">
+      <img src="SecPlus.png" width="200"></img>
+      <div class="card-overlay">In Progress</div>
+    </div>
+    <div class="card transition ease-in-out hover:scale-[102%]">
+      <img src="az900.png" width="200"></img>
+      <div class="card-overlay">In Progress</div>
+    </div>
+  </div>
 
   <div class="mb-5 section-header-wrapper">
     <div class="text-3xl section-header font-bold">awards</div>
   </div>
 
-  <ul class="list-disc mx-6 mb-10 grid gap-2">
-    <li>
+  <ul class="award-list mx-6 mb-10">
+    <li class="award-box">
       Winner of the Spring 2021 UCF Senior Design Showcase in Computer Science for my <a class="link color-main" href="https://github.com/jlehett/everglades-ai-wargame" target="_blank">Everglades Reinforcement Learning</a> project.
     </li>
-    <li>
+    <li class="award-box">
       Cum Laude Honors in the Major for Computer Science (GPA: 3.814).
     </li>
-    <li>
+    <li class="award-box">
       Accepted to the UCF CECS accelerated BS to MS program.
     </li>
   </ul>
@@ -86,22 +107,47 @@ import Rating from "../components/cv/Rating.astro";
     <div class="text-3xl section-header font-bold">skills</div>
   </div>
 
-  <ul class="list-disc md:columns-3 columns-2 mx-6">
-    <li>C# <Rating rating={5}></Rating></li>
-    <li>Python <Rating rating={5}></Rating></li>
-    <li>VS Code <Rating rating={4}></Rating></li>
-    <li>Visual Studio <Rating rating={4}></Rating></li>
-    <li>Atom <Rating rating={4}></Rating></li>
-    <li>PyTorch <Rating rating={4}></Rating></li>
-    <li>SciKit Learn <Rating rating={4}></Rating></li>
-    <li>.NET <Rating rating={4}></Rating></li>
-    <li>Tensorflow <Rating rating={3}></Rating></li>
-    <li>OpenCV <Rating rating={3}></Rating></li>
-    <li>SQL <Rating rating={3}></Rating></li>
-    <li>Streamlit <Rating rating={3}></Rating></li>
-    <li>Openshift <Rating rating={2}></Rating></li>
-    <li>React <Rating rating={2}></Rating></li>
-    <li>Astro <Rating rating={2}></Rating></li>
-    <li>Kubernetes <Rating rating={2}></Rating></li>
-  </ul>
+  <div class="flex" style="gap:3%;">
+    <div class="skill-block">
+      <div class="skill-block-title">Languages</div>
+      <ul class="skill-block-list list-disc md:columns-3 columns-2 mx-6">
+        <li>C# <Rating rating={5}></Rating></li>
+        <li>Python <Rating rating={5}></Rating></li>
+        <li>Javascript <Rating rating={4}></Rating></li>
+        <li>Java <Rating rating={3}></Rating></li>
+        <li>C <Rating rating={3}></Rating></li>
+      </ul>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-title">Tools</div>
+      <ul class="skill-block-list list-disc md:columns-3 columns-2 mx-6">
+        <li>VS Code <Rating rating={4}></Rating></li>
+        <li>Visual Studio <Rating rating={4}></Rating></li>
+        <li>Atom <Rating rating={4}></Rating></li>
+        <li>PyTorch <Rating rating={4}></Rating></li>
+        <li>SciKit Learn <Rating rating={4}></Rating></li>
+        <li>Tensorflow <Rating rating={3}></Rating></li>
+        <li>OpenCV <Rating rating={3}></Rating></li>
+      </ul>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-title">Frameworks</div>
+      <ul class="skill-block-list list-disc md:columns-3 columns-2 mx-6">
+        <li>.NET <Rating rating={4}></Rating></li>
+        <li>Streamlit <Rating rating={3}></Rating></li>
+        <li>React <Rating rating={2}></Rating></li>
+        <li>Astro <Rating rating={2}></Rating></li>
+      </ul>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-title">Other</div>
+      <ul class="skill-block-list list-disc md:columns-3 columns-2 mx-6">
+        <li>SQL <Rating rating={3}></Rating></li>
+        <li>Openshift <Rating rating={2}></Rating></li>
+        <li>Kubernetes <Rating rating={2}></Rating></li>
+        <li>Azure <Rating rating={2}></Rating></li>
+        <li>Firebase <Rating rating={2}></Rating></li>
+      </ul>
+    </div>
+  </div>
 </BaseLayout>
