@@ -141,3 +141,10 @@ pre {
 ::-webkit-scrollbar-thumb:hover {
   background: #111;
 }
+
+.secret-img{
+  margin:auto;
+  width:75%;
+  border-top-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
