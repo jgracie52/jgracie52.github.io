@@ -10,7 +10,7 @@ const { image = SITE_IMAGE, title = SITE_TITLE, description = SITE_DESCRIPTION }
 ---
 
 <!DOCTYPE html>
-<html lang="en" data-theme="bumblebee">
+<html lang="en" data-theme="mytheme">
   <head>
     <BaseHead title={title} description={description} image={image} />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" />
@@ -21,7 +21,7 @@ const { image = SITE_IMAGE, title = SITE_TITLE, description = SITE_DESCRIPTION }
       <div class="drawer-content flex flex-col bg-base-100">
         <Header title={SITE_TITLE} />
         <div class="md:flex md:justify-center">
-          <main class="p-6 pt-10 max-w-[900px]">
+          <main class="p-6 pt-10 max-w-[1200px]">
             <slot />
           </main>
         </div>

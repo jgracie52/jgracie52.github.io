@@ -1,0 +1,14 @@
+video{
+    border-radius: 15px;
+    width:100%;
+}
+
+.recording-btn{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.color-red{
+    color:red;
+}

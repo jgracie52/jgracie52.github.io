@@ -10,22 +10,22 @@ const currentPath = pathname.slice(1); // remove the first "/"
       <a href="/">
         <div class="avatar transition ease-in-out w-1/2 hover:scale-[102%] block m-auto mt-3 mb-6">
           <div>
-            <img class="mask mask-squircle" src="/profile.png" alt="profile image" />
+            <img class="mask mask-squircle" src="/CoolSelfie.png" alt="profile image" />
           </div>
         </div>
       </a>
     </div>
     <ul class="menu space-y-1 flex flex-col p-0 px-4">
       <!-- Sidebar content here -->
-      <li><a class={currentPath === "" ? "active" : ""} href="/"><i class="fa-solid fa-house"></i> Home</a></li>
-      <li><a class={currentPath === "projects" ? "active" : ""} href="/projects"><i class="fa-solid fa-file-code"></i> Projects</a></li>
-      <li><a class={currentPath.includes("blog") ? "active" : ""} href="/blog/1"><i class="fa-solid fa-blog"></i> Blog</a></li>
-      <li><a class={currentPath === "cv" ? "active" : ""} href="/cv"><i class="fa-solid fa-graduation-cap"></i> CV</a></li>
-      <li><a href="mailto:joshua.p.gracie@gmail.com"><i class="fa-solid fa-address-book"></i> Contact</a></li>
+      <li><a class={currentPath === "" ? "header_link header_link_active" : "header_link"} href="/">home</a></li>
+      <li><a class={currentPath === "projects" ? "header_link header_link_active" : "header_link"} href="/projects">projects</a></li>
+      <li><a class={currentPath.includes("blog") ? "header_link header_link_active" : "header_link"} href="/blog/1">blog</a></li>
+      <li><a class={currentPath === "cv" ? "header_link header_link_active" : "header_link"} href="/cv">cv</a></li>
+      <li><a class="header_link" href="mailto:joshua.p.gracie@gmail.com">contact</a></li>
     </ul>
     <div class="grow"></div>
     <div class="social-icons px-4 my-2 flex self-center">
-      <button class="btn btn-ghost btn-circle">
+      <button class="icon_button_coder">
         <a href="https://github.com/jgracie52" target="_blank" class="mx-3" aria-label="Github">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +66,7 @@ const currentPath = pathname.slice(1); // remove the first "/"
         </svg>
       </a> -->
 
-      <button class="btn btn-ghost btn-circle">
+      <button class="icon_button_coder">
         <a href="https://www.linkedin.com/in/joshua-gracie/" target="_blank" class="mx-3" aria-label="Linkedin">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -80,7 +80,7 @@ const currentPath = pathname.slice(1); // remove the first "/"
           </svg>
         </a>
       </button>
-      <button class="btn btn-ghost btn-circle">
+      <button class="icon_button_coder">
         <a href="/rss.xml" target="_blank" class="mx-3" aria-label="RSS Feed">
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -15,29 +15,29 @@ const currentPath = pathname.slice(1); // remove the first "/"
       </label>
     </div>
     <div class="navbar-center">
-      <a class="btn btn-ghost normal-case text-xl" href="/">Joshua Gracie 🛡️</a>
+      <a class="btn btn-ghost normal-case text-xl" href="/"><img class="icon-image" src="/icon.png" /> Joshua Gracie</a>
     </div>
     <div class="navbar-end"></div>
   </div>
 </div>
 <div
-  class="sticky hidden lg:block top-0 z-30 flex h-16 w-full justify-center bg-opacity-90 backdrop-blur transition-all duration-100 bg-base-100 text-base-content"
+  class="sticky hidden lg:block top-0 z-30 flex h-16 w-full justify-center bg-opacity-90 backdrop-blur transition-all duration-100 bg-base-100 text-base-content max-w-[1200px]" style="align-self: center;"
 >
   <div class="navbar">
     <div class="navbar-start">
-      <a class="btn btn-ghost normal-case text-xl" href="/">Joshua Gracie 🛡️</a>
+      <a class="flex flex-row normal-case text-xl" style="align-items: center;" href="/"><img class="icon-image" src="/icon.png" /> Joshua Gracie</a>
     </div>
     <div class="navbar-center">
       <ul class="menu menu-horizontal space-x-1 p-0">
-        <li><a class={currentPath === "" ? "active" : ""} href="/">Home</a></li>
-        <li><a class={currentPath === "projects" ? "active" : ""} href="/projects">Projects</a></li>
-        <li><a class={currentPath.includes("blog") ? "active" : ""} href="/blog/1">Blog</a></li>
-        <li><a class={currentPath === "cv" ? "active" : ""} href="/cv">CV</a></li>
-        <li><a href="mailto:joshua.p.gracie@gmail.com">Contact</a></li>
+        <li><a class={currentPath === "" ? "header_link header_link_active" : "header_link"} href="/">home</a></li>
+        <li><a class={currentPath === "projects" ? "header_link header_link_active" : "header_link"} href="/projects">projects</a></li>
+        <li><a class={currentPath.includes("blog") ? "header_link header_link_active" : "header_link"} href="/blog/1">blog</a></li>
+        <li><a class={currentPath === "cv" ? "header_link header_link_active" : "header_link"} href="/cv">cv</a></li>
+        <li><a class="header_link" href="mailto:joshua.p.gracie@gmail.com">contact</a></li>
       </ul>
     </div>
     <div class="navbar-end">
-      <button class="btn btn-ghost btn-circle">
+      <button class="icon_button_coder">
         <a href="https://github.com/jgracie52" target="_blank" class="mx-3" aria-label="Github">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +53,7 @@ const currentPath = pathname.slice(1); // remove the first "/"
           </svg>
         </a>
       </button>
-      <button class="btn btn-ghost btn-circle">
+      <button class="icon_button_coder">
         <a href="https://www.linkedin.com/in/joshua-gracie/" target="_blank" class="mx-3" aria-label="Linkedin">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +67,7 @@ const currentPath = pathname.slice(1); // remove the first "/"
           </svg>
         </a>
       </button>
-      <button class="btn btn-ghost btn-circle">
+      <button class="icon_button_coder">
         <a href="/rss.xml" target="_blank" class="mx-3" aria-label="RSS Feed">
           <svg
             xmlns="http://www.w3.org/2000/svg"

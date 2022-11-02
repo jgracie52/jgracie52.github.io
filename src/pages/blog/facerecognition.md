@@ -7,12 +7,7 @@ heroImage: "/FaceRecognizer.gif"
 tags: [ "computer vision", "machine learning" ]
 ---
 
-Ready to dable in the power of computer vision? In this tutorial, we will be learning how to create a realtime face detection and reconition system using Python and OpenCV. All you'll need for this project is:
-
-- A code editor (I used VS Code)
-- Python 3.9
-- OpenCV 2 (for Python)
-- A working video camera for your computer
+I recently revisited one of my older projects where I built a canny edge detector from scratch in python, and began wondering to myself if it would be possible to create a realtime version that can detect edges **and** faces. Short answer: absolutely.
 
 ## Background
 
