@@ -33,11 +33,11 @@ pre {
 
 .badge-main{
   --tw-border-opacity: 1;
-  border-color: hsl(287, 60%, 65%);
-  --tw-bg-opacity: 1;
-  background-color: hsl(287, 60%, 65%);
-  --tw-text-opacity: 1;
-  color: hsl(var(--sc) / var(--tw-text-opacity));
+  border-color: hsl(287, 60%, 65%) !important;
+  --tw-bg-opacity: 1 !important;
+  background-color: hsl(287, 60%, 65%) !important;
+  --tw-text-opacity: 1 !important;
+  color: hsl(var(--sc) / var(--tw-text-opacity)) !important;
 }
 
 .icon-image{
