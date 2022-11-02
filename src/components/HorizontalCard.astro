@@ -9,7 +9,7 @@ const { title, img, desc, url, badge, tags, date, target = '_blank' } = Astro.pr
       <div class="grow w-full">
         <h1 class="text-xl font-bold">
           {title}
-          {badge && <div class="badge badge-secondary mx-2">{badge}</div>}
+          {badge && <div class="badge badge-main mx-2">{badge}</div>}
         </h1>
         <h6>{date}</h6>
         <p class="py-1 text-1xl">{desc}</p>

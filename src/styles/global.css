@@ -33,9 +33,9 @@ pre {
 
 .badge-main{
   --tw-border-opacity: 1;
-  border-color: hsl(hsl(287, 60%, 65%) / var(--tw-border-opacity));
+  border-color: hsl(287, 60%, 65%);
   --tw-bg-opacity: 1;
-  background-color: hsl(hsl(287, 60%, 65%) / var(--tw-bg-opacity));
+  background-color: hsl(287, 60%, 65%);
   --tw-text-opacity: 1;
   color: hsl(var(--sc) / var(--tw-text-opacity));
 }
