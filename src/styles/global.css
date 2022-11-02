@@ -87,6 +87,64 @@ pre {
   position: relative;
 }
 
+.quote{
+  border: 1px solid white;
+  position: relative;
+  margin-left: auto;
+  margin-right:auto;
+  width:50%;
+}
+
+.quote::before{
+  top: -32px;
+  left: 16px;
+  content: '"';
+  position: absolute;
+  color: white;
+  font-size: 64px;
+  font-weight: 700;
+  background-image: linear-gradient(#2a303c, #2a303c);
+  background-size: 100% 40%;
+  background-repeat: no-repeat;
+}
+
+.quote::after{
+  bottom: -64px;
+  right: 16px;
+  content: '"';
+  position: absolute;
+  color: white;
+  font-size: 64px;
+  font-weight: 700;
+  background-image: linear-gradient(#2a303c, #2a303c);
+  background-size: 100% 40%;
+  background-repeat: no-repeat;
+}
+
+.quote-text{
+  padding: 32px;
+  font-size: 24px;
+  font-weight: 500;
+  background-color: #2a303c;
+}
+
+.quote-color-text{
+  color:hsl(287 60% 65%);
+  display: inline-block;
+}
+
+.quote-author::before{
+  content: "- ";
+}
+
+.quote-author{
+  position: absolute;
+  border: 1px solid white;
+  padding: 8px;
+  right: -1px;
+  font-size: 16px;
+}
+
 .section-header{
 
 }
