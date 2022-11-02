@@ -27,6 +27,19 @@ pre {
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
+.main-color{
+  color:hsl(287, 60%, 65%);
+}
+
+.badge-main{
+  --tw-border-opacity: 1;
+  border-color: hsl(hsl(287, 60%, 65%) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(hsl(287, 60%, 65%) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(var(--sc) / var(--tw-text-opacity));
+}
+
 .icon-image{
   width: 50px;
   color: white;

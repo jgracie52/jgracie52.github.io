@@ -18,13 +18,13 @@
 }
 
 .conway-grid-inner tr td{
-    background-color: lightgray;
-    border: 1px solid white;
+    background-color: #232934e0;
+    border: 1px solid #2a303c;
     cursor:pointer;
 }
 
 .alive{
-    background-color: red !important;
+    background-color: hsl(287 60% 65%) !important;
 }
 
 table tr:last-child td:first-child {
