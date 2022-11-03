@@ -4,10 +4,14 @@ import HorizontalCard from "../components/HorizontalCard.astro";
 ---
 
 <BaseLayout>
-  <div>
-    <div class="text-3xl w-full font-bold mb-5">Latest Projects</div>
+  <div class="mb-10">
+    <div class="text-3xl font-bold mb-5 page-header">projects</div>
+    <div class="text-xl mb-5 page-subheader">List of all of my projects</div>
   </div>
 
+  <div class="section-header-wrapper mt-10">
+    <div class="text-3xl font-bold mb-2 section-header">recent</div>
+  </div>
   <HorizontalCard
     title="New Flame"
     img="/NewFlame.png"
@@ -25,11 +29,9 @@ import HorizontalCard from "../components/HorizontalCard.astro";
     badge="Computer Vision"
     date="December 5th 2021"
   />
-
-  <div>
-    <div class="text-3xl w-full font-bold mb-5 mt-10">Other Projects</div>
+  <div class="section-header-wrapper mt-10">
+    <div class="text-3xl font-bold mb-2 section-header">other</div>
   </div>
-
   <HorizontalCard
       title="Canny Edge Detector"
       img="/EdgeDetector.jpg"

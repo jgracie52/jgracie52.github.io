@@ -158,6 +158,36 @@ pre {
   font-size: 16px;
 }
 
+.hanging-indent{
+  padding-left: 2.5rem ;
+  text-indent: -2.5rem ;
+}
+
+.publication{
+  margin-top:5px;
+  margin-bottom:5px;
+}
+
+.publication::before{
+  content: "*  ";
+  color: hsl(287 60% 65%);
+  font-weight: bold;
+}
+
+.page-header{
+  color:white;
+}
+
+.page-header::before{
+  content: "/";
+  color: hsl(287 60% 65%);
+  font-weight: bold;
+}
+
+.page-subheader{
+  color:grey;
+}
+
 .section-header{
 
 }
