@@ -70,6 +70,29 @@ position:absolute;
   transform: scale(1.5);
 }
 
+.animated-fill{
+  background-color: hsla(287, 60%, 65%, 0);
+  transition: all 0.5s ease-in-out;
+}
+
+.animated-fill:hover{
+  background-color: rgba(196, 112, 219, 0.178);
+}
+
+.projects-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 15px;
+}
+
+.horizontal-card{
+  border: 1px solid hsl(287, 60%, 65%);
+}
+
+.horizontal-card > .hero-content > .divider{
+  top:50%;
+}
+
 pre {
   border-top-right-radius: 0;
   border-top-left-radius: 0;

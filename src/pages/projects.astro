@@ -12,6 +12,7 @@ import HorizontalCard from "../components/HorizontalCard.astro";
   <div class="section-header-wrapper mt-10">
     <div class="text-3xl font-bold mb-2 section-header">recent</div>
   </div>
+  <div class="projects-grid">
   <HorizontalCard
     title="New Flame"
     img="/NewFlame.png"
@@ -20,7 +21,6 @@ import HorizontalCard from "../components/HorizontalCard.astro";
     badge="Web App"
     date="September 19th 2022"
   />
-    <div class="divider my-0"></div>
     <HorizontalCard
     title="Realtime Face Detection/Recognition"
     img="/FaceRecognizer.gif"
@@ -29,9 +29,12 @@ import HorizontalCard from "../components/HorizontalCard.astro";
     badge="Computer Vision"
     date="December 5th 2021"
   />
+</div>
+
   <div class="section-header-wrapper mt-10">
     <div class="text-3xl font-bold mb-2 section-header">other</div>
   </div>
+  <div class="projects-grid">
   <HorizontalCard
       title="Canny Edge Detector"
       img="/EdgeDetector.jpg"
@@ -48,7 +51,6 @@ import HorizontalCard from "../components/HorizontalCard.astro";
       badge="Reinforcement Learning"
       date="April 23rd 2021"
     />
-  <div class="divider my-0"></div>
   <HorizontalCard
     title="Conway's Game of Life"
     img="/conway.png"
@@ -57,7 +59,6 @@ import HorizontalCard from "../components/HorizontalCard.astro";
     badge="Cellular Automata"
     date="March 28th 2021"
   />
-  <div class="divider my-0"></div>
   <HorizontalCard
     title="Cache Simulator"
     img="/cache.webp"
@@ -66,4 +67,5 @@ import HorizontalCard from "../components/HorizontalCard.astro";
     badge="Computer Architecture"
     date="March 28th 2021"
   />
+  </div>
 </BaseLayout>

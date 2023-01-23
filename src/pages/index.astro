@@ -22,8 +22,8 @@ const last_posts = posts.slice(0, 3);
         >
       </div>
       <div class="mt-8">
-        <a class="button_coder" href="https://www.linkedin.com/in/joshua-gracie/" target="_blank"> Let's connect!</a>
-        <a href="/resume.pdf" target="_blank" class="button_coder ml-5"> Download my Resumé</a>
+        <a class="animated-fill button_coder" href="https://www.linkedin.com/in/joshua-gracie/" target="_blank"> Let's connect!</a>
+        <a href="/resume.pdf" target="_blank" class="animated-fill button_coder ml-5"> Download my Resumé</a>
       </div>
     </div>
     <div style="position:relative;" class="space-x-0.5">
@@ -37,11 +37,22 @@ const last_posts = posts.slice(0, 3);
     <figcaption class="quote-author">Alan Turing</figcaption>
   </figure>
 
+  <script is:inline>
+    var after = window.getComputedStyle(
+        document.querySelector('.quote'), ':after'
+    );
+    var before = window.getComputedStyle(
+        document.querySelector('.quote'), ':before'
+    );
+
+    // Loop movement
+  </script>
+
     <div class="section-header-wrapper mt-10">
       <div class="text-3xl font-bold mb-2 section-header">projects</div>
       <a class="projects_link" href="/projects">View all ~~&gt;</a>
     </div>
-
+    <div class="projects-grid">
     <HorizontalCard
       title="Everglades AI Battle Bots"
       img="/Everglades.gif"
@@ -49,7 +60,7 @@ const last_posts = posts.slice(0, 3);
       url="https://github.com/jlehett/everglades-ai-wargame"
       badge="Reinforcement Learning"
     />
-    <div class="divider my-0"></div>
+    <!-- <div class="divider my-0"></div> -->
     <HorizontalCard
     title="Realtime Face Detection/Recognition"
     img="/FaceRecognizer.gif"
@@ -57,7 +68,7 @@ const last_posts = posts.slice(0, 3);
     url="https://github.com/jgracie52/Real-Time-Face-Recognition-and-Edge-Detection"
     badge="Computer Vision"
   />
-    <div class="divider my-0"></div>
+    <!-- <div class="divider my-0"></div> -->
     <HorizontalCard
     title="New Flame"
     img="/NewFlame.png"
@@ -65,12 +76,14 @@ const last_posts = posts.slice(0, 3);
     url="https://github.com/jgracie52/NextFire"
     badge="Web App"
   />
+  </div>
 
-    <div class="section-header-wrapper mt-10">
+    <!-- <div class="section-header-wrapper mt-10">
       <div class="text-3xl font-bold mb-2 section-header">blogs</div>
       <a class="projects_link" href="/blog/1">View all ~~&gt;</a>
     </div>
 
+    <div class="projects-grid">
     {
       last_posts.map((post) => (
         <HorizontalCard
@@ -82,8 +95,8 @@ const last_posts = posts.slice(0, 3);
           target="_self"
           badge={post.frontmatter.badge}
         />
-        <div class="divider my-0"></div>
       ))
     }
+    </div> -->
 
 </BaseLayout>
