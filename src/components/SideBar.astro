@@ -18,8 +18,8 @@ const currentPath = pathname.slice(1); // remove the first "/"
     <ul class="menu space-y-1 flex flex-col p-0 px-4">
       <!-- Sidebar content here -->
       <li><a class={currentPath === "" ? "header_link header_link_active" : "header_link"} href="/">home</a></li>
-      <li><a class={currentPath === "projects" ? "header_link header_link_active" : "header_link"} href="/projects">projects</a></li>
-      <li><a class={currentPath.includes("blog") ? "header_link header_link_active" : "header_link"} href="/blog/1">blog</a></li>
+      <li><a class={currentPath.includes("project") ? "header_link header_link_active" : "header_link"} href="/project-files">projects</a></li>
+      <!-- <li><a class={currentPath.includes("blog") ? "header_link header_link_active" : "header_link"} href="/blog/1">blog</a></li> -->
       <li><a class={currentPath === "cv" ? "header_link header_link_active" : "header_link"} href="/cv">cv</a></li>
       <li><a class="header_link" href="mailto:joshua.p.gracie@gmail.com">contact</a></li>
     </ul>

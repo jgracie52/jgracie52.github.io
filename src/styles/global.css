@@ -79,7 +79,7 @@ position:absolute;
   background-color: rgba(196, 112, 219, 0.178);
 }
 
-.projects-grid{
+.simple-grid{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   grid-gap: 15px;
@@ -137,6 +137,14 @@ pre {
   background-color: transparent;
   font-weight: 600;
   color: white;
+}
+
+.header_link:active{
+  background: none;
+}
+
+.header_link:focus{
+  background-color: none !important;
 }
 
 .header_link_active{
@@ -270,7 +278,6 @@ pre {
 }
 
 .section-header{
-
 }
 
 .section-header::before{
@@ -281,12 +288,12 @@ pre {
 
 .section-header::after{
   content: "";
-  display: block;
+  display: inline-block;
   width: 10vw;
   height: 1px;
   background-color: hsl(287 60% 65%);;
-  position: absolute;
-  transform: translate(100%, -50%);
+  /* position: absolute; */
+  transform: translate(50%, -50%);
   left: 1vw;
   top: 50%;
 }

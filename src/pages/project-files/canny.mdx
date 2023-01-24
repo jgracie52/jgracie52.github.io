@@ -1,0 +1,39 @@
+---
+layout: "../../layouts/ProjectLayout.astro"
+title: "Canny Edge Detector"
+description: "Created a custom Canny Edge Detector that, given an input image, a value for sigma, and values for high and low thresholds, outputs the edges of the image."
+pubDate: "October 21 2021"
+heroImage: "/EdgeDetector.jpg"
+gitHubLink: "https://github.com/jgracie52/PersonalProjects/tree/main/Canny%20Edge%20Detector"
+tags: [ "computer vision", "machine learning" ]
+---
+
+Implementation of the Canny Edge Detector in python using OpenCV
+
+Given and input image, a value sigma, and values for high and low thresholds, outputs edges of the image using Canny Edge Detector algorithm. Convolutions are done using
+naive for loops but could be improved using Python inline loops.
+
+## Canny Edge Detection Steps
+
+1. Generate Gaussian Mask: generate a gaussian mask using an input sigma.
+2. Generate Gaussian Derivative: generate a 1D gaussian derivative from the original gaussian mask.
+3. Convolve: convolve the image in both directions with the gaussian mask.
+4. Convolve Prime: convolve the x and y outputs from Convolve step with the gaussian derivative mask.
+5. Compute Magnitude: computes the magnitude and phase (theta) of an image using the x and y derivatives.
+6. Non-max suppression: suppresses non-maximal values given input phase (theta) and magnitude of an image.
+7. Hysteresis Thresholding: compute threshold and hysteresis given input non-maximum suppression image and lower and upper threshold ratios.
+
+## Setup
+
+1. Add the image you want to generate edges for to the 'Canny Edge Detector/' folder
+2. Open the ***run_canny_detector.py*** file and update the *im_name* parameter
+3. Update all other parameters as described below
+4. Run the algorithm using ***run_canny_detector.py***
+
+Output files will be *im_name_****step*** where step is the output of each step of the detector as described above.
+
+## Parameters
+
+* **sigma** = 1 # Sigma between 0.59 and 1 seems to work best
+* **lower_th_ratio** = 0.3 # 0.3 works relatively well here
+* **upper_th_ratio** = 0.4 # 0.4 works relatively well here
