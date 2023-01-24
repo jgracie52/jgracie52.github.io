@@ -341,6 +341,17 @@ pre {
   align-items: flex-start;
 }
 
+.cert{
+  width:200px;
+}
+
+.cert-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
+  grid-gap: 15px;
+  justify-content: center;
+}
+
 .card-overlay{
   position: absolute;
   width: 100%;
