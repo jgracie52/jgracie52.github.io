@@ -1,0 +1,94 @@
+---
+layout: "../../layouts/DemoLayout.astro"
+title: "Genetic Travelling Salesman"
+description: "A solution to the Travelling Salesman Problem using a genetic algorithm."
+pubDate: "April 12 2023"
+heroImage: "/TSP.png"
+tags: [ "genetic algorithm", "live demo" ]
+badge: "Demo"
+---
+
+import Traveller from "../../components/live/Traveller.svelte";
+import '../../styles/traveller.css';
+
+<Traveller client:visible/>
+
+## The Travelling Salesman Problem
+
+The Travelling Salesman Problem is a classic problem in computer science. It is a problem where you have a list of cities and you need to find the shortest route that visits each city exactly once and returns to the starting city.
+
+## The Genetic Algorithm
+
+The genetic algorithm is a method of solving problems that are difficult to solve using traditional methods. It is based on the process of natural selection. The algorithm starts with a population of random solutions. Each solution is evaluated and the best solutions are selected to be parents for the next generation. The next generation is created by combining the parents in various ways to create new solutions. This process is repeated until a solution is found that meets the criteria.
+
+## The Demo
+
+The demo uses a genetic algorithm to solve the Travelling Salesman Problem. The demo starts with a population of random solutions. Each solution is a route that visits each city exactly once and returns to the starting city. The best solutions (those with the lowest mileage) are selected to be parents for the next generation using tournament selection. The next generation is created by combining the parents using partially mapped crossover as well as swap mutation to create new solutions. This process is repeated until a solution is found that meets the criteria.
+
+## The Parameters
+
+The demo has a number of parameters that can be adjusted to change the behaviour of the algorithm including:
+
+- `Speed` - The speed at which the algorithm runs. The higher the speed the faster the algorithm will run. The speed can be adjusted from 1 to 100 milliseconds per generation.
+- `Number of Generations` - The number of generations that will be created before the algorithm stops.
+- `Mutation Rate` - The probability that a child will be mutated. The mutation rate can be adjusted from 0 to 100%.
+- `Crossover Rate` - The probability that a child will be created using crossover. The crossover rate can be adjusted from 0 to 100%.
+- `Species Size` - The number of species that the population will be divided into. The species size can be adjusted from 1 to 10. The species size is used to calculate the number of solutions that will be selected for the tournament within each species.
+- `Tournament Size` - The number of solutions that will be selected for the tournament. The tournament size can be adjusted from 1 to 10.
+- `Population Size` - The number of solutions in the population.
+
+
+## The Code
+
+The code for the demo is available on [GitHub]().
+
+## Experiments
+
+The demo can be used to experiment with the parameters of the genetic algorithm. The following experiments were be performed using a random seed of `1234`:
+
+- What happens if the mutation rate is set to 0%?
+    * When the mutation rate is set to 0%, no mutation occurs. This results in the population becoming stuck in a local optimum since the population is not able to explore new solutions and instead converges on a single solution that is not necessarily the best solution.
+- What happens if the crossover rate is set to 0%?
+    * When the crossover rate is set to 0%, the best parent is chosen to represent the child (essentially an extreme form of elitism). This results in genes not being shared between parents and the population becoming stuck in a local optimum.
+- What happens if the species size is set to 1?
+    * When the species size is set to 1, the population is divided into a single species. This means that the entire population is used to select the solutions for the tournament. This results in the population becoming stuck in a local optimum as the best solutions are selected for the tournament every time and other solutions are never selected.
+- What happens if the tournament size is set to 1?
+    * When the tournament size is set to 1, a random solution is selected for the tournament. This makes it so that the best solution is rarely selected for the tournament, resulting in the population struggling to converge on a solution.
+- What is the best solution that can be found in 1000 generations?
+    * So far, the best solution found in 1000 generations is `Mileage: 33,818 mi`. This solution was found in under 500 generations using the following parameters:
+        - `Number of Generations: 1000`
+        - `Mutation Rate: 4%`
+        - `Crossover Rate: 100%`
+        - `Species Size: 10`
+        - `Tournament Size: 12`
+        - `Population Size: 1000`
+
+## Future Improvements
+
+There are a number of improvements that could be made to the demo including:
+
+- Introduce mass extinction to prevent the population from becoming stuck in a local optimum.
+- Introduce new crossover and mutation operators.
+- Introduce new selection operators such as:
+    - [Roulette Wheel Selection](https://en.wikipedia.org/wiki/Fitness_proportionate_selection)
+    - [Rank Selection](https://en.wikipedia.org/wiki/Rank_selection)
+    - [Stochastic Universal Sampling](https://en.wikipedia.org/wiki/Stochastic_universal_sampling)
+    - [Linear Ranking](https://en.wikipedia.org/wiki/Linear_ranking)
+    - [Boltzmann Selection](https://en.wikipedia.org/wiki/Boltzmann_selection)
+    - [Sigma Scaling](https://en.wikipedia.org/wiki/Sigma_scaling)
+    - [Exponential Ranking](https://en.wikipedia.org/wiki/Exponential_ranking)
+    - [Differential Evolution](https://en.wikipedia.org/wiki/Differential_evolution)
+    - [Elitism](https://en.wikipedia.org/wiki/Elitism_(genetic_algorithm))
+- Add a UI to allow the user to create their own cities.
+- Add a UI to show the locations of the cities on a map.
+- Add a UI to show the historical statistics of the population.
+
+## References
+
+- [1] [Genetic Algorithms](https://en.wikipedia.org/wiki/Genetic_algorithm) - Wikipedia
+- [2] [Genetic Algorithms](https://www.tutorialspoint.com/genetic_algorithms/index.htm) - Tutorialspoint
+- [3] [Genetic Algorithms](https://www.geeksforgeeks.org/genetic-algorithms/) - GeeksforGeeks
+- [4] [Travelling Salesman Problem](https://en.wikipedia.org/wiki/Travelling_salesman_problem) - Wikipedia
+- [6] [Tournament Selection](https://en.wikipedia.org/wiki/Tournament_selection) - Wikipedia
+- [7] [Partially Mapped Crossover](https://en.wikipedia.org/wiki/Partially_mapped_crossover) - Wikipedia
+- [8] [Swap Mutation](https://en.wikipedia.org/wiki/Mutation_(genetic_algorithm)#Swap_mutation) - Wikipedia

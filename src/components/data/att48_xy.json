@@ -1,0 +1,587 @@
+{
+    "att48": {
+        "description": "The 48 contiguous United States and their capitals with latitude and longitude as well as the coordinates of the cities using a cylindrical projection.", 
+        "latlng": {
+            "Montgomery, Alabama": {
+                "lat": 32.361538,
+                "lng": -86.279118
+            },
+            "Phoenix, Arizona": {
+                "lat": 33.448457,
+                "lng": -112.073844
+            },
+            "Little Rock, Arkansas": {
+                "lat": 34.736009,
+                "lng": -92.331122
+            },
+            "Sacramento, California": {
+                "lat": 38.555605,
+                "lng": -121.468926
+            },
+            "Denver, Colorado": {
+                "lat": 39.7391667,
+                "lng": -104.984167
+            },
+            "Hartford, Connecticut": {
+                "lat": 41.767,
+                "lng": -72.677
+            },
+            "Dover, Delaware": {
+                "lat": 39.161921,
+                "lng": -75.526755
+            },
+            "Tallahassee, Florida": {
+                "lat": 30.4518,
+                "lng": -84.27277
+            },
+            "Atlanta, Georgia": {
+                "lat": 33.76,
+                "lng": -84.39
+            },
+            "Boise, Idaho": {
+                "lat": 43.613739,
+                "lng": -116.237651
+            },
+            "Springfield, Illinois": {
+                "lat": 39.78325,
+                "lng": -89.650373
+            },
+            "Indianapolis, Indiana": {
+                "lat": 39.790942,
+                "lng": -86.147685
+            },
+            "Des Moines, Iowa": {
+                "lat": 41.590939,
+                "lng": -93.620866
+            },
+            "Topeka, Kansas": {
+                "lat": 39.04,
+                "lng": -95.69
+            },
+            "Frankfort, Kentucky": {
+                "lat": 38.197274,
+                "lng": -84.86311
+            },
+            "Baton Rouge, Louisiana": {
+                "lat": 30.45809,
+                "lng": -91.140229
+            },
+            "Augusta, Maine": {
+                "lat": 44.323535,
+                "lng": -69.765261
+            },
+            "Annapolis, Maryland": {
+                "lat": 38.972945,
+                "lng": -76.501157
+            },
+            "Boston, Massachusetts": {
+                "lat": 42.2352,
+                "lng": -71.0275
+            },
+            "Lansing, Michigan": {
+                "lat": 42.7335,
+                "lng": -84.5467
+            },
+            "Saint Paul, Minnesota": {
+                "lat": 44.95,
+                "lng": -93.094
+            },
+            "Jackson, Mississippi": {
+                "lat": 32.320,
+                "lng": -90.207
+            },
+            "Jefferson City, Missouri": {
+                "lat": 38.572954,
+                "lng": -92.189283
+            },
+            "Helena, Montana": {
+                "lat": 46.595805,
+                "lng": -112.027031
+            },
+            "Lincoln, Nebraska": {
+                "lat": 40.809868,
+                "lng": -96.675345
+            },
+            "Carson City, Nevada": {
+                "lat": 39.160949,
+                "lng": -119.753877
+            },
+            "Concord, New Hampshire": {
+                "lat": 43.220093,
+                "lng": -71.549127
+            },
+            "Trenton, New Jersey": {
+                "lat": 40.221741,
+                "lng": -74.756138
+            },
+            "Santa Fe, New Mexico": {
+                "lat": 35.667231,
+                "lng": -105.964575
+            },
+            "Albany, New York": {
+                "lat": 42.659829,
+                "lng": -73.781339
+            },
+            "Raleigh, North Carolina": {
+                "lat": 35.771,
+                "lng": -78.638
+            },
+            "Bismarck, North Dakota": {
+                "lat": 46.808326,
+                "lng": -100.783739
+            },
+            "Columbus, Ohio": {
+                "lat": 39.962245,
+                "lng": -83.000647
+            },
+            "Oklahoma City, Oklahoma": {
+                "lat": 35.482309,
+                "lng": -97.534994
+            },
+            "Salem, Oregon": {
+                "lat": 44.931109,
+                "lng": -123.029159
+            },
+            "Harrisburg, Pennsylvania": {
+                "lat": 40.269789,
+                "lng": -76.875613
+            },
+            "Providence, Rhode Island": {
+                "lat": 41.82355,
+                "lng": -71.422132
+            },
+            "Columbia, South Carolina": {
+                "lat": 34.0,
+                "lng": -81.035
+            },
+            "Pierre, South Dakota": {
+                "lat": 44.367966,
+                "lng": -100.336378
+            },
+            "Nashville, Tennessee": {
+                "lat": 36.165,
+                "lng": -86.784
+            },
+            "Austin, Texas": {
+                "lat": 30.266667,
+                "lng": -97.75
+            },
+            "Salt Lake City, Utah": {
+                "lat": 40.7547,
+                "lng": -111.892622
+            },
+            "Montpelier, Vermont": {
+                "lat": 44.26639,
+                "lng": -72.57194
+            },
+            "Richmond, Virginia": {
+                "lat": 37.54,
+                "lng": -77.46
+            },
+            "Olympia, Washington": {
+                "lat": 47.042418,
+                "lng": -122.893077
+            },
+            "Charleston, West Virginia": {
+                "lat": 38.349497,
+                "lng": -81.633294
+            },
+            "Madison, Wisconsin": {
+                "lat": 43.074722,
+                "lng": -89.384444
+            },
+            "Cheyenne, Wyoming": {
+                "lat": 41.145548,
+                "lng": -104.802042
+            }
+        },
+        "coordinates": {
+            "Montgomery, Alabama": {
+                "x": -5961.513053,
+                "y": 2236.041996
+              },
+              "Phoenix, Arizona": {
+                "x": -7743.816805,
+                "y": 2311.143387
+              },
+              "Little Rock, Arkansas": {
+                "x": -6379.680295,
+                "y": 2400.107649
+              },
+              "Sacramento, California": {
+                "x": -8392.976246,
+                "y": 2664.025176
+              },
+              "Denver, Colorado": {
+                "x": -7253.950857,
+                "y": 2745.804159
+              },
+              "Hartford, Connecticut": {
+                "x": -5021.665662,
+                "y": 2885.918649
+              },
+              "Dover, Delaware": {
+                "x": -5218.571379,
+                "y": 2705.918983
+              },
+              "Tallahassee, Florida": {
+                "x": -5822.883103,
+                "y": 2104.087378
+              },
+              "Atlanta, Georgia": {
+                "x": -5830.983188,
+                "y": 2332.669658
+              },
+              "Boise, Idaho": {
+                "x": -8031.51782,
+                "y": 3013.520309
+              },
+              "Springfield, Illinois": {
+                "x": -6194.45216,
+                "y": 2748.850124
+              },
+              "Indianapolis, Indiana": {
+                "x": -5952.431603,
+                "y": 2749.381607
+              },
+              "Des Moines, Iowa": {
+                "x": -6468.796015,
+                "y": 2873.753598
+              },
+              "Topeka, Kansas": {
+                "x": -6611.764205,
+                "y": 2697.49477
+              },
+              "Frankfort, Kentucky": {
+                "x": -5863.673038,
+                "y": 2639.266057
+              },
+              "Baton Rouge, Louisiana": {
+                "x": -6297.394751,
+                "y": 2104.52199
+              },
+              "Augusta, Maine": {
+                "x": -4820.477118,
+                "y": 3062.564136
+              },
+              "Annapolis, Maryland": {
+                "x": -5285.898333,
+                "y": 2692.861561
+              },
+              "Boston, Massachusetts": {
+                "x": -4907.692362,
+                "y": 2918.26924
+              },
+              "Lansing, Michigan": {
+                "x": -5841.810479,
+                "y": 2952.69961
+              },
+              "Saint Paul, Minnesota": {
+                "x": -6432.391858,
+                "y": 3105.850152
+              },
+              "Jackson, Mississippi": {
+                "x": -6232.912673,
+                "y": 2233.1719
+              },
+              "Jefferson City, Missouri": {
+                "x": -6369.879835,
+                "y": 2665.223916
+              },
+              "Helena, Montana": {
+                "x": -7740.58223,
+                "y": 3219.568143
+              },
+              "Lincoln, Nebraska": {
+                "x": -6679.847274,
+                "y": 2819.784977
+              },
+              "Carson City, Nevada": {
+                "x": -8274.473795,
+                "y": 2705.851822
+              },
+              "Concord, New Hampshire": {
+                "x": -4943.734526,
+                "y": 2986.321077
+              },
+              "Trenton, New Jersey": {
+                "x": -5165.325085,
+                "y": 2779.147951
+              },
+              "Santa Fe, New Mexico": {
+                "x": -7321.6928,
+                "y": 2464.451053
+              },
+              "Albany, New York": {
+                "x": -5097.970699,
+                "y": 2947.609263
+              },
+              "Raleigh, North Carolina": {
+                "x": -5433.544922,
+                "y": 2471.621041
+              },
+              "Bismarck, North Dakota": {
+                "x": -6963.392322,
+                "y": 3372.790406
+              },
+              "Columbus, Ohio": {
+                "x": -5734.984919,
+                "y": 2761.217902
+              },
+              "Oklahoma City, Oklahoma": {
+                "x": -6739.245293,
+                "y": 2451.673744
+              },
+              "Salem, Oregon": {
+                "x": -8500.781583,
+                "y": 3104.544866
+              },
+              "Harrisburg, Pennsylvania": {
+                "x": -5311.77162,
+                "y": 2782.467859
+              },
+              "Providence, Rhode Island": {
+                "x": -4934.959722,
+                "y": 2889.826009
+              },
+              "Columbia, South Carolina": {
+                "x": -5599.167231,
+                "y": 2349.252618
+              },
+              "Pierre, South Dakota": {
+                "x": -6932.808784,
+                "y": 3065.634125
+              },
+              "Nashville, Tennessee": {
+                "x": -5996.398211,
+                "y": 2498.844733
+              },
+              "Austin, Texas": {
+                "x": -6754.101276,
+                "y": 2091.29549
+              },
+              "Salt Lake City, Utah": {
+                "x": -7731.295151,
+                "y": 2815.973108
+              },
+              "Montpelier, Vermont": {
+                "x": -5014.406471,
+                "y": 3058.615664
+              },
+              "Richmond, Virginia": {
+                "x": -5352.150228,
+                "y": 2593.851273
+              },
+              "Olympia, Washington": {
+                "x": -8491.378907,
+                "y": 3250.427165
+              },
+              "Charleston, West Virginia": {
+                "x": -5640.506753,
+                "y": 2649.784006
+              },
+              "Madison, Wisconsin": {
+                "x": -6176.077619,
+                "y": 2976.276571
+              },
+              "Cheyenne, Wyoming": {
+                "x": -7241.366809,
+                "y": 2842.97901
+            }
+        },
+        "tsplib": {
+          "1": {
+            "x": 6734,
+            "y": 1453
+          },
+          "2": {
+            "x": 2233,
+            "y": 10
+          },
+          "3": {
+            "x": 5530,
+            "y": 1424
+          },
+          "4": {
+            "x": 401,
+            "y": 841
+          },
+          "5": {
+            "x": 3082,
+            "y": 1644
+          },
+          "6": {
+            "x": 7608,
+            "y": 4458
+          },
+          "7": {
+            "x": 7573,
+            "y": 3716
+          },
+          "8": {
+            "x": 7265,
+            "y": 1268
+          },
+          "9": {
+            "x": 6898,
+            "y": 1885
+          },
+          "10": {
+            "x": 1112,
+            "y": 2049
+          },
+          "11": {
+            "x": 5468,
+            "y": 2606
+          },
+          "12": {
+            "x": 5989,
+            "y": 2873
+          },
+          "13": {
+            "x": 4706,
+            "y": 2674
+          },
+          "14": {
+            "x": 4612,
+            "y": 2035
+          },
+          "15": {
+            "x": 6347,
+            "y": 2683
+          },
+          "16": {
+            "x": 6107,
+            "y": 669
+          },
+          "17": {
+            "x": 7611,
+            "y": 5184
+          },
+          "18": {
+            "x": 7462,
+            "y": 3590
+          },
+          "19": {
+            "x": 7732,
+            "y": 4723
+          },
+          "20": {
+            "x": 5900,
+            "y": 3561
+          },
+          "21": {
+            "x": 4483,
+            "y": 3369
+          },
+          "22": {
+            "x": 6101,
+            "y": 1110
+          },
+          "23": {
+            "x": 5199,
+            "y": 2182
+          },
+          "24": {
+            "x": 1633,
+            "y": 2809
+          },
+          "25": {
+            "x": 4307,
+            "y": 2322
+          },
+          "26": {
+            "x": 675,
+            "y": 1006
+          },
+          "27": {
+            "x": 7555,
+            "y": 4819
+          },
+          "28": {
+            "x": 7541,
+            "y": 3981
+          },
+          "29": {
+            "x": 3177,
+            "y": 756
+          },
+          "30": {
+            "x": 7352,
+            "y": 4506
+          },
+          "31": {
+            "x": 7545,
+            "y": 2801
+          },
+          "32": {
+            "x": 3245,
+            "y": 3305
+          },
+          "33": {
+            "x": 6426,
+            "y": 3173
+          },
+          "34": {
+            "x": 4608,
+            "y": 1198
+          },
+          "35": {
+            "x": 23,
+            "y": 2216
+          },
+          "36": {
+            "x": 7248,
+            "y": 3779
+          },
+          "37": {
+            "x": 7762,
+            "y": 4595
+          },
+          "38": {
+            "x": 7392,
+            "y": 2244
+          },
+          "39": {
+            "x": 3484,
+            "y": 2829
+          },
+          "40": {
+            "x": 6271,
+            "y": 2135
+          },
+          "41": {
+            "x": 4985,
+            "y": 140
+          },
+          "42": {
+            "x": 1916,
+            "y": 1569
+          },
+          "43": {
+            "x": 7280,
+            "y": 4899
+          },
+          "44": {
+            "x": 7509,
+            "y": 3239
+          },
+          "45": {
+            "x": 10,
+            "y": 2676
+          },
+          "46": {
+            "x": 6807,
+            "y": 2993
+          },
+          "47": {
+            "x": 5185,
+            "y": 3258
+          },
+          "48": {
+            "x": 3023,
+            "y": 1942
+          }
+        }
+    }
+}

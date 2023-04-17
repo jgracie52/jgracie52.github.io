@@ -13,7 +13,7 @@ const last_posts = posts.slice(0, 3);
   <div class="simple-grid space-x-1">
     <div class="pb-12 mt-5">
       <div class="text-xl py-1">Hey there 👋</div>
-      <div class="text-5xl font-bold inline">I'm <div class="inline text-transparent bg-clip-text bg-gradient-to-r main-gradient">Josh Gracie</div></div>
+      <div class="text-5xl font-bold inline">I'm <div class="inline text-transparent bg-clip-text bg-gradient-to-r main-gradient word">J̷͙̓õ̴̫s̷̨̎h̷̦͝ ̸͖̃Ģ̴͂r̴̬̐a̸̜͘c̸̛͈i̶̯̇e̵͑ͅ</div></div>
       <div class="text-3xl py-3 font-bold">Cybersecurity Engineer and Computer Scientist</div>
       <div class="py-2">
         <text class="text-lg">
@@ -46,6 +46,53 @@ const last_posts = posts.slice(0, 3);
     );
 
     // Loop movement
+
+    var words = ['4A-6F-73-68', 'Josh Gracie'],
+    part,
+    i = 0,
+    offset = 0,
+    len = words.length,
+    forwards = true,
+    skip_count = 0,
+    skip_delay = 100,
+    speed = 50;
+  var wordflick = function () {
+    setInterval(function () {
+      if (forwards) {
+        if (offset >= words[i].length) {
+          ++skip_count;
+          if (skip_count == skip_delay) {
+            forwards = false;
+            skip_count = 0;
+          }
+        }
+      }
+      else {
+        if (offset == 0) {
+          forwards = true;
+          i++;
+          offset = 0;
+          if (i >= len) {
+            i = 0;
+          }
+        }
+      }
+      part = words[i].substr(0, offset);
+      if (skip_count == 0) {
+        if (forwards) {
+          offset++;
+        }
+        else {
+          offset--;
+        }
+      }
+      document.querySelector('.word').innerHTML = part;
+    },speed);
+    };
+    (function() {
+      wordflick();
+
+    })();
   </script>
 
     <div class="section-header-wrapper mt-10">

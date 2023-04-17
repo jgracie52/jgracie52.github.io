@@ -8,12 +8,15 @@ gitHubLink: "https://github.com/jgracie52/PersonalProjects/tree/main/Canny%20Edg
 tags: [ "computer vision", "machine learning" ]
 ---
 
-Implementation of the Canny Edge Detector in python using OpenCV
+# Canny Edge Detector
 
-Given and input image, a value sigma, and values for high and low thresholds, outputs edges of the image using Canny Edge Detector algorithm. Convolutions are done using
-naive for loops but could be improved using Python inline loops.
+## Description
 
-## Canny Edge Detection Steps
+Created a custom Canny Edge Detector that, given an input image, a value for sigma, and values for high and low thresholds, outputs the edges of the image.
+
+## Algorithm
+
+The Canny Edge Detector is a multi-step algorithm that takes an input image and outputs the edges of the image. The algorithm is as follows:
 
 1. Generate Gaussian Mask: generate a gaussian mask using an input sigma.
 2. Generate Gaussian Derivative: generate a 1D gaussian derivative from the original gaussian mask.
@@ -34,6 +37,78 @@ Output files will be *im_name_****step*** where step is the output of each step 
 
 ## Parameters
 
-* **sigma** = 1 # Sigma between 0.59 and 1 seems to work best
-* **lower_th_ratio** = 0.3 # 0.3 works relatively well here
-* **upper_th_ratio** = 0.4 # 0.4 works relatively well here
+### im_name
+
+The name of the image you want to generate edges for. The image must be in the same folder as the ***run_canny_detector.py*** file.
+
+### sigma
+
+The sigma value for the gaussian mask. The higher the sigma, the more blurred the image will be.
+
+### low_thresh_ratio
+
+The ratio of the low threshold to the high threshold. The lower the ratio, the more edges will be detected.
+
+### high_thresh_ratio
+
+The ratio of the high threshold to the low threshold. The higher the ratio, the more edges will be detected.
+
+### show_steps
+
+A boolean value that determines whether or not to show the output of each step of the algorithm.
+
+### save_steps
+
+A boolean value that determines whether or not to save the output of each step of the algorithm.
+
+## Example
+
+### Parameters
+
+```python
+im_name = '42049.jpg'
+sigma = 1
+low_thresh_ratio = 0.1
+high_thresh_ratio = 0.5
+show_steps = True
+save_steps = True
+```
+
+## Results
+
+### Original Image
+
+![Original Image](/EdgeDetector/42049.jpg)
+
+### Convolved Image
+
+![Convolved Image](/EdgeDetector/42049_Ix.jpg)
+
+### Convolved Prime
+
+![Convolved Prime](/EdgeDetector/42049_Ixx.jpg)
+
+### Magnitude
+
+![Magnitude](/EdgeDetector/42049_mag.jpg)
+
+### Non-max Suppression
+
+![Non-max Suppression](/EdgeDetector/42049_nms.jpg)
+
+### Final Output
+
+![Final Output](/EdgeDetector/42049_edges.jpg)
+
+## Future Work
+
+* Add a GUI to allow for easier parameter tuning
+* Add a function to automatically tune parameters
+* Add a function to automatically detect edges in multiple images
+* Add a function to automatically detect edges in a video
+* Add a function to automatically detect edges in a live video feed
+
+## References
+
+* [Canny Edge Detector](https://en.wikipedia.org/wiki/Canny_edge_detector)
+* [Canny Edge Detector - OpenCV Python](https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_canny/py_canny.html)

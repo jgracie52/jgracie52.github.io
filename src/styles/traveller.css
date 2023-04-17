@@ -1,0 +1,17 @@
+.side-panel{
+    position:fixed !important; 
+    right:30px; 
+    top:50%; 
+    transform:translateY(-50%);
+}
+
+/* Small screens */
+@media screen and (max-width: 1600px) {
+    .side-panel{
+        position:relative !important;
+        transform: none;
+        right: inherit;
+        width: 100%;
+        margin: auto;
+    }
+}

@@ -8,24 +8,34 @@ gitHubLink: "https://github.com/jgracie52/Real-Time-Face-Recognition-and-Edge-De
 tags: [ "computer vision", "machine learning" ]
 ---
 
-In this project, I implemented a real time face detection and recognition system
-as well as a near real time canny edge detector
+# Realtime Face/Edge Detection
 
-### Face detection
-Face detection is done using a pretrained Haar cascade classifier provided by OpenCV and trained to 
-recognize frontal faces
+## Description
 
-### Face Recognition
-Face recognition is achieved using a Local Binary Patterns Histograms (LBPH) classifier using images
-capture from the system and cropped using the face detector
+Built a real-time face detection/recognition command line program using OpenCV. Also implemented a near real-time canny edge detector using the same system. 
+
+## Technologies Used
+
+* Python
+* OpenCV
+* Numpy
+* Pandas
+
+## Face Detection
+
+Face detection is done using the Haar Cascade Classifier. The classifier is trained on a dataset of faces and is able to detect faces in real time. The classifier is implemented in the `face_detection.py` file.
+
+## Face Recognition
+
+Face recognition is achieved using a Local Binary Patterns Histograms (LBPH) classifier using images captured from the system and cropped using the face detector. The classifier is implemented in the `face_recognition.py` file.
 
 ### Edge Detection
-Edge detection is done using the Canny Edge Detector algorithm and is implemented in near real time (1 frame per 1.5 seconds approximately)
+
+Edge detection is done using the Canny Edge Detector. The detector is implemented in the `edge_detection.py` file.
 
 ### How to Use
 To use the program, first open main.py and adjust settings as desired. From there, run main.py and read
 given options from the system:
-
 
 Options:
 
@@ -51,3 +61,17 @@ Select option 6 to quit
 * A user may already be in the database file with the same face. If so, remove them from db.csv and delete their dataset folder. Then run option 2
 * If there are no users in db.csv, or the trainer.yml file is missing, this will not work
 ---
+
+## Future Work
+
+* Add a GUI
+* Add a database to store user information
+* Add a way to remove users from the database
+* Add a way to update user information
+* Add a way to update user images
+
+## References
+
+* [OpenCV Documentation](https://docs.opencv.org/master/d7/d8b/tutorial_py_face_detection.html)
+* [OpenCV Face Recognition](https://docs.opencv.org/master/d7/d8b/tutorial_py_face_detection.html)
+* [OpenCV Canny Edge Detection](https://docs.opencv.org/master/da/d22/tutorial_py_canny.html)

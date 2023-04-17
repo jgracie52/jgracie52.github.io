@@ -22,6 +22,21 @@
   background:none;
 } */
 
+.word::after{
+  content: "";
+  width: 5px;
+  height: 2.5rem;
+  background: white;
+  display: inline-block;
+  animation: cursor-blink 1.5s steps(2) infinite;
+}
+
+@keyframes cursor-blink {
+  0% {
+    opacity: 0;
+  }
+}
+
 .scroll-snap-container{
   scroll-snap-type: y mandatory;
   height: calc(100vh - 4rem - 88px);

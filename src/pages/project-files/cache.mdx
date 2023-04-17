@@ -8,16 +8,56 @@ gitHubLink: "https://github.com/jgracie52/PersonalProjects/tree/main/Cache%20Sim
 tags: [ "computer architecture" ]
 ---
 
-This is my Cache Simulator project from my Computer Architecture class in Spring 2019.
+## Description
 
-The goal was to implement a simple cache simulator in Java using an LRU and a FIFO replacement policy.
+This project was built to simulate the operations of a simple CPU cache. The cache simulator was built using Java and was designed to be run from the command line. The simulator takes in a trace file that contains the commands for the cache simulator. The simulator will then output the number of hits, misses, and evictions that occurred during the simulation. The simulator also outputs the final state of the cache after the simulation is complete.
 
-## Running the simulator
+## How it works
 
+The cache simulator is built using a 2D array to represent the cache. The first dimension of the array represents the set number and the second dimension represents the block number. The cache is initialized with all of the blocks set to 0. 
+
+The cache simulator will then read in the trace file and execute the commands. The commands are either a load or a store. The simulator will then check to see if the block is in the cache. If the block is in the cache, the simulator will increment the hit counter. If the block is not in the cache, the simulator will increment the miss counter. If the cache is full, the simulator will evict a block from the cache and increment the eviction counter. The simulator will then add the block to the cache. 
+
+The simulator will continue to execute the commands until the end of the trace file is reached. The simulator will then output the number of hits, misses, and evictions that occurred during the simulation.
+
+## How to run
+
+### Compiling the simulator
+
+javac SIM.java
+
+### Running the simulator
+
+```
 java -jar SIM.jar \<CACHE_SIZE\> \<ASSOC\> \<REPLACEMENT\> \<WB\> \<TRACE_FILE\>
+```
   
 1. CACHE_SIZE = Size of the cache, such as 8 for 8KB or 128 for 128KB.
 2. ASSOC = Associativity of the cache, such as 4.
 3. REPLACEMENT = Either Least Recently Used (LRU) or First in First Out (FIFO)
 4. WB = Either Write-Back or Write-Through
 5. TRACE_FILE = The file with the commands for the cache simulator
+
+## Example
+
+### Input
+
+```
+java -jar SIM.jar 8 4 LRU WB trace1.txt
+```
+
+### Output
+
+```
+Hits: 4
+Misses: 6
+Evictions: 0
+```
+
+## Conclusion
+
+This project was a great way to learn about how caches work. I learned how to implement a cache using a 2D array and how to implement the different cache replacement policies. I also learned how to read in a file and parse the commands from the file. This project was a great way to learn about computer architecture and how caches work.
+
+## Future Work
+
+I would like to add more cache replacement policies to the simulator. I would also like to add a way to read in a file that contains the commands for the cache simulator. This would allow the simulator to be used with different trace files.

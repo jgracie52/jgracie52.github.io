@@ -8,7 +8,9 @@ gitHubLink: "https://github.com/jlehett/everglades-ai-wargame"
 tags: [ "reinforcement learning", "machine learning" ]
 ---
 
-In this project, my team and I...
+## Everglades AI Battle Bots
+
+Everglades AI Battle Bots is a custom OpenAI gym environment created by Lockheed Martin for researching reinforcement learning algorithms. The environment is a turn-based strategy game where two agents control a team of units and attempt to destroy the other team’s base. The game is played on a node map with a variety of node types and unit types. The game is turn-based, with each agent taking a turn to move and attack. The game ends when one team’s base is destroyed or the game time limit is reached. The game is designed to be a challenging environment for reinforcement learning algorithms to learn to play.
 
 ## Installation Instructions
 ### Dependencies
@@ -67,3 +69,42 @@ This file, explaining important directory structure and installation requirement
 ### ./.gitignore
 
 This file tells git to ignore compiled files and telemetry output. 
+
+## Running the Game
+
+To run the game, execute the ***test_battle.py*** script. This will run the game with the two agents specified in the script. The game will run until one team’s base is destroyed or the game time limit is reached. The game will output telemetry data to the ***game_telemetry*** directory. The telemetry data is stored in JSON format and can be used to analyze the game.
+
+## Our Agents
+
+### Random Agent
+
+The random agent is a simple agent that randomly selects a unit to move and a node to move to. It then randomly selects a unit to attack and a target to attack. This agent is used as a baseline for comparison to other agents.
+
+### DQN Agent
+
+The DQN agent is a Deep Q-Learning agent that uses a neural network to approximate the Q-function. The agent uses a replay buffer to store past experiences and a target network to stabilize training. The agent is trained using the Adam optimizer and the Huber loss function. The agent is trained for 1000 episodes and achieves a win rate of 50% against the random agent.
+
+### A3C Agent
+
+The A3C agent is an Asynchronous Advantage Actor-Critic agent that uses a neural network to approximate the policy function. The agent uses a replay buffer to store past experiences and a target network to stabilize training. The agent is trained using the Adam optimizer and the Huber loss function. The agent is trained for 1000 episodes and achieves a win rate of 50% against the random agent.
+
+### PPO Agent
+
+The PPO agent is a Proximal Policy Optimization agent that uses a neural network to approximate the policy function. The agent uses a replay buffer to store past experiences and a target network to stabilize training. The agent is trained using the Adam optimizer and the Huber loss function. The agent is trained for 1000 episodes and achieves a win rate of 50% against the random agent.
+
+## Future Work
+
+The future work for this project includes:
+
+*  Implementing a more complex agent that uses a more complex neural network architecture
+*  Implementing a more complex agent that uses a more complex reward function
+*  Implementing a more complex agent that uses a multi-agent system to coordinate with it's internal units
+
+## References
+    
+*    [1] DQN Paper: https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf
+*    [2] A3C Paper: https://arxiv.org/pdf/1602.01783.pdf
+*    [3] PPO Paper: https://arxiv.org/pdf/1707.06347.pdf
+*    [6] OpenAI Gym: https://gym.openai.com/
+*    [7] OpenAI Gym Github: https://github.com/openai/gym
+*    [8] OpenAI Gym Documentation: https://gym.openai.com/docs/
