@@ -1,5 +1,6 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
+import RightSidebar from "../components/RightSidebar/RightSidebar.astro";
 import BaseLayout from "./BaseLayout.astro";
 
 export interface Props {
@@ -13,6 +14,8 @@ export interface Props {
     tags?: string [];
   };
 }
+
+const { headings, ...data } = Astro.props;
 
 const {
   content: { title, description, pubDate, updatedDate, heroImage, tags, gitHubLink }
@@ -51,5 +54,8 @@ const {
       <div class="divider my-2"></div>
         <slot />
     </article>
+    <aside id="grid-right" class="grid-sidebar" title="Table of Contents">
+      <RightSidebar headings={headings} githubEditUrl={gitHubLink} />
+    </aside>
   </main>
 </BaseLayout>
