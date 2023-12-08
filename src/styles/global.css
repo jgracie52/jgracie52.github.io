@@ -176,7 +176,7 @@ pre {
 }
 
 .header_link::before{
-  content: "#";
+  content: "\";
   color: hsl(287 60% 65%);
   font-weight: normal;
 }
