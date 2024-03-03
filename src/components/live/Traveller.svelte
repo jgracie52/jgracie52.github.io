@@ -154,7 +154,7 @@
 </script>
 
 <div class="flex flex-column w-full h-full">
-    <div id="wrapper" class="w-full h-full">
+    <div id="wrapper" class="w-full h-full max-h-[100vh] overflow-y-auto">
         <!---Statistics container with tailwind-->
         <div class="px-4 py-16 mx-auto w-full md:px-24 lg:px-8 lg:py-4">
             <div class="grid row-gap-2 gap-8 sm:grid-cols-3">
@@ -179,7 +179,7 @@
             </div>
         </div>
 
-        <div id="map-wrapper" class="w-full h-full">
+        <div id="map-wrapper" class="w-full">
             <canvas id="ctx" height="400" width="600" style="margin: auto;"></canvas>
         </div>
     </div>

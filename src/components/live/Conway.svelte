@@ -160,7 +160,7 @@
 
 <svelte:window on:mousedown={beginDrag} on:mouseup={endDrag} bind:outerWidth={innerWidth}/>
 <div class="flex flex-column w-full h-full">
-<div class="w-full h-full">
+<div class="w-full h-full max-h-[100vh] overflow-y-scroll">
 <div class="conway-grid h-full w-full" id="conway-grid">
     <table class='conway-grid-inner' id='conway-grid-inner' style='height:{height}px; width:{width}px'>
     {#each Array(cellPer) as _ , i}

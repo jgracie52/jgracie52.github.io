@@ -17,8 +17,20 @@ import { SITE_TITLE, SITE_IMAGE, SITE_DESCRIPTION } from "../config";
       <input id="my-drawer" type="checkbox" class="drawer-toggle" />
       <div class="drawer-content flex flex-col bg-base-100">
         <div class="md:flex md:justify-center h-full">
-          <main class="w-full h-full overflow-hidden">
+          <main class="w-full h-full overflow-hidden lg:block hidden">
             <slot class="w-full h-full"/>
+          </main>
+          <main class="w-full h-full overflow-hidden lg:hidden block">
+            <section class="flex items-center h-full dark:text-gray-100">
+              <div class="container flex flex-col items-center justify-center px-5 mx-auto my-8">
+                <div class="max-w-md text-center">
+                  <image class="secret-img" src="/SecretPage.png" style="margin-bottom: 20px !important;"></image>
+                  <p class="text-2xl font-semibold md:text-3xl">Sorry, this demo is best viewed on a larger screen.</p>
+                  <p class="mt-4 mb-8 dark:text-gray-400">You might wanna head back now.</p>
+                  <a rel="noopener noreferrer" href="/" class="animated-fill button_coder">Back to homepage</a>
+                </div>
+              </div>
+            </section>
           </main>
         </div>
       </div>

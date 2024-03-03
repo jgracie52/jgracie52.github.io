@@ -3,9 +3,9 @@ const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1); // remove the first "/"
 ---
 
-<div class="lg:hidden-important drawer-side bg-base-200">
-  <label for="my-drawer" class="drawer-overlay bg-base-200"></label>
-  <div class="menu p-4 overflow-y-auto w-[19rem] bg-base-200 text-base-content">
+<div class="drawer-side z-30">
+  <label for="main-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
+  <div class="menu z-30 p-4 overflow-y-auto w-[19rem] min-h-full bg-base-200 text-base-content">
     <div class="w-fit">
       <a href="/">
         <div class="avatar transition ease-in-out w-1/2 hover:scale-[102%] block m-auto mt-3 mb-6">
@@ -19,6 +19,7 @@ const currentPath = pathname.slice(1); // remove the first "/"
       <!-- Sidebar content here -->
       <li><a class={currentPath === "" ? "header_link header_link_active" : "header_link"} href="/">home</a></li>
       <li><a class={currentPath.includes("project") ? "header_link header_link_active" : "header_link"} href="/project-files/1">projects</a></li>
+      <!-- <li><a class={currentPath.includes("demos") ? "header_link header_link_active" : "header_link"} href="/demos/1">demos</a></li> -->
       <!-- <li><a class={currentPath.includes("blog") ? "header_link header_link_active" : "header_link"} href="/blog/1">blog</a></li> -->
       <li><a class={currentPath === "cv" ? "header_link header_link_active" : "header_link"} href="/cv">cv</a></li>
       <li><a class="header_link" href="mailto:joshua.p.gracie@gmail.com">contact</a></li>
