@@ -1,0 +1,34 @@
+---
+layout: "../../layouts/PostLayout.astro"
+title: "Boids"
+description: "A bird flocking simulation using the Boids algorithm."
+pubDate: "Mar 3 2024"
+heroImage: "/boids.png"
+tags: [ "simulation", "live demo" ]
+badge: "Demo"
+---
+
+## Description 
+
+Boids is an artificial life program, developed by Craig Reynolds in 1986, which simulates the flocking behaviour of birds. His paper on this topic was published in 1987 in the proceedings of the ACM SIGGRAPH conference. The name "boid" corresponds to a shortened version of "bird-oid object", which refers to a bird-like object. The boids move according to a set of simple rules, which are as follows:
+
+- **Separation**: Boids avoid crowding local flockmates.
+- **Alignment**: Boids attempt to match the velocity of nearby flockmates.
+- **Cohesion**: Boids attempt to stay close to nearby flockmates.
+
+## Live Demo
+
+The live <a href="/demos/boidsdemo">demo</a> is an implementation of the Boids algorithm using the HTML5 canvas and JavaScript. The boids are represented as simple triangles, and the user can interact with the simulation by adding and removing boids, as well as changing the separation, alignment, and cohesion parameters.
+
+## Source Code
+
+The source code for the Boids algorithm can be found on my <a href="">GitHub</a> page.
+
+## References
+
+- [Boids - Wikipedia](https://en.wikipedia.org/wiki/Boids)
+- [Boids Pseudocode](http://www.kfish.org/boids/pseudocode.html)
+- [Boids - Craig Reynolds](http://www.red3d.com/cwr/boids/)
+- [Boids - Stanford](https://cs.stanford.edu/people/eroberts/courses/soco/projects/2008-09/modeling-natural-systems/boids.html)
+- [Boids - Processing](https://processing.org/examples/flocking.html)
+- [Boids - Sebastian Lague](https://www.youtube.com/watch?v=bqtqltqcQhw)
