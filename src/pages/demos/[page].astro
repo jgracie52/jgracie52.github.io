@@ -1,0 +1,59 @@
+---
+import LiveDemoLayout from "../../layouts/LiveDemoLayout.astro";
+import FormSideBar from "../../components/live/FormSideBar.svelte";
+
+export async function getStaticPaths({ paginate }) {
+  const posts = (await Astro.glob("./*.{md,mdx}")).sort(
+    (a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
+  );
+
+  return paginate(posts, { pageSize: 10 });
+}
+
+const { page } = Astro.props;
+---
+<LiveDemoLayout>
+    <div class="flex flex-column w-full h-full">
+        <div class="h-full w-full justify-center flex">
+            <article class="p-8 max-w-[1000px]">
+                <h1 class="text-5xl font-bold mb-4">Live Demos</h1>
+                <p class="text-lg py-2">
+                    Welcome to the demo home page. This is where you can find all the live demos that are available on this site. Demos are a great way to visualize how a project works, and, in my opinion, is a fun way to learn how to code.
+                </p>
+                <p class="text-lg py-2">
+                    Each project is unique and has its own set of instructions on how to interact with the project. Everything works in your browser, so you don't have to worry about installing anything on your computer. For some projects, you may need to allow certain permissions, such as access to your camera or microphone, so be sure to read the instructions carefully. None of the projects on this site will ask for any personal information, and you can always revoke permissions at any time.
+                </p>
+                <p class="text-lg py-2">
+                    The projects are built using Svelte and Typescript, and are hosted on Github Pages. The source code for each project is available on Github, and you can find the link to the project page in the instructions section of each project. The projects are broken out into general categoris, however, some projects may fit into multiple categories, such as games using machine learning, or data visualization using web audio. I've tried to keep the categories as simple as possible, so you can find what you're looking for quickly and easily.
+                </p>
+                <p class="text-lg py-2">
+                    I hope you enjoy the demos and find them helpful. I'm always looking for ways to improve the site, so if you have any feedback, feel free to reach out to me by email. I'm always happy to help and would love to hear your thoughts.
+                </p>
+                <p class="text-lg py-2">
+                    Thanks for visiting, enjoy the demos!
+                </p>
+                <ul>
+                    <!--List the array of astronaut info-->
+                    {page.data.map(( post ) => (
+                        <li>
+                            <a href={post.url}>
+                                {post.title}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            </article>
+        </div>
+        <FormSideBar>
+            <article class="prose p-4">
+                <h1>Instructions</h1>
+                <p>
+                    This section is for instructions on how to interact with the demos on this site.
+                </p>
+                <p>
+                    This section will also offer a brief description of what the project is, along with a link to the project page, where you can get more info about the project and how it works.
+                </p>
+            </article>
+        </FormSideBar>
+    </div>
+</LiveDemoLayout>

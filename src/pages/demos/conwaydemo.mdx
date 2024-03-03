@@ -1,0 +1,13 @@
+---
+layout: "../../layouts/LiveDemoLayout.astro"
+title: "Conway's Game of Life"
+description: "A recreation of Conway's Game of Life with Javascript."
+pubDate: "Oct 16 2022"
+heroImage: "/conway.png"
+tags: [ "cellular automata", "live demo" ]
+badge: "Demo"
+---
+import Conway from "../../components/live/Conway.svelte";
+import '../../styles/conway.css';
+
+<Conway client:visible/>

@@ -1,5 +1,5 @@
 ---
-layout: "../../layouts/DemoLayout.astro"
+layout: "../../layouts/PostLayout.astro"
 title: "Genetic Travelling Salesman"
 description: "A solution to the Travelling Salesman Problem using a genetic algorithm."
 pubDate: "April 12 2023"
@@ -7,11 +7,6 @@ heroImage: "/TSP.png"
 tags: [ "genetic algorithm", "live demo" ]
 badge: "Demo"
 ---
-
-import Traveller from "../../components/live/Traveller.svelte";
-import '../../styles/traveller.css';
-
-<Traveller client:visible/>
 
 ## The Travelling Salesman Problem
 
@@ -23,7 +18,7 @@ The genetic algorithm is a method of solving problems that are difficult to solv
 
 ## The Demo
 
-The demo uses a genetic algorithm to solve the Travelling Salesman Problem. The demo starts with a population of random solutions. Each solution is a route that visits each city exactly once and returns to the starting city. The best solutions (those with the lowest mileage) are selected to be parents for the next generation using tournament selection. The next generation is created by combining the parents using partially mapped crossover as well as swap mutation to create new solutions. This process is repeated until a solution is found that meets the criteria.
+The <a href="/demos/salesmandemo">demo</a> uses a genetic algorithm to solve the Travelling Salesman Problem. The demo starts with a population of random solutions. Each solution is a route that visits each city exactly once and returns to the starting city. The best solutions (those with the lowest mileage) are selected to be parents for the next generation using tournament selection. The next generation is created by combining the parents using partially mapped crossover as well as swap mutation to create new solutions. This process is repeated until a solution is found that meets the criteria.
 
 ## The Parameters
 

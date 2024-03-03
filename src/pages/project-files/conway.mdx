@@ -1,5 +1,5 @@
 ---
-layout: "../../layouts/DemoLayout.astro"
+layout: "../../layouts/PostLayout.astro"
 title: "Conway's Game of Life"
 description: "A recreation of Conway's Game of Life with Javascript."
 pubDate: "Oct 16 2022"
@@ -7,11 +7,6 @@ heroImage: "/conway.png"
 tags: [ "cellular automata", "live demo" ]
 badge: "Demo"
 ---
-import Conway from "../../components/live/Conway.svelte";
-import '../../styles/conway.css';
-
-<Conway client:visible/>
-
 ## Conway's Game of Life
 
 Conway's Game of Life is a cellular automaton devised by the British mathematician John Horton Conway in 1970. It is a zero-player game, meaning that its evolution is determined by its initial state, requiring no further input. One interacts with the Game of Life by creating an initial configuration and observing how it evolves. It is Turing complete and can simulate a universal constructor or any other Turing machine.
@@ -27,7 +22,7 @@ The initial pattern constitutes the seed of the system. The first generation is 
 
 ## Implementation
 
-The implementation is a simple Javascript implementation of the game. The grid is a 2D array of cells, each of which has a state of either alive or dead. The grid is rendered using Svelte. The game is updated by iterating over the grid and applying the rules to each cell. The rules are applied to a copy of the grid, and then the copy is swapped with the original grid. This is done to prevent the rules from being applied to the same grid that is being iterated over. 
+The <a href="/demos/conwaydemo">implementation</a> is a simple Javascript implementation of the game. The grid is a 2D array of cells, each of which has a state of either alive or dead. The grid is rendered using Svelte. The game is updated by iterating over the grid and applying the rules to each cell. The rules are applied to a copy of the grid, and then the copy is swapped with the original grid. This is done to prevent the rules from being applied to the same grid that is being iterated over. 
 
 The game is paused by default, and can be started by clicking the play button. The game can be reset by clicking the reset button. Users can also draw on the grid by clicking and dragging. The grid can be cleared by clicking the clear button.
 
