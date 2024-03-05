@@ -1,0 +1,46 @@
+---
+layout: "../../layouts/ProjectLayout.astro"
+title: "(Near) Real-time Canny Edge Detector"
+description: "Created a custom Canny Edge Detector that can detect edges from a camera in near real time."
+pubDate: "March 5 2024"
+heroImage: "/cannydemo.png"
+gitHubLink: "https://github.com/jgracie52/PersonalProjects/tree/main/Canny%20Edge%20Detector"
+tags: [ "computer vision", "machine learning", "demo" ]
+---
+
+## Introduction
+
+The Canny Edge Detector is a popular edge detection algorithm that is widely used in computer vision. It was developed by John F. Canny in 1986 and is still used today. The algorithm is a multi-step process that involves smoothing the image, finding the gradient magnitude and direction, non-maximum suppression, and edge tracking by hysteresis. The result is a binary image that shows the edges of the original image.
+
+In this project, I recreated my own version of the Canny Edge Detector using TensorflowJS and the HTML5 canvas to display edges in near real-time from a webcam. The algorithm is not as fast as the original Canny Edge Detector, but it is still able to detect edges in near real-time.
+
+## How to Use
+
+To use the <a href="/demos/cannydemo">detector</a>, simply click the camera icon in the top right of the canvas (you can also click this again to stop the camera). The detector will then start detecting edges from the webcam in near real-time. You can also adjust the threshold values to change the sensitivity of the detector, and the blur radius (sigma) to change the amount of smoothing applied to the image.
+
+You can also change the layer (such as Ix, Ixx, Iyy, etc.) to see the intermediate steps of the algorithm.
+
+---
+
+**Note**: There is a known issue with the camera not working on some devices. If the camera does not work, try using a different browser or device. WebGL may also fail while the camera is running, so if you experience any issues, try refreshing the page.
+
+---
+
+## How it Works
+
+The algorithm is implemented in Javascript using TensorflowJS and Svelte for reactivity. The algorithm is a multi-step process that involves the following steps:
+
+1. **Preprocessing**: The input image is converted to grayscale and smoothed using a Gaussian filter.
+2. **Gradient Calculation**: The gradient magnitude and direction are calculated using the Sobel operator.
+3. **Non-Maximum Suppression**: The gradient magnitude is thinned to a single pixel wide line.
+4. **Edge Tracking by Hysteresis**: The edges are tracked by hysteresis to find the final edges.
+
+The algorithm is implemented in a custom TensorflowJS model that is run in the browser. The input image is passed through the model, and the output is displayed on the canvas.
+
+## References
+
+- [Canny Edge Detector](https://en.wikipedia.org/wiki/Canny_edge_detector)
+- [TensorflowJS](https://www.tensorflow.org/js)
+- [Sobel Operator](https://en.wikipedia.org/wiki/Sobel_operator)
+- [Gaussian Filter](https://en.wikipedia.org/wiki/Gaussian_blur)
+- [edge detection](https://github.com/tqkhai2705/edge-detection/tree/master)
