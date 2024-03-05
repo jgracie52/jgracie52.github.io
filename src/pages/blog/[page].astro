@@ -17,8 +17,8 @@ const { page } = Astro.props;
     <div class="text-3xl page-header font-bold mb-5">blogs</div>
     <div class="text-xl mb-5 page-subheader">List of all of my blogs</div>
   </div>
-  <ul>
     <!--List the array of astronaut info-->
+    <div class="simple-grid">
     {page.data.map(( post ) => (
      <HorizontalCard
         title={post.frontmatter.title}
@@ -27,10 +27,10 @@ const { page } = Astro.props;
         url={post.url}
 		target="_self"
       />
-	  <div class="divider my-0"></div>
+    
 
     ))}
-  </ul>
+  </div>
 
 
     <div class="flex justify-between">
