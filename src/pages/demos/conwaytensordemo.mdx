@@ -1,0 +1,13 @@
+---
+layout: "../../layouts/LiveDemoLayout.astro"
+title: "Conway's Game of Life in Tensorflow"
+description: "A reimplementation of Conway's Game of Life with TensorFlowJS."
+pubDate: "March 6 2024"
+heroImage: "/conway.png"
+tags: [ "cellular automata", "live demo" ]
+badge: "Demo"
+---
+
+import ConwayTensor from "../../components/live/ConwayTensor.svelte"
+
+<ConwayTensor client:visible />

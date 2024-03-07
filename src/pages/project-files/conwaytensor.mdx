@@ -1,0 +1,68 @@
+---
+layout: "../../layouts/ProjectLayout.astro"
+title: "Conway's Game of Life in Tensorflow"
+description: "A reimplementation of Conway's Game of Life with TensorFlowJS."
+pubDate: "March 6 2024"
+heroImage: "/conwaytensor.png"
+tags: [ "cellular automata", "live demo" ]
+badge: "Demo"
+---
+
+This is a reimplementation of Conway's Game of Life using TensorFlowJS. The game is a zero-player game, meaning that its evolution is determined by its initial state, requiring no further input. One interacts with the Game of Life by creating an initial configuration and observing how it evolves.
+
+The rules are simple:
+
+- Any live cell with fewer than two live neighbours dies, as if by underpopulation.
+- Any live cell with two or three live neighbours lives on to the next generation.
+- Any live cell with more than three live neighbours dies, as if by overpopulation.
+- Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+
+## Implementation
+
+The game is implemented using TensorFlowJS. The game board is represented as a 2D tensor, and the game rules are implemented using tensor operations. The game is rendered using a canvas element.
+
+```javascript
+
+async function playConway(){
+        // This function runs the game of life simulation
+        // It takes the current population tensor and returns the next generation
+
+        // Create a copy of the population tensor
+        let newPopulation = population.clone().toFloat();
+
+        // Create a kernel for convolution
+        let kernel = tf.ones([3, 3, 1, 1]);
+
+        // Perform the convolution
+        let convolvedPopulation = tf.conv2d(newPopulation, kernel, 1, 'same');
+
+        let neighbors = tf.sub(convolvedPopulation, newPopulation);
+        // Apply the rules of the game of life
+        // If a cell has 3 neighbors, it becomes alive
+        // If a cell has 2 neighbors, it stays the same
+        // If a cell has less than 2 or more than 3 neighbors, it dies
+
+        let wasAlive = tf.equal(newPopulation, 1);
+        let twoLiveNeighbors = tf.equal(neighbors, 2);
+        let threeLiveNeighbors = tf.equal(neighbors, 3);
+        let finalPop = tf.logicalOr(threeLiveNeighbors, tf.logicalAnd(wasAlive, twoLiveNeighbors));
+
+        // Update the population tensor
+        population = finalPop.toFloat();
+
+        // Render the population tensor to the canvas
+        tf.browser.toPixels(population, document.getElementById('canvas'));
+    }
+
+```
+
+## Demo
+
+You can view the live <a href='/demos/conwaytensordemo'>demo</a> now. The game board is initialized with a random population, begin running automatically.
+You can set the speed and the size of the board using the controls below the canvas.
+
+## References
+
+- [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life): Wikipedia page for Conway's Game of Life.
+- [TensorFlowJS](https://www.tensorflow.org/js): TensorFlowJS is a library for machine learning in JavaScript.
+- [ConwayLife](https://github.com/nrudakov/ConwayLife/blob/master/ConwayLife.py): Code was partially inspired by this implementation from nrudakov.
