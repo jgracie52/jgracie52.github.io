@@ -15,12 +15,12 @@ const { image = SITE_IMAGE, title = SITE_TITLE, description = SITE_DESCRIPTION }
     <BaseHead title={title} description={description} image={image} />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" />
   </head>
-  <body>
-    <div class="bg-base-100 drawer">
+  <body class="bg-opacity-90 backdrop-blur">
+    <div class="bg-base-100 bg-opacity-90 backdrop-blur drawer">
       <input id="main-drawer" type="checkbox" class="drawer-toggle" />
       <div class="drawer-content flex flex-col bg-base-100">
         <Header title={SITE_TITLE} />
-        <div class="md:flex md:justify-center">
+        <div class="md:flex md:justify-center h-full w-full backdrop-blur bg-opacity-90">
           <main class="p-6 pt-10 max-w-[1200px]">
             <slot />
           </main>

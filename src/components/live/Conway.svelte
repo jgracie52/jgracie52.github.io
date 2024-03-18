@@ -62,7 +62,6 @@
 
         // Generate temporary grid
         let temp = [...Array(cellPer)].map(e => Array(cellPer))
-        console.log(temp)
 
         // Loop over the grid
         for(let row = 0; row < cellPer; row++){

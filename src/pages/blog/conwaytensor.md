@@ -8,13 +8,13 @@ tags: [ "cellular automata", "live demo" ]
 badge: "Demo"
 ---
 
-In my previous post, I implemented Conway's Game of Life using Svelte. In that implementation, I used a 2D array to store the state of each cell and updated the state of each cell based on the state of its neighbors. Using that array, I was able to update an HTML table to display the state of each cell.
+In my previous post, I implemented Conway's Game of Life using JavaScript and Svelte. In that implementation, I used a 2D array to store the state of each cell and updated the state of each cell based on the state of its neighbors. Using that array, I was able to update an HTML table to display the state of each cell.
 
 While that implementation certainly worked, it would not be very efficient for larger grids. In this post, I will be reimplementing Conway's Game of Life using TensorFlowJS. This will allow me to use the GPU to perform the calculations, which should be much faster than using a 2D array and updating an HTML table.
 
 ## The Grid
 
-In order to implement Conway's Game of Life, we need to set up a grid to represent the state of each cell. In TensorFlowJS, we can use a 2D tensor to represent the grid. Each cell will be represented by a 1 or 0, where 1 represents a live cell and 0 represents a dead cell.
+In order to implement Conway's Game of Life, we need to set up a grid to represent the state of each cell. In TensorFlowJS, we can use a 2D tensor to represent the grid, with an extra 3rd dimension to represent pixel values. Each cell will be represented by a 1 or 0, where 1 represents a live cell and 0 represents a dead cell.
 
 ```javascript
 
@@ -41,7 +41,9 @@ let neighbors = tf.sub(convolvedPopulation, population);
 
 ```
 
-The above code creates a kernel for convolution using `tf.ones`. This kernel will be used to calculate the number of live neighbors for each cell. We then use the `conv2d` function to perform the convolution and subtract the original population tensor from the result. This gives us a tensor where each cell represents the number of live neighbors for the corresponding cell in the original population tensor.
+The above code creates a kernel for convolution using `tf.ones`. This kernel will be used to calculate the number of live neighbors for each cell. You'll notice that the kernel is a 4D tensor of size 3x3x1x1. The 3x3 size is defining the actual size of the kernel, while the last two dimensions are for input channel and output channel. 1x1 means we only have 1 input and 1 output channel corresponding to the pixel value.
+
+With the kernel, we can then use the `conv2d` function to perform the convolution and subtract the original population tensor from the result. This gives us a tensor where each cell represents the number of live neighbors for the corresponding cell in the original population tensor.
 
 We can then use cascading logical operations to apply the rules of Conway's Game of Life to each cell.
 
@@ -76,7 +78,7 @@ tf.browser.toPixels(finalPop.toFloat(), document.getElementById('canvas'));
 
 ---
 
-__**Note:**__ Pay special care to the width, height, and speed of the grid. Because the calculations are performed on the GPU, the grid can be much larger and the calculations can be performed much faster than in the previous implementation. However, the speed of the grid will depend on the capabilities of the GPU. If you are using a device with a less powerful GPU, you may need to reduce the size of the grid to maintain a reasonable frame rate.
+__**Note:**__ Pay special care with the width, and height of the grid. Because the calculations are performed on the GPU, the grid can be much larger and the calculations can be performed much faster than in the previous implementation. However, the speed of the grid will depend on the capabilities of the GPU. If you are using a device with a less powerful GPU, you may need to reduce the size of the grid to maintain a reasonable frame rate.
 
 ---
 

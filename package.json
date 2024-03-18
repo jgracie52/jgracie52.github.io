@@ -20,9 +20,11 @@
     "@astrojs/svelte": "^4.0.3",
     "@astrojs/tailwind": "^5.1.0",
     "@tensorflow/tfjs": "^4.17.0",
+    "@tsparticles/preset-links": "^3.0.2",
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
     "astro": "^3.6.5",
+    "astro-particles": "^2.10.0",
     "chart.js": "^4.4.2",
     "daisyui": "^4.7.2",
     "plotly.js-dist": "^2.29.1",
@@ -32,7 +34,10 @@
     "seedrandom": "^3.0.5",
     "svelte": "^4.2.12",
     "svelte-markdown": "^0.4.1",
-    "svelte-prism": "^1.1.6"
+    "svelte-prism": "^1.1.6",
+    "tsparticles": "^2.10.0",
+    "tsparticles-engine": "^2.10.0",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.10",
