@@ -44,6 +44,9 @@
         // Update the population tensor
         population = finalPop.toFloat();
 
+        // Dispose of the temporary tensors
+        tf.dispose([newPopulation, kernel, convolvedPopulation, neighbors, wasAlive, twoLiveNeighbors, threeLiveNeighbors, finalPop]);
+
         // Render the population tensor to the canvas
         tf.browser.toPixels(population, document.getElementById('canvas'));
     }
@@ -69,7 +72,6 @@
 
         // Run the game of life simulation
         interval = setInterval(playConway, 1000 / speed);
-        //playConway();
     });
 
     function updateResolution(newResolution){
