@@ -95,31 +95,48 @@
 
     function calculateForces(boid) {
         // Calculate the forces of the boid based on the rules of Boids
-        
+
         // Calculate the vectors for separation, alignment, and cohesion
         let separation = { x: 0, y: 0 };
         let alignment = { x: 0, y: 0 };
         let cohesion = { x: 0, y: 0 };
+        let nearbyCount = 0;
 
         for(let i = 0; i < boids.length; i++){
-            // Get the distance between the boid and the other boid
-            let dist = Math.sqrt(Math.pow(boid.x - boids[i].x, 2) + Math.pow(boid.y - boids[i].y, 2));
+            if(boids[i] === boid) continue;
 
-            if(boids[i] != boid && dist < boidSight){
-                separation.x += (boid.x - boids[i].x) / dist;
-                separation.y += (boid.y - boids[i].y) / dist;
+            // Calculate distance considering wraparound
+            let dx = boids[i].x - boid.x;
+            let dy = boids[i].y - boid.y;
+
+            // Check if wrapping around gives a shorter distance
+            if (Math.abs(dx) > boidsCanvas.width / 2) {
+                dx = dx > 0 ? dx - boidsCanvas.width : dx + boidsCanvas.width;
+            }
+            if (Math.abs(dy) > boidsCanvas.height / 2) {
+                dy = dy > 0 ? dy - boidsCanvas.height : dy + boidsCanvas.height;
+            }
+
+            let dist = Math.sqrt(dx * dx + dy * dy);
+
+            if(dist < boidSight){
+                separation.x += -dx / dist;
+                separation.y += -dy / dist;
                 alignment.x += boids[i].vx;
                 alignment.y += boids[i].vy;
-                cohesion.x += boids[i].x;
-                cohesion.y += boids[i].y;
+                cohesion.x += dx;
+                cohesion.y += dy;
+                nearbyCount++;
             }
         }
 
-        // Divide the alignment and cohesion vectors by the number of boids
-        alignment.x /= boids.length - 1;
-        alignment.y /= boids.length - 1;
-        cohesion.x /= boids.length - 1;
-        cohesion.y /= boids.length - 1;
+        // Divide the alignment and cohesion vectors by the number of nearby boids
+        if (nearbyCount > 0) {
+            alignment.x /= nearbyCount;
+            alignment.y /= nearbyCount;
+            cohesion.x /= nearbyCount;
+            cohesion.y /= nearbyCount;
+        }
 
         // Set the forces of the boid
         let forces = { x: 0, y: 0 };
