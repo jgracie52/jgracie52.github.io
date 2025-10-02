@@ -1,6 +1,6 @@
 ---
 import LiveDemoLayout from "../../layouts/LiveDemoLayout.astro";
-import FormSideBar from "../../components/live/FormSideBar.svelte";
+import FormSideBar from "../../components/live/FormSideBar.vue";
 
 export async function getStaticPaths({ paginate }) {
   const posts = (await Astro.glob("./*.{md,mdx}")).sort(

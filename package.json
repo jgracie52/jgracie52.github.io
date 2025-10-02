@@ -12,38 +12,39 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^1.1.5",
+    "@astrojs/mdx": "^4.3.6",
     "@astrojs/preact": "^3.1.1",
     "@astrojs/react": "^3.0.10",
     "@astrojs/rss": "^4.0.5",
     "@astrojs/sitemap": "^3.1.1",
-    "@astrojs/svelte": "^4.0.3",
-    "@astrojs/tailwind": "^5.1.0",
+    "@astrojs/tailwind": "^6.0.2",
+    "@astrojs/vue": "^5.1.1",
     "@tensorflow/tfjs": "^4.17.0",
     "@tsparticles/preset-links": "^3.0.2",
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
-    "astro": "^3.6.5",
+    "astro": "^5.14.1",
     "astro-particles": "^2.10.0",
+    "autoprefixer": "^10.4.21",
     "chart.js": "^4.4.2",
     "cytoscape": "^3.30.4",
     "cytoscape-avsdf": "^1.0.0",
     "cytoscape-cola": "^2.5.1",
     "daisyui": "^4.7.2",
+    "leaflet": "^1.9.4",
     "plotly.js-dist": "^2.29.1",
+    "postcss": "^8.5.6",
     "preact": "^10.19.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "seedrandom": "^3.0.5",
-    "svelte": "^4.2.12",
-    "svelte-markdown": "^0.4.1",
-    "svelte-prism": "^1.1.6",
+    "tailwindcss": "^3.4.18",
     "tsparticles": "^2.10.0",
     "tsparticles-engine": "^2.10.0",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "vue": "^3.5.22"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.10",
-    "svelte-highlight": "^7.6.0"
+    "@tailwindcss/typography": "^0.5.10"
   }
 }

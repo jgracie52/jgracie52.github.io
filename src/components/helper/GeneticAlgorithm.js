@@ -18,16 +18,26 @@ export class GeneticAlgorithm {
         this.generation = 0;
         this.bestChromosomeOverall = null;
 
+        // History tracking for post-run analysis
+        this.metricsHistory = {
+            generations: [],
+            bestOverall: [],
+            bestGeneration: [],
+            avgGeneration: [],
+            diversity: []
+        };
+
         // Parameters for the genetic algorithm
-        this.numGenerations = 100;
+        this.numGenerations = 500;
         this.numCities = 48;
-        this.mutationRate = 0.01;
-        this.crossoverRate = 0.7;
+        this.mutationRate = 0.02;
+        this.crossoverRate = 0.8;
         this.speedFactor = 100;
         this.tournamentSize = 5;
-        this.numSpecies = 1;
-        this.populationSize = 100;
+        this.numSpecies = 3;
+        this.populationSize = 200;
         this.randomSeed = 0;
+        this.elitismRate = 0.05; // Keep top 5% of chromosomes
 
         this.sleep = ms => new Promise(res => setTimeout(res, ms));
     }
@@ -75,6 +85,19 @@ export class GeneticAlgorithm {
         return true;
     }
 
+    // Function to calculate the Haversine distance between two lat/lng points in miles
+    haversineDistance(lat1, lon1, lat2, lon2) {
+        const R = 3959; // Earth's radius in miles
+        const dLat = (lat2 - lat1) * Math.PI / 180;
+        const dLon = (lon2 - lon1) * Math.PI / 180;
+        const a =
+            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        return R * c;
+    }
+
     // Function to calculate the fitness of a chromosome
     calculateFitness(chromosome) {
         // Check if the chromosome is valid
@@ -84,18 +107,22 @@ export class GeneticAlgorithm {
         }
 
         var distance = 0;
-        
-        // Calculate the distance between each city in the chromosome
+
+        // Calculate the distance between each city in the chromosome using Haversine formula
         for (var i = 0; i < chromosome.genes.length - 1; i++) {
-            var cityA = att48.att48.tsplib[this.cityNumberIndexes[chromosome.genes[i]]];
-            var cityB = att48.att48.tsplib[this.cityNumberIndexes[chromosome.genes[i + 1]]];
-            distance += Math.sqrt(Math.pow(cityB.x - cityA.x, 2) + Math.pow(cityB.y - cityA.y, 2));
+            var cityNameA = this.cityIndexes[chromosome.genes[i]];
+            var cityNameB = this.cityIndexes[chromosome.genes[i + 1]];
+            var cityA = att48.att48.latlng[cityNameA];
+            var cityB = att48.att48.latlng[cityNameB];
+            distance += this.haversineDistance(cityA.lat, cityA.lng, cityB.lat, cityB.lng);
         }
 
         // Calculate the distance between the last city and the first city
-        var cityA = att48.att48.tsplib[this.cityNumberIndexes[chromosome.genes[chromosome.genes.length - 1]]];
-        var cityB = att48.att48.tsplib[this.cityNumberIndexes[chromosome.genes[0]]];
-        distance += Math.sqrt(Math.pow(cityB.x - cityA.x, 2) + Math.pow(cityB.y - cityA.y, 2));
+        var cityNameA = this.cityIndexes[chromosome.genes[chromosome.genes.length - 1]];
+        var cityNameB = this.cityIndexes[chromosome.genes[0]];
+        var cityA = att48.att48.latlng[cityNameA];
+        var cityB = att48.att48.latlng[cityNameB];
+        distance += this.haversineDistance(cityA.lat, cityA.lng, cityB.lat, cityB.lng);
 
         chromosome.fitness = distance;
         return chromosome;
@@ -129,7 +156,7 @@ export class GeneticAlgorithm {
     shuffle(array) {
         var tmp, current, top = array.length;
         if(top) while(--top) {
-            current = Math.floor(Math.random(this.randomSeed) * (top + 1));
+            current = Math.floor(Math.random() * (top + 1));
             tmp = array[current];
             array[current] = array[top];
             array[top] = tmp;
@@ -141,10 +168,19 @@ export class GeneticAlgorithm {
     createNewGeneration(chromosomes) {
         var newChromosomes = [];
 
+        // Elitism: Preserve the best chromosomes (deep copy to prevent mutation)
+        var eliteCount = Math.floor(chromosomes.length * this.elitismRate);
+        for (var i = 0; i < eliteCount; i++) {
+            var eliteClone = new Chromosome([...chromosomes[i].genes]);
+            eliteClone.fitness = chromosomes[i].fitness;
+            newChromosomes.push(eliteClone);
+        }
+
         // Speciate the chromosomes
         var species = this.speciate(chromosomes);
 
-        for (var i = 0; i < chromosomes.length; i++) {
+        // Create offspring to fill the rest of the population
+        while (newChromosomes.length < chromosomes.length) {
             // Pick two parents using tournament selection
             var parentA = this.pickParent(chromosomes, species);
             var parentB = this.pickParent(chromosomes, species);
@@ -152,6 +188,7 @@ export class GeneticAlgorithm {
             child = this.mutate(child);
             newChromosomes.push(child);
         }
+
         return newChromosomes;
     }
 
@@ -254,116 +291,119 @@ export class GeneticAlgorithm {
         return chromosome;
     }
 
-    // Function to separate the chromosomes into different species using k-means clustering
-    speciate(chromosomes) {
-        // Create a list of the chromosome genes
-        var genes = [];
+    // Function to calculate population diversity
+    // Returns average edge distance between chromosomes (higher = more diverse)
+    calculateDiversity(chromosomes) {
+        if (chromosomes.length < 2) return 0;
+
+        // Sample only 5 chromosomes to avoid performance issues
+        var sample = chromosomes.slice(0, Math.min(5, chromosomes.length));
+        var totalDistance = 0;
+        var comparisons = 0;
+
+        for (var i = 0; i < sample.length - 1; i++) {
+            for (var j = i + 1; j < sample.length; j++) {
+                totalDistance += this.edgeDistance(sample[i].genes, sample[j].genes);
+                comparisons++;
+            }
+        }
+
+        return comparisons > 0 ? totalDistance / comparisons : 0;
+    }
+
+    // Function to calculate edge-based distance between two tours
+    // Counts how many edges (city connections) differ between two routes
+    edgeDistance(routeA, routeB) {
+        // Build set of edges for route A
+        var edgesA = new Set();
+        for (var i = 0; i < routeA.length; i++) {
+            var next = (i + 1) % routeA.length;
+            // Create bidirectional edge (sorted to handle both directions)
+            var edge = routeA[i] < routeA[next]
+                ? routeA[i] + '-' + routeA[next]
+                : routeA[next] + '-' + routeA[i];
+            edgesA.add(edge);
+        }
+
+        // Count edges in route B that are NOT in route A
+        var differentEdges = 0;
+        for (var i = 0; i < routeB.length; i++) {
+            var next = (i + 1) % routeB.length;
+            var edge = routeB[i] < routeB[next]
+                ? routeB[i] + '-' + routeB[next]
+                : routeB[next] + '-' + routeB[i];
+            if (!edgesA.has(edge)) {
+                differentEdges++;
+            }
+        }
+
+        return differentEdges;
+    }
+
+    // Function to find medoid (most central chromosome) in a cluster
+    // Returns the chromosome with minimum total distance to all others
+    findMedoid(chromosomes) {
+        if (chromosomes.length === 0) return null;
+        if (chromosomes.length === 1) return chromosomes[0];
+
+        var minTotalDistance = Infinity;
+        var medoid = chromosomes[0];
+
         for (var i = 0; i < chromosomes.length; i++) {
-            genes.push(chromosomes[i].genes);
+            var totalDistance = 0;
+            for (var j = 0; j < chromosomes.length; j++) {
+                if (i !== j) {
+                    totalDistance += this.edgeDistance(chromosomes[i].genes, chromosomes[j].genes);
+                }
+            }
+
+            if (totalDistance < minTotalDistance) {
+                minTotalDistance = totalDistance;
+                medoid = chromosomes[i];
+            }
         }
 
-        // Choose random centroid genes for each species
-        var centroids = [];
+        return medoid;
+    }
+
+    // Function to separate chromosomes into species using k-medoids clustering with edge distance
+    speciate(chromosomes) {
+        if (this.numSpecies === 1) {
+            return [chromosomes];
+        }
+
+        // Choose initial medoids from evenly spaced chromosomes
+        var medoids = [];
+        var step = Math.floor(chromosomes.length / this.numSpecies);
         for (var i = 0; i < this.numSpecies; i++) {
-            var index = Math.floor(Math.random(this.randomSeed) * chromosomes.length);
-            centroids.push(chromosomes[index].genes);
+            var index = Math.min(i * step, chromosomes.length - 1);
+            medoids.push(chromosomes[index]);
         }
 
-        // Assign each chromosome to a species based on the closest centroid using Euclidean distance
+        // Single pass k-medoids clustering (no iteration to avoid performance issues)
         var species = [];
         for (var i = 0; i < this.numSpecies; i++) {
             species.push([]);
         }
 
-        for (var i = 0; i < genes.length; i++) {
+        for (var i = 0; i < chromosomes.length; i++) {
             var minDistance = Infinity;
-            var minIndex = -1;
-            for (var j = 0; j < centroids.length; j++) {
-                var distance = this.calculateKmeansDistance(genes[i], centroids[j]);
+            var minIndex = 0;
+
+            for (var j = 0; j < medoids.length; j++) {
+                var distance = this.edgeDistance(chromosomes[i].genes, medoids[j].genes);
                 if (distance < minDistance) {
                     minDistance = distance;
                     minIndex = j;
                 }
             }
+
             species[minIndex].push(chromosomes[i]);
-        }
-
-        // Recalculate the centroid genes for each species and repeat the assignment until the centroids do not change
-        var changed = true;
-        while (changed) {
-            changed = false;
-            for (var i = 0; i < species.length; i++) {
-                var centroid = this.calculateCentroid(species[i]) ?? centroids[i];
-                if (!this.compareArrays(centroid, centroids[i])) {
-                    changed = true;
-                    centroids[i] = centroid;
-                }
-            }
-
-            // Assign each chromosome to a species based on the closest centroid using Euclidean distance
-            species = [];
-            for (var i = 0; i < this.numSpecies; i++) {
-                species.push([]);
-            }
-            for (var i = 0; i < genes.length; i++) {
-                var minDistance = Infinity;
-                var minIndex = -1;
-                for (var j = 0; j < centroids.length; j++) {
-                    var distance = this.calculateKmeansDistance(genes[i], centroids[j]);
-                    if (distance < minDistance) {
-                        minDistance = distance;
-                        minIndex = j;
-                    }
-                }
-                species[minIndex].push(chromosomes[i]);
-            }
         }
 
         return species;
     }
 
-    // Function to calculate the centroid of a list of chromosomes
-    calculateCentroid(chromosomes) {
-        // Prevent division by zero
-        if (chromosomes.length == 0) {
-            return null;
-        }
-
-        var centroid = Array(this.numCities).fill(0);
-        for (var i = 0; i < chromosomes.length; i++) {
-            for (var j = 0; j < chromosomes[i].genes.length; j++) {
-                centroid[j] += chromosomes[i].genes[j];
-            }
-        }
-        for (var i = 0; i < centroid.length; i++) {
-            centroid[i] /= chromosomes.length;
-        }
-        return centroid;
-    }
-
-    // Function to compare two arrays
-    compareArrays(arrayA, arrayB) {
-        if (arrayA.length != arrayB.length) {
-            return false;
-        }
-
-        for (var i = 0; i < arrayA.length; i++) {
-            if (arrayA[i] != arrayB[i]) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    // Function to calculate the Euclidean distance between two chromosomes
-    calculateKmeansDistance(chromosomeA, chromosomeB) {
-        var distance = 0;
-        for (var i = 0; i < chromosomeA.length; i++) {
-            distance += Math.pow(chromosomeA[i] - chromosomeB[i], 2);
-        }
-        return Math.sqrt(distance);
-    }
 
     // Function to run the genetic algorithm
     async runGeneticAlgorithm() {
@@ -397,7 +437,9 @@ export class GeneticAlgorithm {
             var bestDistance = bestChromosome.fitness;
             if (this.bestDistanceOverall == 0 || bestDistance < this.bestDistanceOverall) {
                 this.bestDistanceOverall = bestDistance;
-                this.bestChromosomeOverall = bestChromosome;
+                // Deep copy to prevent reference issues
+                this.bestChromosomeOverall = new Chromosome([...bestChromosome.genes]);
+                this.bestChromosomeOverall.fitness = bestChromosome.fitness;
             }
 
 
@@ -406,11 +448,21 @@ export class GeneticAlgorithm {
             var totalDistance = this.sum(chromosomes.map(c => c.fitness));
             this.avgerageDistanceGeneration = totalDistance / chromosomes.length;
 
+            // Store metrics history every 10 generations
+            if (i % 10 === 0) {
+                var diversityScore = this.calculateDiversity(chromosomes.slice(0, 10));
+                this.metricsHistory.generations.push(this.generation);
+                this.metricsHistory.bestOverall.push(this.bestDistanceOverall);
+                this.metricsHistory.bestGeneration.push(this.bestDistanceGeneration);
+                this.metricsHistory.avgGeneration.push(this.avgerageDistanceGeneration);
+                this.metricsHistory.diversity.push(diversityScore);
+            }
+
             // Update the metrics
             await this.updateMetrics();
 
-            // Update the chart
-            await this.updateChart(this.bestChromosomeOverall);
+            // Update the chart with top 5 chromosomes
+            await this.updateChart(this.bestChromosomeOverall, chromosomes.slice(0, 5));
 
             // Create a new generation
             chromosomes = this.createNewGeneration(chromosomes);
@@ -429,7 +481,9 @@ export class GeneticAlgorithm {
         var bestDistance = bestChromosome.fitness;
         if (this.bestDistanceOverall == 0 || bestDistance < this.bestDistanceOverall) {
             this.bestDistanceOverall = bestDistance;
-            this.bestChromosomeOverall = bestChromosome;
+            // Deep copy to prevent reference issues
+            this.bestChromosomeOverall = new Chromosome([...bestChromosome.genes]);
+            this.bestChromosomeOverall.fitness = bestChromosome.fitness;
         }
         this.bestDistanceGeneration = bestDistance;
         
@@ -439,8 +493,8 @@ export class GeneticAlgorithm {
         // Update the metrics
         await this.updateMetrics();
 
-        // Update the chart
-        await this.updateChart(this.bestChromosomeOverall);
+        // Update the chart with top 5 chromosomes
+        await this.updateChart(this.bestChromosomeOverall, chromosomes.slice(0, 5));
 
         this.running = false;
     }
