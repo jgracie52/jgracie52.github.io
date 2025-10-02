@@ -1,0 +1,46 @@
+---
+layout: "../../layouts/ProjectLayout.astro"
+title: "Pathfinding Algorithm Visualizer"
+description: "An interactive visualization of popular pathfinding algorithms with real-time exploration tracking."
+pubDate: "Aug 10 2025"
+heroImage: "/pathfinding.png"
+tags: [ "computer science", "pathfinding", "live demo" ]
+gitHubLink: "https://github.com/jgracie52/"
+badge: "Demo"
+---
+
+## Description
+
+This project is an interactive visualization of several pathfinding algorithms in JavaScript. The pathfinding algorithms included are:
+
+- **A\* (A-Star)** - A best-first search algorithm that uses heuristics to find the shortest path efficiently
+- **Dijkstra's Algorithm** - A classic algorithm that guarantees the shortest path by exploring all nodes systematically
+- **Breadth-First Search (BFS)** - A level-by-level exploration algorithm that guarantees the shortest path in unweighted graphs
+
+The visualization features an interactive grid where you can place start and end points, draw walls, and watch the algorithms explore the space in real-time. The demo uses visual indicators to show:
+
+- **Ghost cells** (light purple) - Nodes in the queue waiting to be explored
+- **Explored cells** (medium purple) - Nodes that have been visited and evaluated
+- **Path cells** (bright purple) - The final shortest path discovered
+
+You can also randomize the grid to generate challenging mazes with guaranteed solvable paths, adjust the visualization speed, and track performance metrics including nodes explored, path length, and execution time.
+
+## Live Demo
+
+The live <a href="/demos/pathfinding">demo</a> is available to try out. It provides an interactive grid-based interface to visualize pathfinding algorithms in action. You can:
+
+- Click and drag to place start points, end points, and walls
+- Switch between drawing modes using the button controls
+- Randomize the grid to create interesting maze patterns
+- Adjust the visualization speed and grid size
+- Compare different algorithms and their exploration strategies
+
+Be sure to set your start and end points before running an algorithm. The metrics panel will show you how many nodes were explored and the length of the path found.
+
+## References
+
+- [Pathfinding Algorithms](https://en.wikipedia.org/wiki/Pathfinding)
+- [A* Search Algorithm](https://en.wikipedia.org/wiki/A*_search_algorithm)
+- [Dijkstra's Algorithm](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm)
+- [Breadth-First Search](https://en.wikipedia.org/wiki/Breadth-first_search)
+- [Introduction to A*](https://www.redblobgames.com/pathfinding/a-star/introduction.html)
