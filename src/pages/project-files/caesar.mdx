@@ -1,0 +1,51 @@
+---
+layout: "../../layouts/ProjectLayout.astro"
+title: "Caesar Cipher Visualizer"
+description: "An interactive visualization of the Caesar cipher encryption process with frequency analysis cryptanalysis."
+pubDate: "Oct 2 2025"
+heroImage: "/caesarcipher.png"
+tags: [ "computer science", "encryption", "cryptography", "live demo" ]
+gitHubLink: "https://github.com/jgracie52/"
+badge: "Demo"
+---
+
+## Description
+
+This project is an interactive visualization of the Caesar cipher, one of the oldest and simplest encryption techniques. The demonstration shows both how the cipher works and how it can be broken using frequency analysis.
+
+The Caesar cipher works by shifting each letter in the plaintext by a fixed number of positions in the alphabet. For example, with a shift of 3:
+- A → D
+- B → E
+- C → F
+- ...and so on
+
+The visualization features:
+
+- **Letter-by-letter encryption** - Watch each character transform in real-time with synchronized highlighting
+- **Full alphabet mapping** - See the complete shift cipher displayed below the plaintext, with current letters highlighted
+- **Frequency analysis chart** - Compare letter frequency distributions between plaintext and ciphertext
+- **Automated cryptanalysis** - Uses chi-squared statistical testing to detect the shift and decrypt the message
+- **Estimated plaintext** - Shows the automatically decrypted text based on frequency analysis
+
+The demo uses a chi-squared test that compares the ciphertext's letter frequencies against expected English language frequencies to determine the most likely shift value, demonstrating how simple substitution ciphers can be broken through statistical analysis.
+
+## Live Demo
+
+The live <a href="/demos/caesar">demo</a> is available to try out. It provides an interactive interface to visualize Caesar cipher encryption and cryptanalysis. You can:
+
+- Enter custom plaintext (up to 200 characters) or use random sample texts
+- Adjust the cipher shift (1-25 positions)
+- Control the encryption speed to watch the process unfold
+- View the complete alphabet shift mapping with real-time highlighting
+- Analyze letter frequency distributions with interactive charts
+- See the automated frequency analysis break the cipher
+
+The frequency analysis section shows how cryptanalysts can break the cipher by comparing letter frequencies to standard English patterns. The chi-squared test automatically detects the shift value and displays the decrypted plaintext.
+
+## References
+
+- [Caesar Cipher](https://en.wikipedia.org/wiki/Caesar_cipher)
+- [Frequency Analysis](https://en.wikipedia.org/wiki/Frequency_analysis)
+- [Chi-squared Test](https://en.wikipedia.org/wiki/Chi-squared_test)
+- [Letter Frequency](https://en.wikipedia.org/wiki/Letter_frequency)
+- [Cryptanalysis](https://en.wikipedia.org/wiki/Cryptanalysis)
