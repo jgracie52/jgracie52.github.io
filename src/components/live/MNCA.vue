@@ -53,6 +53,10 @@
         <option value="1" selected>Ciliates</option>
         <option value="3">Conway</option>
         <option value="4">Bugs</option>
+        <option value="5">Waves</option>
+        <option value="6">Lenia</option>
+        <option value="7">Coral</option>
+        <option value="8">Mitosis</option>
       </select>
 
       <div v-for="neighborhood in neighborhoods" :key="neighborhood.id" class="card w-full bg-base-100 shadow-xl mb-2">
@@ -144,7 +148,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, shallowRef } from 'vue';
 import FormSideBar from './FormSideBar.vue';
 import { v4 as uuid } from 'uuid';
 import * as tf from '@tensorflow/tfjs';
@@ -177,7 +181,7 @@ const speed = ref(1);
 const backend = ref('');
 let interval;
 const innerWidth = ref(0);
-const neighborhoods = ref([]);
+const neighborhoods = shallowRef([]);
 
 const neighborhoodsOrderArray = () => {
   let arr = [];
@@ -202,6 +206,22 @@ const mncaConwayRules = [new NhRule(0.0, 0.22, false, 0), new NhRule(0.33, 0.34,
 
 const mncaBugs = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0],[0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0],[0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0],[0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0],[0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0],[0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0],[0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0],[0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0],[0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0],[0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0],[0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]];
 const mncaBugsRules = [new NhRule(0.0, 0.2727, false, 0), new NhRule(0.273, 0.3719, true, 1), new NhRule(0.479, 1.0, false, 2)];
+
+// Waves - Creates expanding circular patterns
+const mncaWaves = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0],[0,0,0,0,0,1,1,1,1,1,1,1,0,0,0,0,0],[0,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0],[0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0],[0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0],[0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0],[0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0],[0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0],[0,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0],[0,0,0,0,0,1,1,1,1,1,1,1,0,0,0,0,0],[0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]];
+const mncaWavesRules = [new NhRule(0.15, 0.3, true, 0), new NhRule(0.4, 0.65, false, 1)];
+
+// Lenia-like smooth growth
+const mncaLenia = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0],[0,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0],[0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0],[0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0],[0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0],[0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],[0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],[0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],[0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],[0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],[0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0],[0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0],[0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0],[0,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0],[0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]];
+const mncaLeniaRules = [new NhRule(0.17, 0.25, true, 0), new NhRule(0.32, 0.42, true, 1), new NhRule(0.55, 1.0, false, 2)];
+
+// Coral growth pattern
+const mncaCoral = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0],[0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0],[0,0,0,0,0,1,1,1,1,1,1,1,0,0,0,0,0],[0,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0],[0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0],[0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0],[0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0],[0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0],[0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0],[0,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0],[0,0,0,0,0,1,1,1,1,1,1,1,0,0,0,0,0],[0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0],[0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]];
+const mncaCoralRules = [new NhRule(0.25, 0.35, true, 0), new NhRule(0.45, 0.58, false, 1), new NhRule(0.7, 1.0, false, 2)];
+
+// Mitosis - cell splitting behavior
+const mncaMitosis = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,1,1,1,1,1,1,1,0,0,0,0,0],[0,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0],[0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0],[0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0],[0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0],[0,0,0,1,1,1,1,1,0,1,1,1,1,1,0,0,0],[0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0],[0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0],[0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0],[0,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0],[0,0,0,0,0,1,1,1,1,1,1,1,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]];
+const mncaMitosisRules = [new NhRule(0.19, 0.28, true, 0), new NhRule(0.38, 0.48, false, 1), new NhRule(0.52, 0.62, true, 2)];
 
 const selectedNeighborhoodArray = ref([]);
 const selectedNeighborhoodID = ref(null);
@@ -296,7 +316,9 @@ async function playMNCA() {
   tf.browser.toPixels(population, document.getElementById('canvas'));
 }
 
-onMounted(() => {
+onMounted(async () => {
+  await tf.ready();
+
   const wrapper = document.getElementById('wrapper');
   width.value = Math.round(wrapper.clientWidth / resolution.value);
   height.value = Math.round(wrapper.clientHeight / resolution.value);
@@ -305,13 +327,14 @@ onMounted(() => {
   tf.browser.toPixels(blank, document.getElementById('canvas'));
   tf.dispose(blank);
 
-  setPreset(1);
-
   population = tf.randomUniform([height.value, width.value, 1], 0, 1, tf.int32);
   population = population.round().toInt();
   tf.browser.toPixels(population, document.getElementById('canvas'));
 
   backend.value = tf.getBackend();
+
+  // Set preset AFTER backend is initialized
+  setPreset(1);
 
   document.getElementById('canvas').addEventListener('mousedown', (e) => onDragCanvas(e));
 
@@ -491,6 +514,54 @@ function setPreset(presetOption) {
 
       neighborhoods.value = [];
       neighborhoods.value.push(nh4);
+
+      setTimeout(() => {
+        renderNeighborhood(neighborhoods.value[0]);
+      }, 2000);
+      break;
+    case 5:
+      let nh5 = new Neighborhood(neighborhoodsOrderArray);
+      nh5.nhTensor = tf.tensor(mncaWaves).expandDims(2).expandDims(3);
+      nh5.nhRules = mncaWavesRules;
+
+      neighborhoods.value = [];
+      neighborhoods.value.push(nh5);
+
+      setTimeout(() => {
+        renderNeighborhood(neighborhoods.value[0]);
+      }, 2000);
+      break;
+    case 6:
+      let nh6 = new Neighborhood(neighborhoodsOrderArray);
+      nh6.nhTensor = tf.tensor(mncaLenia).expandDims(2).expandDims(3);
+      nh6.nhRules = mncaLeniaRules;
+
+      neighborhoods.value = [];
+      neighborhoods.value.push(nh6);
+
+      setTimeout(() => {
+        renderNeighborhood(neighborhoods.value[0]);
+      }, 2000);
+      break;
+    case 7:
+      let nh7 = new Neighborhood(neighborhoodsOrderArray);
+      nh7.nhTensor = tf.tensor(mncaCoral).expandDims(2).expandDims(3);
+      nh7.nhRules = mncaCoralRules;
+
+      neighborhoods.value = [];
+      neighborhoods.value.push(nh7);
+
+      setTimeout(() => {
+        renderNeighborhood(neighborhoods.value[0]);
+      }, 2000);
+      break;
+    case 8:
+      let nh8 = new Neighborhood(neighborhoodsOrderArray);
+      nh8.nhTensor = tf.tensor(mncaMitosis).expandDims(2).expandDims(3);
+      nh8.nhRules = mncaMitosisRules;
+
+      neighborhoods.value = [];
+      neighborhoods.value.push(nh8);
 
       setTimeout(() => {
         renderNeighborhood(neighborhoods.value[0]);

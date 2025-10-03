@@ -1,0 +1,13 @@
+---
+layout: "../../layouts/LiveDemoLayout.astro"
+title: "Vigenère Cipher Demo"
+description: "A visualization of the Vigenère cipher encryption technique."
+pubDate: "April 12 2023"
+heroImage: "/vigenere.png"
+tags: [ "computer science", "encryption", "live demo" ]
+badge: "Demo"
+---
+
+import Vigenere from '../../components/live/Vigenere.vue'
+
+<Vigenere client:visible/>

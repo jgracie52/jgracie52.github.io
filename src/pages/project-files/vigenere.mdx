@@ -1,0 +1,55 @@
+---
+layout: "../../layouts/ProjectLayout.astro"
+title: "Vigenere Cipher Visualizer"
+description: "An interactive visualization of the Vigenere cipher with Kasiski examination cryptanalysis."
+pubDate: "Oct 3 2025"
+heroImage: "/vigenere.png"
+tags: [ "computer science", "encryption", "cryptography", "live demo" ]
+gitHubLink: "https://github.com/jgracie52/"
+badge: "Demo"
+---
+
+## Description
+
+This project is an interactive visualization of the Vigenère cipher, a method of encrypting text that was considered unbreakable for centuries. The demonstration shows both how the cipher works and how it can be broken using Kasiski examination.
+
+The Vigenère cipher uses a keyword to create multiple Caesar shifts. Each letter of the keyword determines the shift for the corresponding letter in the plaintext. For example, with the key "SECRET":
+- First letter uses shift S (18)
+- Second letter uses shift E (4)
+- Third letter uses shift C (2)
+- ...and the pattern repeats
+
+The visualization features:
+
+- **Letter-by-letter encryption** - Watch each character transform in real-time with synchronized highlighting
+- **Full Vigenère table (26×26)** - See the complete polyalphabetic substitution table with row and column highlighting
+- **Repeated key display** - Shows which key letter encrypts each position in the plaintext
+- **Frequency analysis chart** - Compare letter frequency distributions between plaintext and ciphertext
+- **Simple frequency analysis attempt** - Demonstrates why basic Caesar cipher breaking techniques fail on Vigenère
+- **Kasiski examination** - Finds repeated sequences to determine the key length
+- **Automated cryptanalysis** - Uses the detected key length to split the cipher into Caesar subsets and decrypt the message
+
+The demo shows why simple frequency analysis fails for Vigenère (the same letter encrypts differently based on position), then demonstrates the Kasiski examination technique that finally broke this "indecipherable cipher" in 1863. By finding repeated sequences in the ciphertext and calculating the distances between them, the key length can be estimated. Once known, the cipher reduces to multiple Caesar ciphers that can be broken individually.
+
+## Live Demo
+
+The live <a href="/demos/vigenere">demo</a> is available to try out. It provides an interactive interface to visualize Vigenère cipher encryption and cryptanalysis. You can:
+
+- Enter custom plaintext (up to 500 characters) or use random sample texts
+- Set a custom encryption key (letters only, up to 20 characters)
+- Control the encryption speed to watch the process unfold
+- View the complete Vigenère table with real-time row/column/cell highlighting
+- See why simple frequency analysis produces gibberish
+- Analyze letter frequency distributions with interactive charts
+- Watch Kasiski examination find repeated sequences and estimate key length
+- See the automated decryption once the key length is detected
+
+The Kasiski examination section shows repeated sequences in the ciphertext, their distances apart, and the factors of those distances. The most common factor is likely the key length. Once determined, the ciphertext is split into groups where each position uses the same Caesar shift, allowing frequency analysis to work on each group separately.
+
+## References
+
+- [Vigenère Cipher](https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher)
+- [Kasiski Examination](https://en.wikipedia.org/wiki/Kasiski_examination)
+- [Frequency Analysis](https://en.wikipedia.org/wiki/Frequency_analysis)
+- [Index of Coincidence](https://en.wikipedia.org/wiki/Index_of_coincidence)
+- [Polyalphabetic Cipher](https://en.wikipedia.org/wiki/Polyalphabetic_cipher)
