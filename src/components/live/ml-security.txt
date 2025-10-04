@@ -1,0 +1,225 @@
+# Machine Learning Security Demo - Project Plan
+
+## Overview
+An interactive demonstration of machine learning security vulnerabilities, specifically focusing on model stealing attacks. The demo will allow users to train a simple neural network and then observe various techniques attackers use to steal/replicate the model.
+
+## Core Concepts to Demonstrate
+
+### 1. Model Training (Legitimate Side)
+- Train a simple deep neural network classifier on a well-known dataset
+- Show the training process with real-time loss/accuracy metrics
+- Demonstrate model evaluation and performance
+- Visualize the decision boundary or model predictions
+
+### 2. Model Stealing Attacks
+- **Query-based extraction**: Send inputs to the model and use outputs to train a substitute model
+- **Equation-solving attacks**: Use mathematical optimization to reverse-engineer model parameters
+- **Prediction API abuse**: Demonstrate how a publicly accessible prediction API can be exploited
+
+## Technical Implementation
+
+### Dataset Options
+- MNIST (handwritten digits) - Simple, visual, easy to understand
+- Fashion-MNIST - Similar to MNIST but slightly more complex
+- Synthetic 2D dataset (like spiral or circles) - Easy to visualize decision boundaries
+- *Recommendation*: Start with 2D synthetic dataset for easy visualization, include MNIST as alternative
+
+### Model Architecture
+- **Victim Model** (the target):
+  - Simple feedforward neural network (2-3 hidden layers)
+  - Input layer matching dataset dimensions
+  - Output layer with softmax for classification
+  - Trained with Adam optimizer
+
+- **Attacker Model** (stolen/surrogate):
+  - Similar architecture (but potentially different)
+  - Trained on queries to victim model
+  - Show how it mimics victim's behavior
+
+### Technologies
+- TensorFlow.js for in-browser training
+- Chart.js for visualizations
+- Vue 3 Composition API
+- Canvas for decision boundary visualization (if using 2D data)
+
+## Demo Features
+
+### Left Panel - Main Visualization Area
+1. **Training Section**:
+   - Live training progress chart (loss/accuracy over epochs)
+   - Dataset visualization (scatter plot or image grid)
+   - Model architecture diagram (optional)
+   - Current epoch/batch progress
+
+2. **Decision Boundary Visualization** (for 2D data):
+   - Show how the model classifies the input space
+   - Color-coded regions for different classes
+   - Training data points overlaid
+
+3. **Model Stealing Progress**:
+   - Query strategy visualization (which points are being queried)
+   - Stolen model's decision boundary overlaid with victim's
+   - Fidelity metric (how similar the stolen model is)
+   - Number of queries used
+
+### Right Sidebar - Controls & Info
+
+1. **Dataset Configuration**:
+   - Choose dataset (2D Synthetic / MNIST)
+   - Number of training samples slider
+   - Data complexity/noise slider (for synthetic)
+
+2. **Victim Model Training**:
+   - Layer size controls
+   - Learning rate slider
+   - Epochs slider
+   - Train/Reset buttons
+
+3. **Attack Configuration**:
+   - Attack strategy selector:
+     * Random Sampling
+     * Active Learning (uncertainty sampling)
+     * Boundary-focused sampling
+     * Grid-based sampling
+   - Number of query budget
+   - Stolen model architecture (same/different)
+
+4. **Metrics Display**:
+   - Victim model accuracy
+   - Stolen model accuracy
+   - Agreement rate (how often they agree)
+   - Query efficiency (accuracy per query)
+
+5. **Instructions/Educational Content**:
+   - Brief explanation of model stealing
+   - Why it's a security concern
+   - Real-world implications
+   - Defense mechanisms (briefly mentioned)
+
+## Attack Strategies to Implement
+
+1. **Random Sampling**:
+   - Query random points from the input space
+   - Simple but inefficient
+
+2. **Uncertainty Sampling** (Active Learning):
+   - Query points where the stolen model is most uncertain
+   - More efficient - focuses on decision boundaries
+
+3. **Boundary Sampling**:
+   - Focus queries near decision boundaries
+   - Maximize information gain per query
+
+4. **Grid Sampling**:
+   - Systematic grid of queries across input space
+   - Ensures coverage but may be inefficient
+
+## Visualization Ideas
+
+### For 2D Synthetic Data:
+- Side-by-side comparison of victim vs stolen model decision boundaries
+- Heatmap showing prediction confidence
+- Animated query points being selected and labeled
+- Real-time updating of stolen model as it learns
+
+### For MNIST:
+- Grid of test images with victim vs stolen predictions
+- Confusion matrices for both models
+- Adversarial examples that differ between models
+
+## Educational Messages to Convey
+
+1. **Security Risk**: Models can be stolen with surprisingly few queries
+2. **API Exposure**: Public prediction APIs are vulnerable
+3. **Cost**: Original model training is expensive, stealing is cheap
+4. **IP Theft**: Model architecture and weights are intellectual property
+5. **Privacy**: Stolen models may leak training data information
+
+## Defense Mechanisms (To Mention/Optionally Demo)
+
+- Query rate limiting
+- Adding noise to predictions
+- Rounding confidence scores
+- Detecting abnormal query patterns
+- Watermarking models
+- Requiring authentication/payment per query
+
+## Implementation Phases
+
+### Phase 1: Basic Training
+- Set up TensorFlow.js environment
+- Create synthetic 2D dataset generator
+- Implement simple neural network training
+- Visualize training progress and decision boundary
+
+### Phase 2: Model Stealing
+- Implement query API for victim model
+- Create random sampling attack
+- Train stolen model on queried data
+- Show similarity metrics
+
+### Phase 3: Advanced Attacks
+- Add uncertainty sampling
+- Add boundary-focused sampling
+- Compare attack efficiency
+- Add visualizations showing query strategies
+
+### Phase 4: Polish & Education
+- Add detailed instructions
+- Include metrics and comparisons
+- Optimize performance
+- Add MNIST dataset option (optional)
+- Write project documentation
+
+## Potential Challenges
+
+1. **Performance**: Training in-browser might be slow
+   - *Solution*: Use small models, limit epochs, optimize with WebGL backend
+
+2. **Visualization Complexity**: Hard to show high-dimensional data
+   - *Solution*: Start with 2D, use t-SNE/PCA for higher dimensions if needed
+
+3. **User Understanding**: Concept might be abstract
+   - *Solution*: Clear instructions, visual feedback, step-by-step process
+
+4. **Query Efficiency**: Too many queries = slow demo
+   - *Solution*: Limit query budget, show progress, use efficient sampling
+
+## Success Metrics
+
+- User can train a model and see it work
+- User can execute a stealing attack and see it succeed
+- Visual comparison clearly shows stolen model mimics victim
+- Educational value: user understands the security vulnerability
+- Performance: demo runs smoothly in browser
+
+## File Structure
+
+```
+src/components/live/
+  MLSecurity.vue          - Main component
+  FormSideBar.vue         - Reuse existing sidebar component
+
+src/pages/demos/
+  ml-security.astro       - Page wrapper
+
+src/pages/project-files/
+  ml-security.mdx         - Project write-up (later)
+```
+
+## References for Implementation
+
+- TensorFlow.js model training examples
+- Model extraction attack papers (Tramèr et al., 2016)
+- Active learning literature
+- Decision boundary visualization techniques
+- Model stealing defenses
+
+## Notes
+
+- Keep models small for browser performance
+- Use WebGL backend for acceleration
+- Cache trained models to avoid retraining
+- Consider adding download/upload model functionality
+- Make it visually engaging - this is a demo, not just education
+- Balance between accuracy and performance

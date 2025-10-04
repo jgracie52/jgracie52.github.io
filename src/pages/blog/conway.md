@@ -5,6 +5,7 @@ description: "A recreation of Conway's Game of Life with Javascript and Svelte."
 pubDate: "Oct 16 2022"
 heroImage: "/conway.png"
 tags: [ "cellular automata", "live demo" ]
+categories: [ "Cellular Automata", "Web Development" ]
 badge: "Demo"
 ---
 

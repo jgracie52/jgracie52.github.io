@@ -5,6 +5,7 @@ description: "Using Deck.GL to render large datasets in Google Maps."
 pubDate: "May 23 2024"
 heroImage: "/DeckGLArticle.gif"
 tags: [ "GIS", "google maps", "deck.gl" ]
+categories: [ "GIS & Mapping", "Web Development" ]
 ---
 
 In my last post, I talked about how to optimize GeoJSON in Google Maps API by using the Data Layer and event listeners. This time, I want to talk about how to use deck.gl to render large datasets in Google Maps. deck.gl is a WebGL-powered framework for visual exploratory data analysis of large datasets. It is (mostly) agnostic to the mapping library you use, so it can be used with Google Maps API. 

@@ -5,6 +5,7 @@ description: "An exploration of possible optimizations for loading GeoJSON into 
 pubDate: "March 15 2024"
 heroImage: "/GMapArticle.gif"
 tags: [ "GIS", "google maps" ]
+categories: [ "GIS & Mapping", "Web Development" ]
 ---
 
 The other day, I was working on a side project involving some GIS data. I was specifically working with parcel lines (property lines) which are essentially a bunch of polygons with geo coordinates.

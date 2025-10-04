@@ -5,6 +5,7 @@ description: "An interactive demo of a multi neighborhood cellular automata"
 pubDate: "May 24 2024"
 heroImage: "/MNCA.gif"
 tags: [ "cellular automata", "live demo" ]
+categories: [ "Cellular Automata", "Machine Learning" ]
 badge: "Demo"
 ---
 

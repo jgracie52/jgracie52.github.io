@@ -2,17 +2,12 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import HorizontalCard from "../../components/HorizontalCard.astro";
 
-export async function getStaticPaths({ paginate }) {
-  const posts = (await Astro.glob("./*.{md,mdx}")).sort(
-    (a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
-  );
+const allProjects = (await Astro.glob("./*.{md,mdx}")).sort(
+  (a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
+);
 
-  return paginate(posts, { pageSize: 9 });
-}
-const { page } = Astro.props;
-
-// Extract all unique categories from posts
-const allCategories = [...new Set(page.data.flatMap(post => post.frontmatter.categories || []))].sort();
+// Extract all unique categories from all projects
+const allCategories = [...new Set(allProjects.flatMap(project => project.frontmatter.categories || []))].sort();
 ---
 
 <BaseLayout>
@@ -41,12 +36,12 @@ const allCategories = [...new Set(page.data.flatMap(post => post.frontmatter.cat
       >
         All
       </button>
-      {allCategories.map(category => (
+      {allCategories.map(cat => (
         <button
           class="btn btn-sm category-filter"
-          data-category={category}
+          data-category={cat}
         >
-          {category}
+          {cat}
         </button>
       ))}
     </div>
@@ -54,21 +49,22 @@ const allCategories = [...new Set(page.data.flatMap(post => post.frontmatter.cat
 
   <!-- Projects Grid -->
   <div class="project-grid" id="projectGrid">
-    {page.data.map((post) => (
+    {allProjects.map((project) => (
       <div
         class="project-card"
-        data-title={post.frontmatter.title.toLowerCase()}
-        data-desc={post.frontmatter.description.toLowerCase()}
-        data-tags={(post.frontmatter.tags || []).join(',').toLowerCase()}
-        data-categories={(post.frontmatter.categories || []).join(',')}>
+        data-title={project.frontmatter.title.toLowerCase()}
+        data-desc={project.frontmatter.description.toLowerCase()}
+        data-tags={(project.frontmatter.tags || []).join(',').toLowerCase()}
+        data-categories={(project.frontmatter.categories || []).join(',')}
+      >
         <HorizontalCard
-          title={post.frontmatter.title}
-          img={post.frontmatter.heroImage}
-          desc={post.frontmatter.description}
-          url={post.url}
-          date={post.frontmatter.pubDate}
-          tags={post.frontmatter.tags}
-          badge={post.frontmatter.badge}
+          title={project.frontmatter.title}
+          img={project.frontmatter.heroImage}
+          desc={project.frontmatter.description}
+          url={project.url}
+          date={project.frontmatter.pubDate}
+          tags={project.frontmatter.tags}
+          badge={project.frontmatter.badge}
           target="_self"
         />
       </div>
@@ -82,56 +78,41 @@ const allCategories = [...new Set(page.data.flatMap(post => post.frontmatter.cat
 
   <!-- Pagination -->
   <div class="flex justify-center items-center gap-2 my-10" id="pagination">
-    {page.url.prev ?
-      <a href={page.url.prev} class="btn btn-ghost btn-sm">
-        <svg class="h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-          <path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"></path>
-        </svg>
-      </a>
-      : <button class="btn btn-ghost btn-sm btn-disabled">
-        <svg class="h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-          <path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"></path>
-        </svg>
-      </button>
-    }
+    <button id="prevPage" class="btn btn-ghost btn-sm">
+      <svg class="h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"></path>
+      </svg>
+    </button>
 
-    {Array.from({ length: page.lastPage }, (_, i) => i + 1).map((num) => (
-      <a
-        href={`/project-files/${num}`}
-        class={`btn btn-sm ${page.currentPage === num ? 'btn-active' : 'btn-ghost'}`}
-      >
-        {num}
-      </a>
-    ))}
+    <div id="pageNumbers" class="flex gap-2"></div>
 
-    {page.url.next ?
-      <a href={page.url.next} class="btn btn-ghost btn-sm">
-        <svg class="h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-          <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"></path>
-        </svg>
-      </a>
-      : <button class="btn btn-ghost btn-sm btn-disabled">
-        <svg class="h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-          <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"></path>
-        </svg>
-      </button>
-    }
+    <button id="nextPage" class="btn btn-ghost btn-sm">
+      <svg class="h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"></path>
+      </svg>
+    </button>
   </div>
 </BaseLayout>
 
 <script>
-  // Search and filter functionality
+  // Client-side filtering and pagination across ALL projects
   const searchInput = document.getElementById('searchInput') as HTMLInputElement;
   const categoryButtons = document.querySelectorAll('.category-filter');
   const projectCards = document.querySelectorAll('.project-card');
   const noResults = document.getElementById('noResults');
   const pagination = document.getElementById('pagination');
+  const pageNumbers = document.getElementById('pageNumbers');
+  const prevPage = document.getElementById('prevPage');
+  const nextPage = document.getElementById('nextPage');
 
   let activeCategory = 'all';
   let searchTerm = '';
+  let currentPage = 1;
+  const itemsPerPage = 9;
+  let filteredCards: Element[] = [];
 
   function filterProjects() {
-    let visibleCount = 0;
+    filteredCards = [];
 
     projectCards.forEach((card) => {
       const htmlCard = card as HTMLElement;
@@ -150,22 +131,73 @@ const allCategories = [...new Set(page.data.flatMap(post => post.frontmatter.cat
       const matchesCategory = activeCategory === 'all' ||
         categories.split(',').includes(activeCategory);
 
-      // Show/hide card
+      // Add to filtered list if matches
       if (matchesSearch && matchesCategory) {
-        htmlCard.style.display = '';
-        visibleCount++;
-      } else {
-        htmlCard.style.display = 'none';
+        filteredCards.push(card);
+      }
+    });
+
+    // Reset to page 1 when filters change
+    currentPage = 1;
+    renderPage();
+  }
+
+  function renderPage() {
+    const totalPages = Math.ceil(filteredCards.length / itemsPerPage);
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+
+    // Hide all cards first
+    projectCards.forEach((card) => {
+      (card as HTMLElement).style.display = 'none';
+    });
+
+    // Show only cards for current page
+    filteredCards.forEach((card, index) => {
+      if (index >= startIndex && index < endIndex) {
+        (card as HTMLElement).style.display = '';
       }
     });
 
     // Show/hide no results message
-    if (visibleCount === 0) {
+    if (filteredCards.length === 0) {
       noResults?.classList.remove('hidden');
       pagination?.classList.add('hidden');
     } else {
       noResults?.classList.add('hidden');
       pagination?.classList.remove('hidden');
+    }
+
+    // Update pagination buttons
+    if (pageNumbers) {
+      pageNumbers.innerHTML = '';
+      for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement('button');
+        btn.textContent = i.toString();
+        btn.className = `btn btn-sm ${i === currentPage ? 'btn-active' : 'btn-ghost'}`;
+        btn.addEventListener('click', () => {
+          currentPage = i;
+          renderPage();
+        });
+        pageNumbers.appendChild(btn);
+      }
+    }
+
+    // Update prev/next buttons
+    if (prevPage) {
+      if (currentPage === 1) {
+        prevPage.classList.add('btn-disabled');
+      } else {
+        prevPage.classList.remove('btn-disabled');
+      }
+    }
+
+    if (nextPage) {
+      if (currentPage === totalPages || totalPages === 0) {
+        nextPage.classList.add('btn-disabled');
+      } else {
+        nextPage.classList.remove('btn-disabled');
+      }
     }
   }
 
@@ -189,6 +221,25 @@ const allCategories = [...new Set(page.data.flatMap(post => post.frontmatter.cat
       filterProjects();
     });
   });
+
+  // Pagination handlers
+  prevPage?.addEventListener('click', () => {
+    if (currentPage > 1) {
+      currentPage--;
+      renderPage();
+    }
+  });
+
+  nextPage?.addEventListener('click', () => {
+    const totalPages = Math.ceil(filteredCards.length / itemsPerPage);
+    if (currentPage < totalPages) {
+      currentPage++;
+      renderPage();
+    }
+  });
+
+  // Initial render
+  filterProjects();
 </script>
 
 <style>

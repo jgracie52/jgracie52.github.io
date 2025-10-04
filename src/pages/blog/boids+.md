@@ -6,6 +6,7 @@ pubDate: "Mar 3 2024"
 published: false
 heroImage: "/boids.png"
 tags: [ "simulation", "live demo" ]
+categories: [ "Simulations", "Algorithms" ]
 badge: "Demo"
 ---
 

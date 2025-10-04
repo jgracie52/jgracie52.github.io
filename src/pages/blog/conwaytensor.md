@@ -5,6 +5,7 @@ description: "A reimplementation of Conway's Game of Life with TensorFlowJS."
 pubDate: "March 6 2024"
 heroImage: "/conwaytensor.png"
 tags: [ "cellular automata", "live demo" ]
+categories: [ "Cellular Automata", "Machine Learning" ]
 badge: "Demo"
 ---
 
