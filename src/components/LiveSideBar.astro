@@ -1,6 +1,41 @@
 ---
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1); // remove the first "/"
+
+const demos = [
+  {
+    category: "games_simulations",
+    items: [
+      { name: "conways_game_of_life", path: "/demos/conwaydemo", ext: "sim", emoji: "🦠" },
+      { name: "conways_game_of_life_tensorflow", path: "/demos/conwaytensordemo", ext: "ml", emoji: "🧠" },
+      { name: "multi_neighborhood_cellular_automata", path: "/demos/mnca", ext: "sim", emoji: "🌐" },
+      { name: "boids", path: "/demos/boidsdemo", ext: "sim", emoji: "🐦" },
+    ]
+  },
+  {
+    category: "machine_learning",
+    items: [
+      { name: "genetic_travelling_salesman", path: "/demos/salesmandemo", ext: "ml", emoji: "🧬" },
+      { name: "canny_edge_detection", path: "/demos/cannydemo", ext: "cv", emoji: "👁️" },
+      { name: "neural_network_visualization", path: "/demos/neural", ext: "ml", emoji: "🧠" },
+    ]
+  },
+  {
+    category: "computer_science",
+    items: [
+      { name: "sorting_algorithms", path: "/demos/sorting", ext: "algo", emoji: "📊" },
+      { name: "graph_traversal", path: "/demos/graphtraversal", ext: "algo", emoji: "🕸️" },
+      { name: "path_finding", path: "/demos/pathfinding", ext: "algo", emoji: "🎯" },
+    ]
+  },
+  {
+    category: "cyber_security",
+    items: [
+      { name: "caesar_cipher", path: "/demos/caesar", ext: "crypto", emoji: "🔐" },
+      { name: "vigenere_cipher", path: "/demos/vigenere", ext: "crypto", emoji: "🔑" },
+    ]
+  }
+];
 ---
 
 <div class="drawer-side">
@@ -14,50 +49,211 @@ const currentPath = pathname.slice(1); // remove the first "/"
         </div>
       </a>
     </div>
-      <ul class="menu space-y-1 flex flex-col p-0 px-4 mt-4">
-        <li>
-          <a href="/demos/1">Home</a>
-        </li>
-        <li>
-          <details open>
-            <summary>Games/Simulations</summary>
-            <ul>
-              <li><a href="/demos/conwaydemo">Conway's Game of Life</a></li>
-              <li><a href="/demos/conwaytensordemo">Conway's Game of Life in TensorFlow</a></li>
-              <li><a href="/demos/mnca">Multi Neighborhood Cellular Automata</a></li>
-              <li><a href="/demos/boidsdemo">Boids</a></li>
-            </ul>
-          </details>
-        </li>
-        <li>
-          <details open>
-            <summary>Machine Learning</summary>
-            <ul>
-              <li><a href="/demos/salesmandemo">Genetic Travelling Salesman</a></li>
-              <li><a href="/demos/cannydemo">Canny Edge Detection</a></li>
-            </ul>
-          </details>
-        </li>
-        <li>
-          <details open>
-            <summary>Computer Science</summary>
-            <ul>
-              <li><a href="/demos/sorting">Sorting Algorithms</a></li>
-              <li><a href="/demos/graphtraversal">Graph Traversal</a></li>
-              <li><a href="/demos/pathfinding">Path Finding</a></li>
-            </ul>
-          </details>
-        </li>
-        <li>
-          <details open>
-            <summary>Cyber Security</summary>
-            <ul>
-              <li><a href="/demos/caesar">Caesar Cipher</a></li>
-              <li><a href="/demos/vigenere">Vigenère Cipher</a></li>
-            </ul>
-          </details>
-        </li>
-      </ul>
+
+    <!-- Search bar -->
+    <div class="px-4 mb-4">
+      <input
+        type="text"
+        id="demoSearch"
+        placeholder="Search demos..."
+        class="input input-bordered input-sm w-full search-input"
+      />
+    </div>
+
+    <div class="px-4">
+      <a href="/demos/1" class="demo-link home-link block py-1 mb-4" title="home" style="--demo-emoji: '🏠';">
+        home<span class="demo-extension">.index</span>
+      </a>
+    </div>
+
+    <div class="space-y-3 px-4 mt-4" id="demoList">
+      {demos.map((section, sectionIndex) => (
+        <div class="demo-category" data-category={section.category}>
+          <div class="demo-folder mb-1 cursor-pointer select-none open" data-folder={section.category}>
+            <span class="folder-icon">▶</span> {section.category}/
+          </div>
+          <div class="demo-files space-y-1" data-files={section.category}>
+            {section.items.map((item, itemIndex) => {
+              const isLast = itemIndex === section.items.length - 1;
+              return (
+                <a
+                  href={item.path}
+                  class={`demo-link block py-1 ${isLast ? 'last-item' : ''}`}
+                  data-name={item.name.toLowerCase()}
+                  data-emoji={item.emoji}
+                  title={`${item.name}.${item.ext}`}
+                  style={`--demo-emoji: "${item.emoji}";`}
+                >
+                  {item.name}<span class="demo-extension">.{item.ext}</span>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      ))}
     </div>
   </div>
 </div>
+
+<style>
+  /* Search bar styling */
+  .search-input {
+    border-radius: 0;
+    border-color: hsl(287, 60%, 65%);
+  }
+
+  .search-input:focus {
+    outline: 2px solid hsl(287, 60%, 65%);
+    outline-offset: 2px;
+    border-color: hsl(287, 60%, 65%);
+  }
+
+  .demo-link {
+    color: #9ca3af;
+    transition: all 0.2s;
+    gap: 0 !important;
+    position: relative;
+    padding-left: 52px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+
+  .demo-link:hover {
+    color: white;
+    font-weight: 600;
+    background-color: transparent;
+  }
+
+  .demo-extension {
+    color: hsl(287 60% 65%);
+    font-weight: normal;
+  }
+
+  .demo-link::before {
+    content: "├── " var(--demo-emoji) " ";
+    color: #4b5563;
+    position: absolute;
+    left: 0;
+    font-family: monospace;
+  }
+
+  .demo-link.last-item::before {
+    content: "└── " var(--demo-emoji) " ";
+  }
+
+  .demo-files {
+    border-left: 1px solid #4b5563;
+    margin-left: 8px;
+    padding-left: 0;
+  }
+
+  .home-link {
+    border-bottom: 1px solid hsl(287 60% 65% / 0.3);
+    padding-bottom: 0.5rem !important;
+    margin-bottom: 0.5rem;
+  }
+
+  .demo-folder {
+    color: white;
+    font-weight: 600;
+    font-size: 0.95rem;
+    font-family: monospace;
+    transition: all 0.2s;
+  }
+
+  .demo-folder:hover {
+    color: hsl(287 60% 65%);
+  }
+
+  .demo-folder::before {
+    content: "📁 ";
+    margin-right: 4px;
+  }
+
+  .folder-icon {
+    display: inline-block;
+    transition: transform 0.2s;
+    font-size: 0.75rem;
+    color: #9ca3af;
+  }
+
+  .demo-folder.open .folder-icon {
+    transform: rotate(90deg);
+  }
+
+  .demo-category {
+    transition: opacity 0.2s;
+  }
+
+  .demo-category.hidden {
+    display: none;
+  }
+
+  .demo-files.hidden {
+    display: none;
+  }
+</style>
+
+<script>
+  const searchInput = document.getElementById('demoSearch') as HTMLInputElement;
+  const demoCategories = document.querySelectorAll('.demo-category');
+  const demoLinks = document.querySelectorAll('.demo-link:not(.home-link)');
+  const demoFolders = document.querySelectorAll('.demo-folder');
+
+  // Folder toggle functionality
+  demoFolders.forEach(folder => {
+    folder.addEventListener('click', () => {
+      const folderName = folder.getAttribute('data-folder');
+      const filesContainer = document.querySelector(`[data-files="${folderName}"]`);
+
+      if (filesContainer) {
+        filesContainer.classList.toggle('hidden');
+        folder.classList.toggle('open');
+      }
+    });
+  });
+
+  searchInput?.addEventListener('input', (e) => {
+    const searchTerm = (e.target as HTMLInputElement).value.toLowerCase();
+
+    if (searchTerm === '') {
+      // Show all categories, but keep folder state
+      demoCategories.forEach(category => {
+        category.classList.remove('hidden');
+        const links = category.querySelectorAll('.demo-link');
+        links.forEach(link => link.classList.remove('hidden'));
+      });
+      return;
+    }
+
+    // Filter demos and auto-expand matching folders
+    demoCategories.forEach(category => {
+      const links = category.querySelectorAll('.demo-link');
+      const filesContainer = category.querySelector('.demo-files');
+      const folder = category.querySelector('.demo-folder');
+      let hasVisibleLinks = false;
+
+      links.forEach(link => {
+        const name = link.getAttribute('data-name') || '';
+        if (name.includes(searchTerm)) {
+          link.classList.remove('hidden');
+          hasVisibleLinks = true;
+        } else {
+          link.classList.add('hidden');
+        }
+      });
+
+      // Hide category if no demos match
+      if (hasVisibleLinks) {
+        category.classList.remove('hidden');
+        // Auto-expand folder when searching
+        filesContainer?.classList.remove('hidden');
+        folder?.classList.add('open');
+      } else {
+        category.classList.add('hidden');
+      }
+    });
+  });
+</script>

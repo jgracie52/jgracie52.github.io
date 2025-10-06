@@ -151,13 +151,39 @@ const delay = ref(100);
 const delayChange = ref(false);
 const numberOfElements = ref(100);
 
+// Track active intervals and timeouts
+let activeInterval = null;
+let activeTimeouts = [];
+let stopRequested = false;
+
+function stopAllOperations() {
+  stopRequested = true;
+
+  if (activeInterval) {
+    clearInterval(activeInterval);
+    activeInterval = null;
+  }
+
+  activeTimeouts.forEach(timeout => clearTimeout(timeout));
+  activeTimeouts = [];
+
+  play.value = false;
+}
+
 function bubbleSort() {
   let n = array.value.length;
   let swapped = false;
   let i = 0;
   let j = 0;
 
-  let interval = setInterval(() => {
+  activeInterval = setInterval(() => {
+    if (stopRequested || !play.value) {
+      clearInterval(activeInterval);
+      activeInterval = null;
+      play.value = false;
+      return;
+    }
+
     if (i < n) {
       if (j < n - i - 1) {
         if (array.value[j] > array.value[j + 1]) {
@@ -170,7 +196,8 @@ function bubbleSort() {
         j++;
       } else {
         if (!swapped) {
-          clearInterval(interval);
+          clearInterval(activeInterval);
+          activeInterval = null;
           play.value = false;
         }
         swapped = false;
@@ -178,7 +205,8 @@ function bubbleSort() {
         j = 0;
       }
     } else {
-      clearInterval(interval);
+      clearInterval(activeInterval);
+      activeInterval = null;
       play.value = false;
     }
   }, delay.value);
@@ -190,7 +218,14 @@ function selectionSort() {
   let j = 0;
   let minIndex = 0;
 
-  let interval = setInterval(() => {
+  activeInterval = setInterval(() => {
+    if (stopRequested || !play.value) {
+      clearInterval(activeInterval);
+      activeInterval = null;
+      play.value = false;
+      return;
+    }
+
     if (i < n) {
       minIndex = i;
       j = i + 1;
@@ -209,12 +244,11 @@ function selectionSort() {
       drawArray(i);
       i++;
     } else {
-      clearInterval(interval);
+      clearInterval(activeInterval);
+      activeInterval = null;
       play.value = false;
     }
   }, delay.value);
-
-  play.value = false;
 }
 
 function insertionSort() {
@@ -222,7 +256,14 @@ function insertionSort() {
   let i = 1;
   let j = 0;
 
-  let interval = setInterval(() => {
+  activeInterval = setInterval(() => {
+    if (stopRequested || !play.value) {
+      clearInterval(activeInterval);
+      activeInterval = null;
+      play.value = false;
+      return;
+    }
+
     if (i < n) {
       let key = array.value[i];
       j = i - 1;
@@ -235,24 +276,28 @@ function insertionSort() {
       drawArray(i);
       i++;
     } else {
-      clearInterval(interval);
+      clearInterval(activeInterval);
+      activeInterval = null;
       play.value = false;
     }
   }, delay.value);
-
-  play.value = false;
 }
 
 async function mergeSort() {
   let n = array.value.length;
   let tempArray = Array.from({ length: n }, () => 0);
-  const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
+  const sleep = (delay) => new Promise((resolve) => {
+    const timeout = setTimeout(resolve, delay);
+    activeTimeouts.push(timeout);
+  });
 
   await mergeSortHelper(0, n - 1);
 
   play.value = false;
 
   async function mergeSortHelper(l, r) {
+    if (stopRequested || !play.value) return;
+
     if (l < r) {
       let m = Math.floor((l + r) / 2);
       await mergeSortHelper(l, m);
@@ -264,6 +309,8 @@ async function mergeSort() {
   }
 
   async function merge(l, m, r) {
+    if (stopRequested || !play.value) return;
+
     let i = l;
     let j = m + 1;
     let k = l;
@@ -306,7 +353,14 @@ function quickSort() {
 
   stack[++top] = l;
   stack[++top] = r;
-  let interval = setInterval(() => {
+  activeInterval = setInterval(() => {
+    if (stopRequested || !play.value) {
+      clearInterval(activeInterval);
+      activeInterval = null;
+      play.value = false;
+      return;
+    }
+
     if (top >= 0) {
       r = stack[top--];
       l = stack[top--];
@@ -336,12 +390,11 @@ function quickSort() {
         stack[++top] = r;
       }
     } else {
-      clearInterval(interval);
+      clearInterval(activeInterval);
+      activeInterval = null;
       play.value = false;
     }
   }, delay.value);
-
-  play.value = false;
 }
 
 function heapSort() {
@@ -350,7 +403,14 @@ function heapSort() {
   let j = 0;
   let k = 0;
 
-  let interval = setInterval(() => {
+  activeInterval = setInterval(() => {
+    if (stopRequested || !play.value) {
+      clearInterval(activeInterval);
+      activeInterval = null;
+      play.value = false;
+      return;
+    }
+
     if (i >= 0) {
       heapify(n, i);
       i--;
@@ -364,7 +424,8 @@ function heapSort() {
         heapify(i, 0);
         i--;
       }
-      clearInterval(interval);
+      clearInterval(activeInterval);
+      activeInterval = null;
       play.value = false;
     }
   }, delay.value);
@@ -387,8 +448,6 @@ function heapSort() {
       heapify(n, largest);
     }
   }
-
-  play.value = false;
 }
 
 function randomizeArray() {
@@ -430,14 +489,19 @@ onMounted(() => {
 });
 
 function setAlgorithm(value) {
+  stopAllOperations();
   algorithm.value = parseInt(value);
 }
 
 async function playAlgo() {
   if (play.value) {
-    play.value = false;
+    stopAllOperations();
     return;
   }
+
+  // Stop any existing operations first
+  stopAllOperations();
+  stopRequested = false; // Reset flag
 
   play.value = true;
   switch (algorithm.value) {
@@ -463,14 +527,14 @@ async function playAlgo() {
 }
 
 function regenerateArray() {
+  stopAllOperations();
   randomizeArray();
   drawArray(0);
 }
 
 function reset() {
+  stopAllOperations();
   array.value = [...originalArray.value];
   drawArray(0);
-  play.value = false;
-  playAlgo();
 }
 </script>
