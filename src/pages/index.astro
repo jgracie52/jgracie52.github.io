@@ -107,12 +107,18 @@ const posts = (await Astro.glob("./project-files/*.{md,mdx}")).sort(
   (a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
 );
 
-const blogs = (await Astro.glob("./blog/*.{md,mdx}")).sort(
-  (a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
-);
-
 const last_posts = posts.slice(0, 3);
-const last_blogs = blogs.slice(0, 3);
+
+const ghostApiUrl = `${import.meta.env.BLOG_API_URL}/ghost/api/content/posts/?key=${import.meta.env.BLOG_READ_KEY}&limit=3&include=tags`;
+const ghostRes = await fetch(ghostApiUrl);
+const ghostData = await ghostRes.json();
+const last_blogs: Array<{
+  title: string;
+  feature_image: string | null;
+  excerpt: string;
+  url: string;
+  tags: Array<{ name: string }>;
+}> = ghostData.posts ?? [];
 ---
 
 <script src="https://cdn.jsdelivr.net/npm/@tsparticles/preset-links@3/tsparticles.preset.links.min.js" is:inline></script>
@@ -143,7 +149,7 @@ const last_blogs = blogs.slice(0, 3);
       <div class="text-3xl py-3 font-bold">Cybersecurity Engineer and Computer Scientist</div>
       <div class="py-2">
         <text class="text-lg">
-          I am a cybersecurity engineer at Lockheed Martin and a recent computer science graduate from the University of Central Florida with a Master's in Computer Science. My interests are in cybersecurity, machine learning, evolutionary algorithms, and robotics.
+          I am a cybersecurity engineer working in the field of AI/ML security. I hold a Master's in Computer Science from the University of Central Florida. I spend my time working on LLM safeguards, adversarial machine learning, and general cybersecurity.
           </text
         >
       </div>
@@ -225,20 +231,19 @@ const last_blogs = blogs.slice(0, 3);
 
 <div class="section-header-wrapper mt-10">
   <div class="text-3xl font-bold mb-2 section-header">blogs</div>
-  <a class="projects_link" href="/blog">View all ~~&gt;</a>
+  <a class="projects_link" href="https://adversariallogic.com" target="_blank">View all ~~&gt;</a>
 </div>
 
 <div class="simple-grid">
 {
   last_blogs.map((post) => (
     <HorizontalCard
-      title={post.frontmatter.title}
-      img={post.frontmatter.heroImage}
-      desc={post.frontmatter.description}
+      title={post.title}
+      img={post.feature_image}
+      desc={post.excerpt.length > 140 ? post.excerpt.slice(0, 140).trimEnd() + '…' : post.excerpt}
       url={post.url}
-      tags={post.frontmatter.tags}
-      target="_self"
-      badge={post.frontmatter.badge}
+      tags={post.tags.map((t) => t.name)}
+      target="_blank"
     />
   ))
 }

@@ -1,0 +1,54 @@
+---
+interface Section {
+  id: string;
+  label: string;
+}
+
+interface Props {
+  sections: Section[];
+}
+
+const { sections } = Astro.props;
+---
+
+<nav class="cv-sidenav" aria-label="CV sections">
+  <p class="cv-sidenav-heading">on this page</p>
+  <ul class="cv-sidenav-list">
+    {sections.map(({ id, label }) => (
+      <li class="cv-sidenav-item">
+        <a href={`#${id}`} class="cv-sidenav-link" data-section={id}>{label}</a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<script>
+  const links = document.querySelectorAll<HTMLAnchorElement>('.cv-sidenav-link');
+  const sectionIds = Array.from(links).map(l => l.getAttribute('data-section') ?? '');
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          links.forEach(link => {
+            link.classList.toggle(
+              'cv-sidenav-link--active',
+              link.getAttribute('data-section') === id
+            );
+          });
+          break;
+        }
+      }
+    },
+    {
+      rootMargin: '-20% 0% -70% 0%',
+      threshold: 0,
+    }
+  );
+
+  sectionIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+</script>

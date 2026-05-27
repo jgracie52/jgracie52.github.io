@@ -1,200 +1,287 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import TimeLineElement from "../components/cv/TimeLine.astro";
-import Rating from "../components/cv/Rating.astro";
+import ProgressBar from "../components/cv/ProgressBar.astro";
+import CVSideNav from "../components/cv/CVSideNav.astro";
+
+const navSections = [
+  { id: "profile",      label: "profile" },
+  { id: "education",    label: "education" },
+  { id: "experience",   label: "experience" },
+  { id: "publications", label: "publications" },
+  { id: "certificates", label: "certificates" },
+  { id: "awards",       label: "awards" },
+  { id: "skills",       label: "skills" },
+];
 ---
 
 <BaseLayout>
-<article class="max-w-[900px]">
   <div class="mb-10">
     <div class="text-3xl font-bold mb-5 page-header">cv</div>
     <div class="text-xl mb-5 page-subheader">Curriculum Vitae</div>
   </div>
 
-  <div class="mb-5 section-header-wrapper">
-    <div class="text-3xl font-bold section-header">profile</div>
-  </div>
+  <div class="cv-layout">
 
-  <div class="mb-10 flex text-justify space-x-1" style="align-items: center; gap:5%">
-    <div>
-      <div class="mb-5">
-      <p class=" text-lg" style="display:inline">
-        Cybersecurity engineer with </p><p class="quote-color-text text-lg">4 years of experience</p> in software development as well as training in cybersecurity through 
-        <p class="quote-color-text text-lg">Security+</p> <p class=" text-lg" style="display:inline">, <p class="quote-color-text text-lg">C | EH</p> <p class=" text-lg" style="display:inline"></p>, and on-the-job training. Experienced with security product assessments and threat modeling, machine learning, genetic algorithms, and full
-        stack web development.
-        </p>
-    </div>
-    <div class="mb-5">
-      <p class="text-lg" style="display:inline">
-        Recently been learning about the Cloud, specifically AWS and Azure and am working towards attaining several cloud certifications. 
-        Also have a </p><p class="quote-color-text text-lg">background in business</p> <p class=" text-lg" style="display:inline">and business administration providing increased knowledge and communications skills with 
-        other non-technical professionals.
-      </p>
-    </div>
-    </div>
-  </div>
+    <aside class="cv-sidenav-col">
+      <CVSideNav sections={navSections} />
+    </aside>
 
-  <div class="mb-5 section-header-wrapper">
-    <div class="text-3xl font-bold section-header">education</div>
-  </div>
+    <article class="cv-content-col">
 
-  <div class="flex">
-  <div class="time-line-container grid gap-4 mb-10">
-    <TimeLineElement
-      title="Master's in Computer Science"
-      subtitle="2021 to 2022 at the University of Central Florida, Orlando, Florida"
-    />
-    <TimeLineElement
-      title="Bachelor's in Computer Science"
-      subtitle="2017 to 2021 at the University of Central Florida, Orlando, Florida"
-    />
-    <TimeLineElement
-      title="Minor in Business Administration"
-      subtitle="2017 to 2021 at the University of Central Florida, Orlando, Florida"
-    />
-  </div>
-  </div> 
+      <!-- PROFILE -->
+      <section id="profile" class="cv-section">
+        <div class="mb-5 section-header-wrapper">
+          <div class="text-3xl font-bold section-header">profile</div>
+        </div>
+        <div class="mb-10 text-justify">
+          <p class="text-lg mb-5">
+            Cybersecurity engineer with
+            <span class="quote-color-text">4 years of experience</span>
+            in software development as well as training in cybersecurity through
+            <span class="quote-color-text">Security+</span>,
+            <span class="quote-color-text">C|EH</span>,
+            and on-the-job training. Experienced with security product assessments
+            and threat modeling, machine learning, genetic algorithms, and full
+            stack web development.
+          </p>
+          <p class="text-lg mb-5">
+            Recently been learning about the Cloud, specifically AWS and Azure
+            and am working towards attaining several cloud certifications. Also have a
+            <span class="quote-color-text">background in business</span>
+            and business administration providing increased knowledge and
+            communications skills with other non-technical professionals.
+          </p>
+        </div>
+      </section>
 
-  <div class="mb-5 section-header-wrapper">
-    <div class="text-3xl section-header font-bold">experience</div>
-  </div>
+      <!-- EDUCATION -->
+      <section id="education" class="cv-section">
+        <div class="mb-5 section-header-wrapper">
+          <div class="text-3xl font-bold section-header">education</div>
+        </div>
+        <div class="time-line-container grid gap-4 mb-10">
+          <TimeLineElement
+            title="Master's in Computer Science"
+            subtitle="University of Central Florida, Orlando, Florida"
+            date="2021 – 2022"
+          />
+          <TimeLineElement
+            title="Bachelor's in Computer Science"
+            subtitle="University of Central Florida, Orlando, Florida"
+            date="2017 – 2021"
+          />
+          <TimeLineElement
+            title="Minor in Business Administration"
+            subtitle="University of Central Florida, Orlando, Florida"
+            date="2017 – 2021"
+          />
+        </div>
+      </section>
 
-  <div class="flex">
-    <div class="time-line-container mb-10">
-     <TimeLineElement
-        title="Cybersecurity Engineer at Lockheed Martin"
-        subtitle="From 2023 at Lockheed Martin, Orlando, Florida"
-        desc="Executed product assessments for outside COTS and FOSS software to be used accross the company and assisted in identifying and mitigating related risks according to CIS security policy. Also perform security engagements to securley standup new systems at the company."
-      />
-      <TimeLineElement
-        title="Cybersecurity Engineering Associate at Lockheed Martin"
-        subtitle="From 2022 to 2023 at Lockheed Martin, Orlando, Florida"
-        desc="Executed product assessments for outside COTS and FOSS software to be used accross the company and assisted in identifying and mitigating related risks according to CIS security policy."
-      />
-      <TimeLineElement
-        title="CWEP at Lockheed Martin"
-        subtitle="From 2019 to 2022 at Lockheed Martin MFC, Orlando, Florida"
-        desc={`Designed and implemented improvements to the department website, developed macros for financial and personnel data sheets, and spearheaded web apps for teams across the company including: a web application to assist in contract planning using Blazor and Kubernetes, and a machine learning/data dashboard to assist with manufacturing tolerance analysis using Streamlit and Sci-Kit Learn`}
-      />
-      <TimeLineElement
-        title="Summer Intern at Florida Blue"
-        subtitle="From 2017 to 2017 at Florida Blue, Jacksonville, Florida"
-        desc="Served on the IT Support Desk and collaborated with internal employees to solve IT related issues such as password failures, website/browser malfunctions, and computer upkeep. "
-      />
-    </div>
-  </div>
+      <!-- EXPERIENCE -->
+      <section id="experience" class="cv-section">
+        <div class="mb-5 section-header-wrapper">
+          <div class="text-3xl section-header font-bold">experience</div>
+        </div>
+        <div class="time-line-container mb-10">
+          <TimeLineElement
+            title="Cybersecurity Engineer at Lockheed Martin"
+            subtitle="Lockheed Martin, Orlando, Florida"
+            date="2023 – Present"
+            desc="Lead product security assessments of COTS and FOSS software across the enterprise, driving risk identification and mitigation aligned to CIS security policy. Conduct security engagements to securely stand up new systems and infrastructure across the company."
+          />
+          <TimeLineElement
+            title="Cybersecurity Engineering Associate at Lockheed Martin"
+            subtitle="Lockheed Martin, Orlando, Florida"
+            date="2022 – 2023"
+            desc="Executed product assessments of COTS and FOSS software to identify and mitigate security risks in accordance with CIS security policy."
+          />
+          <TimeLineElement
+            title="Software Engineering Co-op at Lockheed Martin"
+            subtitle="Lockheed Martin MFC, Orlando, Florida"
+            date="2019 – 2022"
+            desc="Designed and implemented improvements to the department website, developed macros for financial and personnel data sheets, and spearheaded web apps for teams across the company including: a web application to assist in contract planning using Blazor and Kubernetes, and a machine learning/data dashboard to assist with manufacturing tolerance analysis using Streamlit and Sci-Kit Learn."
+          />
+          <TimeLineElement
+            title="Summer Intern at Florida Blue"
+            subtitle="Florida Blue, Jacksonville, Florida"
+            date="Summer 2017"
+            desc="Served on the IT Support Desk and collaborated with internal employees to solve IT related issues such as password failures, website/browser malfunctions, and computer upkeep."
+          />
+        </div>
+      </section>
 
-  <div class="mb-5 section-header-wrapper">
-    <div class="text-3xl section-header font-bold">publications</div>
-  </div>
+      <!-- PUBLICATIONS -->
+      <section id="publications" class="cv-section">
+        <div class="mb-5 section-header-wrapper">
+          <div class="text-3xl section-header font-bold">publications</div>
+        </div>
+        <div class="mb-10">
+          <a href="https://adversariallogic.com" target="_blank" class="pub-blog-card">
+            <i class="fa fa-pen-nib pub-blog-icon"></i>
+            <div class="pub-blog-body">
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="pub-blog-name">Adversarial Logic</span>
+                <span class="badge badge-sm badge-main">Blog</span>
+              </div>
+              <span class="pub-blog-url">adversariallogic.com</span>
+              <p class="pub-blog-desc">Personal technical blog covering cybersecurity, software engineering, and computer science.</p>
+            </div>
+            <i class="fa fa-arrow-up-right-from-square cert-list-icon"></i>
+          </a>
+          <div class="pub-list">
+            <a href="https://stars.library.ucf.edu/etd2020/1015/" target="_blank" class="pub-card">
+              <i class="fa fa-file-lines pub-card-icon"></i>
+              <div class="pub-card-body">
+                <span class="pub-card-title">Leveraging human-centered insights and vision transformers to understand and detect online risks in teens' private social media conversations on Instagram</span>
+                <span class="pub-card-authors">J. Gracie</span>
+                <span class="pub-card-venue">UCF STARS — Master's Thesis · 2022</span>
+              </div>
+              <i class="fa fa-arrow-up-right-from-square pub-card-link"></i>
+            </a>
+            <a href="https://doi.org/10.1145/3491102.3501969" target="_blank" class="pub-card">
+              <i class="fa fa-file-lines pub-card-icon"></i>
+              <div class="pub-card-body">
+                <span class="pub-card-title">Understanding the Digital Lives of Youth: Analyzing Media Shared within Safe versus Unsafe Private Conversations on Instagram</span>
+                <span class="pub-card-authors">Ali, Shiza, et al.</span>
+                <span class="pub-card-venue">CHI Conference on Human Factors in Computing Systems · 2022</span>
+              </div>
+              <i class="fa fa-arrow-up-right-from-square pub-card-link"></i>
+            </a>
+          </div>
+        </div>
+      </section>
 
-  <div class="mb-10">
-    <p class="hanging-indent publication">J. Gracie, “Leveraging human-centered insights and vision transformers to understand and detect online risks in teens' private social media conversations on Instagram,” STARS. [Online]. Available: https://stars.library.ucf.edu/etd2020/1015/. [Accessed: 03-Nov-2022]. </p>
-    <p class="hanging-indent publication">Ali, Shiza, et al. “Understanding the Digital Lives of Youth: Analyzing Media Shared within Safe versus Unsafe Private Conversations on Instagram.” CHI Conference on Human Factors in Computing Systems, 2022, https://doi.org/10.1145/3491102.3501969. </p>
-  </div>
+      <!-- CERTIFICATES -->
+      <section id="certificates" class="cv-section">
+        <div class="mb-5 section-header-wrapper">
+          <div class="text-3xl section-header font-bold">certificates</div>
+        </div>
+        <div class="cert-list mb-10">
+          <a href="/CompTIA Security+ ce certificate.pdf" target="_blank" class="cert-list-item">
+            <div class="cert-list-img">
+              <img src="/SecPlus.png" alt="CompTIA Security+" />
+            </div>
+            <div class="cert-list-body">
+              <span class="cert-list-name">CompTIA Security+</span>
+              <span class="cert-list-issuer">CompTIA</span>
+            </div>
+            <i class="fa fa-arrow-up-right-from-square cert-list-icon"></i>
+          </a>
+          <a href="https://aspen.eccouncil.org/Verify" target="_blank" class="cert-list-item">
+            <div class="cert-list-img">
+              <img src="/CEH_Badge.png" alt="Certified Ethical Hacker" />
+            </div>
+            <div class="cert-list-body">
+              <span class="cert-list-name">Certified Ethical Hacker (C|EH)</span>
+              <span class="cert-list-issuer">EC-Council</span>
+            </div>
+            <i class="fa fa-arrow-up-right-from-square cert-list-icon"></i>
+          </a>
+          <a href="https://www.credly.com/badges/8b2e089a-331e-4998-8522-649c18d4a48c/public_url" target="_blank" class="cert-list-item">
+            <div class="cert-list-img">
+              <img src="/AWS-Certified-Cloud-Practitioner.png" alt="AWS Certified Cloud Practitioner" />
+            </div>
+            <div class="cert-list-body">
+              <span class="cert-list-name">AWS Certified Cloud Practitioner</span>
+              <span class="cert-list-issuer">Amazon Web Services</span>
+            </div>
+            <i class="fa fa-arrow-up-right-from-square cert-list-icon"></i>
+          </a>
+          <a href="/PartnerAccreditation_AWS Course Completion Certificate.pdf" target="_blank" class="cert-list-item">
+            <div class="cert-list-img">
+              <img src="/TechnicalAccreditation.png" alt="AWS Technical Accreditation" />
+            </div>
+            <div class="cert-list-body">
+              <span class="cert-list-name">AWS Partner: Technical Accreditation</span>
+              <span class="cert-list-issuer">Amazon Web Services</span>
+            </div>
+            <i class="fa fa-arrow-up-right-from-square cert-list-icon"></i>
+          </a>
+          <a href="/CloudEconomics_AWS Course Completion Certificate.pdf" target="_blank" class="cert-list-item">
+            <div class="cert-list-img">
+              <img src="/CloudEconomics.png" alt="AWS Cloud Economics" />
+            </div>
+            <div class="cert-list-body">
+              <span class="cert-list-name">AWS Partner: Cloud Economics Accreditation</span>
+              <span class="cert-list-issuer">Amazon Web Services</span>
+            </div>
+            <i class="fa fa-arrow-up-right-from-square cert-list-icon"></i>
+          </a>
+        </div>
+      </section>
 
-  <div class="mb-5 section-header-wrapper">
-    <div class="text-3xl section-header font-bold">certificates</div>
-  </div>
+      <!-- AWARDS -->
+      <section id="awards" class="cv-section mb-10">
+        <div class="mb-10 section-header-wrapper">
+          <div class="text-3xl section-header font-bold">awards</div>
+        </div>
+        <ul class="award-list mb-10">
+          <li class="award-box">
+            <i class="fa fa-trophy award-icon"></i>
+            <span>Winner of the Spring 2021 UCF Senior Design Showcase in Computer Science for my <a class="link color-main" href="https://github.com/jlehett/everglades-ai-wargame" target="_blank">Everglades Reinforcement Learning</a> project.</span>
+          </li>
+          <li class="award-box">
+            <i class="fa fa-graduation-cap award-icon"></i>
+            <span>Graduated Magna Cum Laude, Computer Science (GPA: 3.814).</span>
+          </li>
+          <li class="award-box">
+            <i class="fa fa-star award-icon"></i>
+            <span>Accepted to the UCF CECS accelerated BS to MS program.</span>
+          </li>
+        </ul>
+      </section>
 
-  <div class="cert-grid mb-10" style="gap:3%">
-    <div class="card cert transition ease-in-out hover:scale-[102%]">
-      <a href="/CompTIA Security+ ce certificate.pdf" target="_blank">
-        <img src="/SecPlus.png" width="200" alt="Comptia Security+"></img>
-      </a>
-    </div>
-    <div class="card cert transition ease-in-out hover:scale-[102%]">
-      <a target="_blank" href="https://aspen.eccouncil.org/Verify">
-        <img src="/CEH_Badge.png" width="200" alt="Certified Ethical Hacker"></img>
-      </a>
-    </div>
-    <div class="card cert transition ease-in-out hover:scale-[102%]">
-      <a href="https://www.credly.com/badges/8b2e089a-331e-4998-8522-649c18d4a48c/public_url" target="_blank">
-        <img src="/AWS-Certified-Cloud-Practitioner.png" width="200" alt="AWS Certified Cloud Practitioner"></img>
-      </a>
-    </div>
-    <!-- <div class="card cert transition ease-in-out hover:scale-[102%]">
-      <img src="/az900.png" width="200" alt="Azure AZ-900"></img>
-      <div class="card-overlay">In Progress</div>
-    </div>
-    <div class="card cert transition ease-in-out hover:scale-[102%]">
-      <img src="/greenbelt_logo.png" width="200" alt="Lean Six Sigma Green Belt"></img>
-      <div class="card-overlay">In Progress</div>
-    </div> -->
-    <div class="card cert transition ease-in-out hover:scale-[102%]">
-      <a href="/PartnerAccreditation_AWS Course Completion Certificate.pdf" target="_blank">
-        <img src="/TechnicalAccreditation.png" width="200" alt="AWS Partner Technical Accreditation"></img>
-      </a>
-    </div>
-    <div class="card cert transition ease-in-out hover:scale-[102%]">
-      <a href="/CloudEconomics_AWS Course Completion Certificate.pdf" target="_blank">
-        <img src="/CloudEconomics.png" width="200" alt="AWS Partner Cloud Economics Accreditation"></img>
-      </a>
-    </div>
-  </div>
+      <!-- SKILLS -->
+      <section id="skills" class="cv-section">
+        <div class="mb-5 section-header-wrapper">
+          <div class="text-3xl section-header font-bold">skills</div>
+        </div>
+        <div class="cv-skills-col">
+          <div class="skill-block">
+            <div class="skill-block-title">Languages</div>
+            <ul class="skill-block-list">
+              <li class="skill-row"><span class="skill-name">C#</span><ProgressBar rating={5} /></li>
+              <li class="skill-row"><span class="skill-name">Python</span><ProgressBar rating={5} /></li>
+              <li class="skill-row"><span class="skill-name">Javascript</span><ProgressBar rating={4} /></li>
+              <li class="skill-row"><span class="skill-name">Java</span><ProgressBar rating={3} /></li>
+              <li class="skill-row"><span class="skill-name">C</span><ProgressBar rating={3} /></li>
+            </ul>
+          </div>
+          <div class="skill-block">
+            <div class="skill-block-title">Tools</div>
+            <ul class="skill-block-list">
+              <li class="skill-row"><span class="skill-name">VS Code</span><ProgressBar rating={4} /></li>
+              <li class="skill-row"><span class="skill-name">Visual Studio</span><ProgressBar rating={4} /></li>
+              <li class="skill-row"><span class="skill-name">PyTorch</span><ProgressBar rating={4} /></li>
+              <li class="skill-row"><span class="skill-name">SciKit Learn</span><ProgressBar rating={4} /></li>
+              <li class="skill-row"><span class="skill-name">Tensorflow</span><ProgressBar rating={3} /></li>
+              <li class="skill-row"><span class="skill-name">OpenCV</span><ProgressBar rating={3} /></li>
+            </ul>
+          </div>
+          <div class="skill-block">
+            <div class="skill-block-title">Frameworks</div>
+            <ul class="skill-block-list">
+              <li class="skill-row"><span class="skill-name">.NET</span><ProgressBar rating={4} /></li>
+              <li class="skill-row"><span class="skill-name">Streamlit</span><ProgressBar rating={3} /></li>
+              <li class="skill-row"><span class="skill-name">React</span><ProgressBar rating={2} /></li>
+              <li class="skill-row"><span class="skill-name">Astro</span><ProgressBar rating={2} /></li>
+            </ul>
+          </div>
+          <div class="skill-block">
+            <div class="skill-block-title">Other</div>
+            <ul class="skill-block-list">
+              <li class="skill-row"><span class="skill-name">SQL</span><ProgressBar rating={3} /></li>
+              <li class="skill-row"><span class="skill-name">Openshift</span><ProgressBar rating={2} /></li>
+              <li class="skill-row"><span class="skill-name">Kubernetes</span><ProgressBar rating={2} /></li>
+              <li class="skill-row"><span class="skill-name">Azure</span><ProgressBar rating={2} /></li>
+              <li class="skill-row"><span class="skill-name">Firebase</span><ProgressBar rating={2} /></li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
-  <div class="mb-5 section-header-wrapper">
-    <div class="text-3xl section-header font-bold">awards</div>
+    </article>
   </div>
-
-  <ul class="award-list mx-6 mb-10">
-    <li class="award-box">
-      Winner of the Spring 2021 UCF Senior Design Showcase in Computer Science for my <a class="link color-main" href="https://github.com/jlehett/everglades-ai-wargame" target="_blank">Everglades Reinforcement Learning</a> project.
-    </li>
-    <li class="award-box">
-      Cum Laude Honors in the Major for Computer Science (GPA: 3.814).
-    </li>
-    <li class="award-box">
-      Accepted to the UCF CECS accelerated BS to MS program.
-    </li>
-  </ul>
-
-  <div class="mb-5 section-header-wrapper">
-    <div class="text-3xl section-header font-bold">skills</div>
-  </div>
-
-  <div class="simple-grid" style="gap:3%; margin-bottom: 15px;">
-    <div class="skill-block">
-      <div class="skill-block-title">Languages</div>
-      <ul class="skill-block-list list-disc md:columns-3 columns-2 mx-6">
-        <li>C# <Rating rating={5}></Rating></li>
-        <li>Python <Rating rating={5}></Rating></li>
-        <li>Javascript <Rating rating={4}></Rating></li>
-        <li>Java <Rating rating={3}></Rating></li>
-        <li>C <Rating rating={3}></Rating></li>
-      </ul>
-    </div>
-    <div class="skill-block">
-      <div class="skill-block-title">Tools</div>
-      <ul class="skill-block-list list-disc md:columns-3 columns-2 mx-6">
-        <li>VS Code <Rating rating={4}></Rating></li>
-        <li>Visual Studio <Rating rating={4}></Rating></li>
-        <li>Atom <Rating rating={4}></Rating></li>
-        <li>PyTorch <Rating rating={4}></Rating></li>
-        <li>SciKit Learn <Rating rating={4}></Rating></li>
-        <li>Tensorflow <Rating rating={3}></Rating></li>
-        <li>OpenCV <Rating rating={3}></Rating></li>
-      </ul>
-    </div>
-    <div class="skill-block">
-      <div class="skill-block-title">Frameworks</div>
-      <ul class="skill-block-list list-disc md:columns-3 columns-2 mx-6">
-        <li>.NET <Rating rating={4}></Rating></li>
-        <li>Streamlit <Rating rating={3}></Rating></li>
-        <li>React <Rating rating={2}></Rating></li>
-        <li>Astro <Rating rating={2}></Rating></li>
-      </ul>
-    </div>
-    <div class="skill-block">
-      <div class="skill-block-title">Other</div>
-      <ul class="skill-block-list list-disc md:columns-3 columns-2 mx-6">
-        <li>SQL <Rating rating={3}></Rating></li>
-        <li>Openshift <Rating rating={2}></Rating></li>
-        <li>Kubernetes <Rating rating={2}></Rating></li>
-        <li>Azure <Rating rating={2}></Rating></li>
-        <li>Firebase <Rating rating={2}></Rating></li>
-      </ul>
-    </div>
-  </div>
-</article>
 </BaseLayout>

@@ -1,0 +1,34 @@
+---
+interface Props {
+  rating: 1 | 2 | 3 | 4 | 5;
+  showLabel?: boolean;
+}
+
+const { rating, showLabel = false } = Astro.props;
+
+const widthMap: Record<number, string> = {
+  1: '20%',
+  2: '40%',
+  3: '60%',
+  4: '80%',
+  5: '100%',
+};
+
+const labelMap: Record<number, string> = {
+  1: 'Beginner',
+  2: 'Basic',
+  3: 'Proficient',
+  4: 'Advanced',
+  5: 'Expert',
+};
+
+const width = widthMap[rating] ?? '0%';
+const label = labelMap[rating] ?? '';
+---
+
+<div class="skill-progress-wrap" title={label} aria-label={`Skill level: ${label}`}>
+  <div class="skill-progress-track">
+    <div class="skill-progress-fill" style={`width: ${width}`}></div>
+  </div>
+  {showLabel && <span class="skill-progress-label">{label}</span>}
+</div>
