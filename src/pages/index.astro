@@ -1,107 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HorizontalCard from "../components/HorizontalCard.astro";
-import Particles from "astro-particles"
-import type { ISourceOptions } from "tsparticles-engine";
-
-const options: ISourceOptions = {
-   fullScreen: {
-    enable: false,
-   },
-    particles: {
-    number: {
-      value: 50,
-      density: {
-        enable: true,
-        value_area: 800
-      }
-    },
-    color: {
-      value: "#780ecf"
-    },
-    opacity: {
-      value: 0.5,
-      random: false,
-      anim: {
-        enable: false,
-        speed: 1,
-        opacity_min: 0.1,
-        sync: false
-      }
-    },
-    size: {
-      value: 3,
-      random: true,
-      anim: {
-        enable: false,
-        speed: 20,
-        size_min: 0.1,
-        sync: false
-      }
-    },
-    line_linked: {
-      enable: true,
-      distance: 150,
-      color: "#c470db",
-      opacity: 0.4,
-      width: 1
-    },
-    move: {
-      enable: true,
-      speed: 3,
-      direction: "none",
-      random: false,
-      straight: false,
-      out_mode: "out",
-      bounce: false,
-      attract: {
-        enable: false,
-        rotateX: 600,
-        rotateY: 1200
-      }
-    }
-  },
-  interactivity: {
-    detect_on: "canvas",
-    events: {
-      onhover: {
-        enable: true,
-        mode: "grab"
-      },
-      onclick: {
-        enable: true,
-        mode: "push"
-      },
-      resize: true
-    },
-    modes: {
-      grab: {
-        distance: 140,
-        line_linked: {
-          opacity: 1
-        }
-      },
-      bubble: {
-        distance: 400,
-        size: 40,
-        duration: 2,
-        opacity: 8,
-        speed: 3
-      },
-      repulse: {
-        distance: 200,
-        duration: 0.4
-      },
-      push: {
-        particles_nb: 4
-      },
-      remove: {
-        particles_nb: 2
-      }
-    }
-  },
-  retina_detect: true
-};
 
 const posts = (await Astro.glob("./project-files/*.{md,mdx}")).sort(
   (a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
@@ -121,24 +20,34 @@ const last_blogs: Array<{
 }> = ghostData.posts ?? [];
 ---
 
-<script src="https://cdn.jsdelivr.net/npm/@tsparticles/preset-links@3/tsparticles.preset.links.min.js" is:inline></script>
 <script>
-  import { type Container, type Engine, tsParticles } from "tsparticles-engine";
-    import { loadFull } from "tsparticles";
+  import { tsParticles } from "tsparticles-engine";
+  import { loadFull } from "tsparticles";
 
-    // the function name is the parameter passed to the init attribute
-    // required
-    // add the function to window is mandatory, it will be searched there
-    window.particlesInit = async function (engine: Engine) {
-        await loadFull(engine);
-    }
-    
-    // the function name is the parameter passed to the loaded attribute
-    // optional
-    // add the function to window is mandatory, it will be searched there
-    window.particlesLoaded = function (container: Container) {
-        console.log("particlesLoaded callback");
-    }
+  await loadFull(tsParticles);
+  await tsParticles.load("tsparticles", {
+    fullScreen: { enable: false },
+    particles: {
+      number: { value: 50, density: { enable: true, value_area: 800 } },
+      color: { value: "#780ecf" },
+      opacity: { value: 0.5, random: false, anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false } },
+      size: { value: 3, random: true, anim: { enable: false, speed: 20, size_min: 0.1, sync: false } },
+      line_linked: { enable: true, distance: 150, color: "#c470db", opacity: 0.4, width: 1 },
+      move: { enable: true, speed: 3, direction: "none", random: false, straight: false, out_mode: "out", bounce: false, attract: { enable: false, rotateX: 600, rotateY: 1200 } }
+    },
+    interactivity: {
+      detect_on: "canvas",
+      events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "push" }, resize: true },
+      modes: {
+        grab: { distance: 140, line_linked: { opacity: 1 } },
+        bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 },
+        repulse: { distance: 200, duration: 0.4 },
+        push: { particles_nb: 4 },
+        remove: { particles_nb: 2 }
+      }
+    },
+    retina_detect: true
+  });
 </script>
 
 <BaseLayout>
@@ -268,5 +177,5 @@ const last_blogs: Array<{
         ))
       }
   </div>
-  <Particles class="particles" id="tsparticles" options={options} init="particlesInit" />
+  <div class="particles" id="tsparticles"></div>
 </BaseLayout>
